@@ -145,6 +145,21 @@ h1{
 }
 .cell dd span{font-size:12px;font-weight:400;color:var(--ink-3);letter-spacing:0;}
 
+/* ---------- what you can hire me for ---------- */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.svc{padding:17px 20px 19px;border-right:1px solid var(--rule);}
+.svc:last-child{border-right:none;}
+.svc h2{
+  font-family:var(--display);font-weight:700;font-size:16.5px;
+  letter-spacing:-.015em;margin:0 0 7px;
+}
+.svc p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2);}
+@media (max-width:760px){
+  .services{grid-template-columns:1fr;}
+  .svc{border-right:none;border-bottom:1px solid var(--rule);}
+  .svc:last-child{border-bottom:none;}
+}
+
 /* ---------- tabs & views ---------- */
 .tabs{
   display:flex;flex-wrap:wrap;gap:0;
@@ -722,10 +737,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <figcaption>Shane Cann</figcaption>
       </figure>
       <div class="tb-id">
-        <p class="eyebrow">Data migration &amp; analytics &middot; and the tooling to run it</p>
+        <p class="eyebrow">Data migration &middot; Reporting &middot; Custom tools</p>
         <h1>Shane Cann</h1>
-        <p class="role">Eight years moving data between systems that were never meant to talk. Now I build the tools that do it &mdash; six applications here, from migration tooling to reporting boards to models that grade themselves.</p>
-        <p class="credential">Senior Technical Architect at <strong>Zendesk</strong> &middot; 8+ yrs in data migration, CRM and automation</p>
+        <p class="role">I move business data between systems, clean up the mess it leaves behind, and build the small tools that stop it happening again.</p>
+        <p class="credential">Senior Technical Architect at <strong>Zendesk</strong>. Eight years of migrations &mdash; up to twenty running at once, a process that cut delivery time by a quarter, and a team of five engineers.</p>
         <p class="contact">
           <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
           <span><a href="https://github.com/cannshan">github.com/cannshan</a></span>
@@ -733,12 +748,20 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </p>
       </div>
     </div>
-    <dl class="tb-grid">
-      <div class="cell"><dt>Experience</dt><dd>8+ <span>years</span></dd></div>
-      <div class="cell"><dt>Migrations at once</dt><dd>20</dd></div>
-      <div class="cell"><dt>Delivery time cut</dt><dd>25<span>%</span></dd></div>
-      <div class="cell"><dt>Engineers led</dt><dd>5</dd></div>
-    </dl>
+    <div class="services">
+      <div class="svc">
+        <h2>Move your data</h2>
+        <p>Records out of one system and correctly into another &mdash; CRMs, helpdesks, databases, spreadsheets. I find what is wrong with your export before it becomes a failed import.</p>
+      </div>
+      <div class="svc">
+        <h2>Make it trustworthy</h2>
+        <p>Messy files deduplicated, reconciled and validated, then the reporting built on top of numbers that actually hold up.</p>
+      </div>
+      <div class="svc">
+        <h2>Build the tool</h2>
+        <p>When a spreadsheet stops being enough, the small app that replaces it &mdash; and the six below are what that looks like.</p>
+      </div>
+    </div>
   </header>
 
 
@@ -749,8 +772,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   <nav class="tabs" aria-label="Sections">
     <button type="button" class="tab is-on" data-view="overview">Overview</button>
     <button type="button" class="tab" data-view="projects">Projects <span class="n">6</span></button>
-    <button type="button" class="tab" data-view="expertise">Expertise</button>
-    <button type="button" class="tab" data-view="experience">Experience</button>
+    <button type="button" class="tab" data-view="expertise">Process</button>
+    <button type="button" class="tab" data-view="experience">Background</button>
   </nav>
 
   <div class="view is-on" id="v-overview">
