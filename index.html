@@ -550,11 +550,6 @@ h1{
   .phone img{max-height:560px;}
 }
 
-.fig-bar::after{
-  content:"\2922  full size";
-  flex:none;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink-3);white-space:nowrap;
-}
 
 /* ---------- spec strip ---------- */
 .spec{
@@ -771,13 +766,13 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <div class="fig-window">
           <div class="fig-track">
             <figure class="fig-slide" data-cap="The board: six phases from Kickoff to Post Go Live, each card carrying its EM, developer, owner, data sources and go-live date.">
-              <a href="assets/mhq-board.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy"></a>
+              <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="Reporting: counts that answer the standup questions, a projects-by-data-source chart, and filters down to data source, object and created-date range.">
-              <a href="assets/mhq-reporting.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy"></a>
+              <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="The gate: no project leaves the board without this. The placeholder text names the four things that actually cost a week.">
-              <a href="assets/mhq-retro.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy"></a>
+              <img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
             </figure>
           </div>
           <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
@@ -833,24 +828,21 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="Sign-in: subdomain, email and API token. Credentials go straight to Zendesk — the tool stores nothing it doesn't need.">
-              <a href="assets/zendesk-login.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/zendesk-login.png" alt="Zendesk Data Loader sign-in screen with subdomain, email and API token fields" loading="lazy"></a>
-            </figure>
             <figure class="fig-slide" data-cap="All four operations as equals — most teams end up with an import-only script and nothing for the other three.">
-              <a href="assets/zendesk-select_action.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/zendesk-select_action.png" alt="Select Action screen offering Import, Update, Delete and Export" loading="lazy"></a>
+              <img src="assets/zendesk-select_action.png" alt="Select Action screen offering Import, Update, Delete and Export" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Object picker: tickets, users, organizations and custom objects, fetched live from the account's own schema.">
-              <a href="assets/zendesk-select_object.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/zendesk-select_object.png" alt="Select an object dropdown with Continue and Back buttons" loading="lazy"></a>
+            <figure class="fig-slide" data-cap="A bulk run in flight: live progress, the destination for the result file, and a Stop that actually halts the operation mid-run.">
+              <img src="assets/zendesk-progress.png" alt="Confirm Import screen with a progress bar part-way through, a save location and an active Stop button" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Field mapping with auto-map, plus save and load — the repetitive part of every bulk job, done once and reused.">
-              <a href="assets/zendesk-field_mapping.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/zendesk-field_mapping.png" alt="Field Mapping screen with Choose Ticket CSV, Auto-Map Fields, Save Mapping and Load Mapping" loading="lazy"></a>
+            <figure class="fig-slide" data-cap="Sign-in: subdomain, email and API token, sent straight to the platform — the tool stores nothing it does not need.">
+              <img src="assets/zendesk-login.png" alt="Sign-in screen with subdomain, email and API token fields" loading="lazy">
             </figure>
           </div>
           <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
           <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
         </div>
         <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 4</span>
+          <span class="fig-count">Fig. <b>1</b> / 3</span>
           <p class="fig-cap"></p>
           <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
         </div>
@@ -913,10 +905,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <div class="fig-window">
           <div class="fig-track">
             <figure class="fig-slide" data-cap="Week 1 board: live player props from four sportsbooks, each leg annotated with the real injury-report line behind it.">
-              <a href="assets/nfl-dashboard.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/nfl-dashboard.png" alt="NFL Bet Generator dashboard showing a Broncos at Chiefs same-game parlay with eight annotated player-prop legs" loading="lazy"></a>
+              <img src="assets/nfl-dashboard.png" alt="NFL Bet Generator dashboard showing a Broncos at Chiefs same-game parlay with eight annotated player-prop legs" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="Track Record: every suggestion auto-logged and auto-settled. It says plainly that 0 settled bets is too small a sample to mean anything.">
-              <a href="assets/nfl-track-record.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/nfl-track-record.png" alt="Track Record tab showing 0 settled bets, 44 pending, and a warning that the sample is too small to be meaningful" loading="lazy"></a>
+              <img src="assets/nfl-track-record.png" alt="Track Record tab showing 0 settled bets, 44 pending, and a warning that the sample is too small to be meaningful" loading="lazy">
             </figure>
           </div>
           <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
@@ -973,11 +965,11 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
       <div class="figures row" aria-label="MacroSnap screens">
         <figure class="phone">
-          <a href="assets/macrosnap-history.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"></a>
+          <img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy">
           <figcaption><b>History</b> &mdash; fourteen days by day with a running average, each meal keeping the photo it was read from.</figcaption>
         </figure>
         <figure class="phone">
-          <a href="assets/macrosnap-goals.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy"></a>
+          <img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy">
           <figcaption><b>Goals</b> &mdash; and the disclaimer that stays on screen: estimates are for trends, not for a medical or competition diet.</figcaption>
         </figure>
       </div>
@@ -1039,10 +1031,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <div class="fig-window">
           <div class="fig-track">
             <figure class="fig-slide" data-cap="Content: one idea fans out to TikTok, Instagram and YouTube in parallel. The 60-second option notes that it's the threshold for TikTok Creator Rewards to pay out.">
-              <a href="assets/wce-content.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/wce-content.png" alt="Wanderlust Content Engine Content tab with an idea, location, story beat, three platform toggles and filming extras" loading="lazy"></a>
+              <img src="assets/wce-content.png" alt="Wanderlust Content Engine Content tab with an idea, location, story beat, three platform toggles and filming extras" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="Discovery: nine categories across a location, with real saved searches — Portland 21 places, Newport 20, Charlevoix 17 — filterable by region.">
-              <a href="assets/wce-discovery.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/wce-discovery.png" alt="Discovery tab with location and category pickers beside a sidebar of saved searches and their place counts" loading="lazy"></a>
+              <img src="assets/wce-discovery.png" alt="Discovery tab with location and category pickers beside a sidebar of saved searches and their place counts" loading="lazy">
             </figure>
           </div>
           <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
