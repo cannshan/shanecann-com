@@ -835,11 +835,6 @@ h1{
   padding:4px 9px;border:1px solid var(--rule-strong);color:var(--ink-2);
 }
 
-/* single figure (no carousel) */
-.figures.solo{margin:0 0 20px;}
-.figures.solo .fig-slide{flex:none;}
-.figures.solo .fig-bar{gap:14px;}
-
 /* ---------- background band ---------- */
 .background{
   margin-top:18px;border:1px solid var(--rule-strong);background:var(--plate);
@@ -978,7 +973,7 @@ h1{
 /* Landscape captures fill the column; portrait ones are capped by height
    instead, or a phone screenshot would run metres down the page. */
 .fig-slide a{
-  display:block;line-height:0;max-width:100%;
+  display:block;line-height:0;width:100%;max-width:100%;flex:0 1 auto;
   border:1px solid var(--rule-strong);
   box-shadow:0 2px 14px rgba(27,42,51,.13);
   transition:box-shadow .2s ease,border-color .2s ease;
@@ -987,7 +982,7 @@ h1{
 .fig-slide a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 .fig-slide img{display:block;width:100%;height:auto;}
 .fig-slide.tall{padding:16px;}
-.fig-slide.tall a{max-width:none;}
+.fig-slide.tall a{width:auto;max-width:100%;}
 .fig-slide.tall img{width:auto;max-height:720px;max-width:100%;}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]) .fig-slide a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
@@ -1090,8 +1085,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   .figures{margin-inline:-18px;}
   .fig-bar{padding-inline:18px;}
   .spec{margin-inline:-18px;padding-inline:18px;}
-  .fig-slide img{max-height:320px;}
-  .fig-slide.tall img{max-height:420px;}
+  .fig-slide{padding:10px;}
+  .fig-slide.tall img{max-height:460px;}
 }
 </style>
 
