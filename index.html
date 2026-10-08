@@ -160,6 +160,9 @@ h1{
   .svc:last-child{border-bottom:none;}
 }
 
+.about-body.one-col{grid-template-columns:1fr;}
+.about-body.one-col .about-lead{max-width:72ch;}
+
 /* ---------- keyword line + anchor nav (single page) ---------- */
 html{scroll-behavior:smooth;}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
@@ -787,30 +790,23 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
     </div>
   </header>
-  <nav class="jump" aria-label="Sections">
-    <a href="#about">About</a>
-    <a href="#how">How I work</a>
-    <a href="#background">Background</a>
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
+  <nav class="tabs" aria-label="Sections">
+    <button type="button" class="tab is-on" data-view="overview">Overview</button>
+    <button type="button" class="tab" data-view="work">Work <span class="n">6</span></button>
   </nav>
 
+  <div class="view is-on" id="v-overview">
 <section class="about" id="about">
     <div class="about-head">
       <h2>About</h2>
       <span class="rule"></span>
     </div>
-    <div class="about-body">
+    <div class="about-body one-col">
       <div>
-        <p class="about-lead">I've spent eight years as a Technical Architect watching good ideas die in the gap between "someone should build that" and someone actually building it. AI closed that gap for me, and I haven't stopped since.</p>
-        <p>The day job is why they hold up. Running migrations for a living teaches you where systems break: the edge case nobody specified, the two clients that quietly disagree, the number that looks right and isn't. <em>I build with that already in mind, because I've spent a career cleaning up after it.</em></p>
+        <p class="about-lead">Eight years of data migrations teaches you exactly where things break &mdash; the export that truncates without telling you, the two systems that quietly disagree, the number that looks right and isn't.</p>
+        <p>What it never taught me was how to build the thing that catches it. I spent those years watching good ideas die in the gap between &ldquo;someone should build that&rdquo; and someone actually building it. AI closed that gap for me, and I haven't stopped since.</p>
+        <p>So now when a job keeps hitting the same wall, I build the tool that stops it &mdash; a bulk loader for the imports I run, a board that will not let a migration close without recording what went wrong. <em>The work below is all of that.</em></p>
       </div>
-      <ul class="method">
-        <li><span><b>Real tools.</b> Bulk data loading, migration tracking, tour operations, content production &mdash; things with a person on the other end and a job to finish.</span></li>
-        <li><span><b>Honest models.</b> Probability and estimation that states its own confidence, gets graded against what actually happened, and is tuned on a sample that can bear the weight.</span></li>
-        <li><span><b>Built for the real conditions.</b> A tour app that assumes no cell service, and a migration board that assumes somebody will forget the retrospective.</span></li>
-        <li><span><b>Whatever the stack needs to be.</b> Python, TypeScript, React Native, Postgres, Supabase &mdash; picked per problem, not per comfort zone.</span></li>
-      </ul>
     </div>
   </section>
 <section class="capability" id="how">
@@ -900,7 +896,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     </div>
     <p class="edu-line"><strong>Michigan State University</strong> &middot; B.S. Media &amp; Information, B.A. Advertising &middot; 2009&ndash;2014</p>
   </section>
-  <div class="section-head" id="work">
+  </div>
+
+  <div class="view" id="v-work">
+  <div class="section-head">
     <h2>Work</h2>
     <span class="count">Six things built because something needed building</span>
     <span class="rule"></span>
@@ -1148,9 +1147,11 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </li>
     </ul>
   </section>
+  </div>
+
 <section class="hire" id="contact">
     <div class="hire-main">
-      <h2>Got data that needs moving, or a job that should be a tool?</h2>
+      <h2>Got data that needs moving, or an app that needs building?</h2>
       <p>Migrations between systems, spreadsheets cleaned up and made trustworthy, reporting set up on numbers you can rely on, and the small internal apps that replace a process nobody enjoys. Tell me what you are moving or what is broken, and I will tell you honestly whether I am the right person for it.</p>
     </div>
     <div class="hire-links">
@@ -1169,6 +1170,43 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 </div>
 
 <script>
+// Two views, with the choice reflected in the URL so a view can be linked to.
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+
+  function show(name, push) {
+    var found = false;
+    views.forEach(function (v) {
+      var on = v.id === "v-" + name;
+      v.classList.toggle("is-on", on);
+      if (on) found = true;
+    });
+    if (!found) return false;
+    tabs.forEach(function (t) {
+      var on = t.dataset.view === name;
+      t.classList.toggle("is-on", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    if (push && history.replaceState) history.replaceState(null, "", "#" + name);
+    return true;
+  }
+
+  tabs.forEach(function (t) {
+    t.setAttribute("role", "tab");
+    t.addEventListener("click", function () {
+      show(t.dataset.view, true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  var initial = (location.hash || "").replace("#", "");
+  if (!initial || !show(initial, false)) show("overview", false);
+  window.addEventListener("hashchange", function () {
+    show((location.hash || "").replace("#", "") || "overview", false);
+  });
+})();
+
 // Project category filter.
 (function () {
   var chips = Array.prototype.slice.call(document.querySelectorAll(".chip-btn"));
