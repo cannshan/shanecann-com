@@ -595,13 +595,6 @@ article.plate[hidden]{display:none;}
   font-size:16px;line-height:1.6;color:var(--ink-2);
 }
 .work-intro em{color:var(--ink);font-style:italic;}
-.dataline{
-  margin:-8px 0 20px;padding:9px 0 0;border-top:1px solid var(--rule);
-  max-width:74ch;font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(--ink-3);
-}
-.dataline b{
-  color:var(--red);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:10px;
-}
 
 .principles.tight{gap:14px 26px;}
 .principles.tight .principle{padding-top:10px;}
@@ -855,24 +848,25 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   <div class="view" id="v-work">
   <div class="section-head">
     <h2>Work</h2>
-    <span class="count">Six projects &middot; all of them data problems</span>
+    <span class="count">Six tools &middot; phone, web, desktop and analytics</span>
     <span class="rule"></span>
   </div>
-  <p class="work-intro">A travel app, a meal tracker, a betting model. Different clothes, same job: <em>get the data in, decide what it is allowed to claim, prove it held up.</em></p>
+  <p class="work-intro">Two phone apps, two web apps, a desktop data loader and a probability model. Some solve a problem at work, some solve one of mine. <em>None of them are demos.</em></p>
 
     <div class="filters" role="group" aria-label="Filter projects by type">
       <span class="f-label">Show</span>
       <button type="button" class="chip-btn is-on" data-cat="all">All <span class="n">6</span></button>
-      <button type="button" class="chip-btn" data-cat="migration">Data migration <span class="n">2</span></button>
-      <button type="button" class="chip-btn" data-cat="modeling">Modeling &amp; analytics <span class="n">2</span></button>
-      <button type="button" class="chip-btn" data-cat="products">Apps &amp; pipelines <span class="n">2</span></button>
+      <button type="button" class="chip-btn" data-cat="phone">Phone apps <span class="n">2</span></button>
+      <button type="button" class="chip-btn" data-cat="web">Web apps <span class="n">2</span></button>
+      <button type="button" class="chip-btn" data-cat="desktop">Desktop tools <span class="n">1</span></button>
+      <button type="button" class="chip-btn" data-cat="analytics">Analytics &amp; modeling <span class="n">1</span></button>
     </div>
   <div class="notice">
       <b>Note</b>
       <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. The links below go straight to the files worth reading.</span>
     </div>
   <div class="plates" id="projectList">
-    <article class="plate" data-cat="products">
+    <article class="plate" data-cat="phone">
       <div class="plate-head">
         <h3>Wander Guide App</h3>
         <span class="stamp">Expo 54 &middot; React Native</span>
@@ -880,7 +874,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">A self-guided audio tour that keeps narrating after the cell service stops.</p>
       <p class="lede">Pick a region, then drive. GPS triggers each stop's narration, a native map draws the route, and the whole tour downloads first.</p>
-      <p class="dataline"><b>Data problem</b> &mdash; a dataset that has to stay usable with no network.</p>
       <div class="figures row four" aria-label="Wander Guide App screens">
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/wga-explore.png" alt="Wander Guide explore screen with a search field and region cards for Maine and New Hampshire" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
@@ -906,7 +899,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>Updates without the App Store</b><span>Over-the-air releases via EAS.</span></li>
       </ul>
     </article>
-<article class="plate" data-cat="migration">
+<article class="plate" data-cat="web">
       <div class="plate-head">
         <h3>Migration HQ</h3>
         <span class="stamp">Supabase &middot; Vercel</span>
@@ -914,7 +907,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">The board a migration team runs on. It will not let you close a project without recording what went wrong.</p>
       <p class="lede">Every migration is a card moving through six phases, each with an owner and the four dates that matter.</p>
-      <p class="dataline"><b>Data problem</b> &mdash; post-mortems as searchable records, not knowledge that walks out.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -944,7 +936,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>Security by policy</b><span>Postgres row-level security, magic-link auth, no password to leak.</span></li>
       </ul>
     </article>
-    <article class="plate" data-cat="products">
+    <article class="plate" data-cat="web">
       <div class="plate-head">
         <h3>Wanderlust Content Engine</h3>
         <span class="stamp live">Live &middot; Vercel</span>
@@ -952,7 +944,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">One idea in, three genuinely different social packages out &mdash; not one caption with a swapped hashtag.</p>
       <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals.</p>
-      <p class="dataline"><b>Data problem</b> &mdash; live search in, evidence rules enforced, every call metered.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -982,7 +973,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </ul>
       <p class="plate-foot"><a class="golink" href="https://wanderlust-content-engine.vercel.app">Live &#8599;</a> <a class="golink" href="https://github.com/cannshan/wanderlust-content-engine">Code &#8599;</a></p>
     </article>
-    <article class="plate" data-cat="modeling">
+    <article class="plate" data-cat="phone">
       <div class="plate-head">
         <h3>MacroSnap</h3>
         <span class="stamp">Next.js &middot; Claude vision</span>
@@ -990,7 +981,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">Photograph a meal, get its macros &mdash; nothing is logged until you have corrected the estimate.</p>
       <p class="lede">Claude reads the photo, identifies each item and estimates the portion. You correct it before anything is saved.</p>
-      <p class="dataline"><b>Data problem</b> &mdash; structured records out of an unstructured source, with a human check.</p>
       <div class="figures row" aria-label="MacroSnap screens">
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
@@ -1008,7 +998,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </ul>
       <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/macrosnap">Code &#8599;</a></p>
     </article>
-    <article class="plate" data-cat="migration">
+    <article class="plate" data-cat="desktop">
       <div class="plate-head">
         <h3>Zendesk Data Loader</h3>
         <span class="stamp">Python &middot; pywebview desktop app</span>
@@ -1016,7 +1006,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">Import, update, delete and export without writing a line against the API.</p>
       <p class="lede">A desktop tool that puts an API behind a point-and-click wizard: pick the operation, map the fields, watch it run.</p>
-      <p class="dataline"><b>Data problem</b> &mdash; bulk extract, transform and load with field mapping. The core migration job, productised.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -1045,7 +1034,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>595 KB of Python</b><span>The oldest project here and still the largest.</span></li>
       </ul>
     </article>
-    <article class="plate" data-cat="modeling">
+    <article class="plate" data-cat="analytics">
       <div class="plate-head">
         <h3>NFL Bet Generator</h3>
         <span class="stamp">Python &middot; Live odds</span>
@@ -1053,7 +1042,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">A probability model that refuses to quote correlated legs as independent math.</p>
       <p class="lede">Live odds and public stats become an opponent-adjusted power rating, then win, cover and total probabilities.</p>
-      <p class="dataline"><b>Data problem</b> &mdash; ingest three sources, reconcile them, model the result, validate it against what happened.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="NFL Bet Generator screenshots">
         <div class="fig-window">
           <div class="fig-track">
