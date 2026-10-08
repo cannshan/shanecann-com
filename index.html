@@ -577,7 +577,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="tb-id">
         <p class="eyebrow">Data migration &amp; analytics &middot; and the tooling to run it</p>
         <h1>Shane Cann</h1>
-        <p class="role">Eight years moving data between systems that were never meant to talk. Now I build the tools that do it &mdash; eight applications here, from migration tooling to reporting boards to models that grade themselves.</p>
+        <p class="role">Eight years moving data between systems that were never meant to talk. Now I build the tools that do it &mdash; six applications here, from migration tooling to reporting boards to models that grade themselves.</p>
         <p class="credential">Senior Technical Architect at <strong>Zendesk</strong> &middot; 8+ yrs in data migration, CRM and automation</p>
         <p class="contact">
           <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
@@ -587,7 +587,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
     </div>
     <dl class="tb-grid">
-      <div class="cell"><dt>Projects</dt><dd>8 <span>/ 7 in git</span></dd></div>
+      <div class="cell"><dt>Projects</dt><dd>6 <span>/ 5 in git</span></dd></div>
       <div class="cell"><dt>Tracked source</dt><dd>1.67 <span>MB</span></dd></div>
       <div class="cell"><dt>Commits</dt><dd>173</dd></div>
       <div class="cell"><dt>Languages</dt><dd>6</dd></div>
@@ -605,7 +605,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
   <nav class="tabs" aria-label="Sections">
     <button type="button" class="tab is-on" data-view="overview">Overview</button>
-    <button type="button" class="tab" data-view="projects">Projects <span class="n">8</span></button>
+    <button type="button" class="tab" data-view="projects">Projects <span class="n">6</span></button>
     <button type="button" class="tab" data-view="expertise">Expertise</button>
     <button type="button" class="tab" data-view="experience">Experience</button>
   </nav>
@@ -626,7 +626,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <ul class="method">
         <li><span><b>Real tools.</b> Bulk data loading, migration tracking, tour operations, content production &mdash; things with a person on the other end and a job to finish.</span></li>
         <li><span><b>Honest models.</b> Probability and estimation that states its own confidence, gets graded against what actually happened, and is tuned on a sample that can bear the weight.</span></li>
-        <li><span><b>Boring infrastructure where it counts.</b> A credential broker that hands out ten-minute tokens so a leak expires before it matters.</span></li>
+        <li><span><b>Built for the real conditions.</b> A tour app that assumes a boat with no signal, and a migration board that assumes somebody will forget the retrospective.</span></li>
         <li><span><b>Whatever the stack needs to be.</b> Python, TypeScript, React Native, Postgres, Supabase &mdash; picked per problem, not per comfort zone.</span></li>
       </ul>
     </div>
@@ -647,8 +647,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </li>
       <li class="principle">
         <h4>The architecture is a decision</h4>
-        <p>Tour route order recomputes on the server, so the mobile app and the admin console physically cannot disagree. The betting model's backtests import the live pricing functions rather than reimplementing them, so the test can never drift from production.</p>
-        <span class="ev">Evidence &mdash; <b>recompute-route</b> API; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">shared pricing module in <b>backtest_prop_blend</b></a></span>
+        <p>The betting model's backtests import the live pricing functions rather than reimplementing them, so a test can never quietly drift from the code it is testing. Migration HQ keeps every project's phase, owner and dates in one row rather than scattered across a board and a spreadsheet.</p>
+        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">shared pricing module in <b>backtest_prop_blend</b></a></span>
       </li>
       <li class="principle">
         <h4>It knows what it costs</h4>
@@ -657,8 +657,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </li>
       <li class="principle">
         <h4>It's built for the bad day</h4>
-        <p>The tour app assumes a boat with no signal: offline-tolerant storage and over-the-air updates. The voice service hands out ten-minute tokens so a leak expires before it matters and the API secret never leaves the server.</p>
-        <span class="ev">Evidence &mdash; <b>NetInfo + AsyncStorage</b>; scoped <b>LiveKit</b> tokens</span>
+        <p>The tour app assumes a boat with no signal: offline-tolerant storage so the itinerary survives losing service mid-tour, and over-the-air updates so a fix reaches passengers without an App Store round trip.</p>
+        <span class="ev">Evidence &mdash; <b>NetInfo + AsyncStorage</b>, Wander Guide App</span>
       </li>
       <li class="principle">
         <h4>It gets iterated, not one-shot</h4>
@@ -677,10 +677,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   <div class="view" id="v-projects">
     <div class="filters" role="group" aria-label="Filter projects by type">
       <span class="f-label">Show</span>
-      <button type="button" class="chip-btn is-on" data-cat="all">All <span class="n">8</span></button>
+      <button type="button" class="chip-btn is-on" data-cat="all">All <span class="n">6</span></button>
       <button type="button" class="chip-btn" data-cat="migration">Data migration <span class="n">2</span></button>
       <button type="button" class="chip-btn" data-cat="modeling">Modeling &amp; analytics <span class="n">2</span></button>
-      <button type="button" class="chip-btn" data-cat="products">Products &amp; services <span class="n">4</span></button>
+      <button type="button" class="chip-btn" data-cat="products">Products <span class="n">2</span></button>
     </div>
   <div class="notice">
     <b>Note</b>
@@ -962,7 +962,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   <div class="proj-group" data-cat="products">
   <div class="section-head">
     <h2>Products &amp; Tools</h2>
-    <span class="count">4 projects &middot; JavaScript, TypeScript</span>
+    <span class="count">2 projects &middot; JavaScript, TypeScript</span>
     <span class="rule" style="animation-delay:.16s"></span>
   </div>
 
@@ -1032,45 +1032,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
     <article class="plate">
       <div class="plate-head">
-        <h3>Wander Guide</h3>
-        <span class="stamp live">Live &middot; Vercel</span>
-        <span class="stamp">Next 16 &middot; React 19 &middot; Supabase</span>
-      </div>
-      <p class="tagline">The operator's side of a lobster-boat tour: build the route, and let the server work out the order.</p>
-      <div class="plate-body">
-        <div>
-          <p>An admin console on Next.js 16 and React 19 with Tailwind 4, backed by Supabase for auth and data. Tours, individual tour detail pages, stop categories, and a <code>recompute-route</code> API route that re-derives the running order server-side rather than trusting whatever the client last dragged into place.</p>
-          <p>The longest-running of the current projects &mdash; thirty-four commits since January 2026.</p>
-        </div>
-        <ul class="notes">
-          <li><span><b>Route logic on the server.</b> Reordering is an API call, so the mobile app and the console can never disagree about the itinerary.</span></li>
-          <li><span><b>Shares a Supabase project</b> with the visitor app below &mdash; one schema, two very different front ends.</span></li>
-        </ul>
-      </div>
-      <div class="spec">
-        <div class="spec-figures">
-          <div class="fig"><span class="k">Commits</span><span class="v">34</span></div>
-          <div class="fig"><span class="k">Source</span><span class="v">90 KB</span></div>
-          <div class="fig"><span class="k">Live</span><span class="v"><a href="https://wander-guide-pi.vercel.app">wander-guide-pi.vercel.app</a></span></div>
-          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/Wander-Guide">cannshan/Wander-Guide</a></span></div>
-        </div>
-        <div class="langs">
-          <div class="bar">
-            <span style="width:98.8%;background:var(--lang-ts)"></span>
-            <span style="width:0.6%;background:var(--lang-js)"></span>
-            <span style="width:0.6%;background:var(--lang-css)"></span>
-          </div>
-          <p class="legend">
-            <span><i style="background:var(--lang-ts)"></i>TypeScript 98.8%</span>
-            <span><i style="background:var(--lang-js)"></i>JS 0.6%</span>
-            <span><i style="background:var(--lang-css)"></i>CSS 0.6%</span>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="plate">
-      <div class="plate-head">
         <h3>Wander Guide App</h3>
         <span class="stamp">Expo 54 &middot; React Native</span>
         <span class="stamp">Private repo</span>
@@ -1078,10 +1039,11 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <p class="tagline">The same tour, in the passenger's hand, on a boat with no signal.</p>
       <div class="plate-body">
         <div>
-          <p>An Expo Router app on React Native 19 that consumes the same Supabase schema the admin console writes. Location-aware via <code>expo-location</code>, with audio narration through <code>expo-av</code>, secure credential storage, haptics, and over-the-air updates so a fix reaches passengers without an App Store round trip.</p>
+          <p>An Expo Router app on React Native 19 backed by Supabase. Location-aware via <code>expo-location</code>, with audio narration through <code>expo-av</code>, secure credential storage, haptics, and over-the-air updates so a fix reaches passengers without an App Store round trip.</p>
           <p>Built for a working environment with intermittent connectivity: NetInfo plus AsyncStorage means the itinerary survives losing signal mid-tour.</p>
         </div>
         <ul class="notes">
+          <li><span><b>A real map, not a web view.</b> Tour stops render through native map components per platform &mdash; which is also why this one genuinely has to ship as an app rather than a mobile site.</span></li>
           <li><span><b>PLpgSQL in the repo.</b> Real Supabase migrations and functions are versioned alongside the client, not clicked into a dashboard.</span></li>
           <li><span><b>OTA updates</b> via <code>expo-updates</code> and EAS &mdash; the practical choice for software running on a seasonal tour schedule.</span></li>
         </ul>
@@ -1104,37 +1066,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
             <span><i style="background:var(--lang-js)"></i>JS 3.0%</span>
             <span><i style="background:var(--lang-sql)"></i>PLpgSQL 1.8%</span>
           </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="plate">
-      <div class="plate-head">
-        <h3>Proximity Chat Token Server</h3>
-        <span class="stamp">Express &middot; LiveKit</span>
-        <span class="stamp">Private repo</span>
-      </div>
-      <p class="tagline">Small on purpose: the one service that holds the LiveKit secret so no client application ever has to.</p>
-      <div class="plate-body">
-        <div>
-          <p>A single Express endpoint that mints a scoped LiveKit access token per player identity &mdash; room-join and publish grants only, ten-minute TTL, enough to connect and no more. An empty identity is rejected before it ever reaches the SDK.</p>
-          <p>Roughly fifty lines that do exactly one thing, which is the correct size for a credential broker.</p>
-        </div>
-        <ul class="notes">
-          <li><span><b>Short-lived by design.</b> A leaked token expires in ten minutes; the API secret never leaves the server.</span></li>
-          <li><span><b>The pattern generalises.</b> Written for a real-time voice feature, but it's the same shape any client needs when a third-party API key must never reach the browser &mdash; which is most of them.</span></li>
-        </ul>
-      </div>
-      <div class="spec">
-        <div class="spec-figures">
-          <div class="fig"><span class="k">Commits</span><span class="v">1</span></div>
-          <div class="fig"><span class="k">Source</span><span class="v">1.4 KB</span></div>
-          <div class="fig"><span class="k">Updated</span><span class="v">8 Aug 2026</span></div>
-          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/proximity-chat-token-server">cannshan/proximity-chat-token-server</a></span></div>
-        </div>
-        <div class="langs">
-          <div class="bar"><span style="width:100%;background:var(--lang-js)"></span></div>
-          <p class="legend"><span><i style="background:var(--lang-js)"></i>JavaScript 100%</span></p>
         </div>
       </div>
     </article>
