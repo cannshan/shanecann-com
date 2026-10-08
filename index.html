@@ -928,7 +928,40 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. Their code is there to read, and the links below go straight to the files worth reading. The remaining four are private.</span>
   </div>
   <div class="plates" id="projectList">
-    <article class="plate" data-cat="migration">
+    <article class="plate" data-cat="products">
+      <div class="plate-head">
+        <h3>Wander Guide App</h3>
+        <span class="stamp">Expo 54 &middot; React Native</span>
+        <span class="stamp">Private repo</span>
+      </div>
+      <p class="tagline">A self-guided audio tour that keeps narrating after the cell service stops.</p>
+      <p class="lede">Pick a region and a tour, then drive. GPS triggers each stop's narration, a native map draws the route, and the whole tour downloads for places with no signal.</p>
+      <div class="figures row four" aria-label="Wander Guide App screens">
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-explore.png" alt="Wander Guide explore screen with a search field and region cards for Maine and New Hampshire" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>Explore</b> &mdash; tours grouped by region, with a count on each.</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-tour.png" alt="Tour detail for the Kancamagus Highway Fall Foliage Tour showing 19 stops, starting point, driving distance and tips" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>Tour detail</b> &mdash; 19 stops, starting point, driving distance, and the warning about no cell service.</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-map.png" alt="Tour in progress with a route on a native map, numbered stops, a now-playing audio bar and the next stop distance" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>On tour</b> &mdash; route and numbered stops on a native map, now-playing audio, and distance to the next stop.</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-mytours.png" alt="My Tours library listing three saved tours with thumbnails and regions" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>My Tours</b> &mdash; everything downloaded and ready to run offline.</figcaption>
+        </figure>
+      </div>
+      <p class="demo-note">Captured on an iPhone from the running app.</p>
+      <ul class="highlights">
+        <li><b>Offline by default</b><span>The Kancamagus tour's own tips say there is no cell service. One tap caches the lot.</span></li>
+        <li><b>A real map, not a web view</b><span>Stops render through the platform's native map, which is why it ships as an app.</span></li>
+        <li><b>Updates without the App Store</b><span>Over-the-air releases via expo-updates and EAS.</span></li>
+      </ul>
+    </article>
+<article class="plate" data-cat="migration">
       <div class="plate-head">
         <h3>Migration HQ</h3>
         <span class="stamp">Supabase &middot; Vercel</span>
@@ -1097,40 +1130,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </ul>
       <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/nfl-bet-generator">Code &#8599;</a></p>
     </article>
-    <article class="plate" data-cat="products">
-      <div class="plate-head">
-        <h3>Wander Guide App</h3>
-        <span class="stamp">Expo 54 &middot; React Native</span>
-        <span class="stamp">Private repo</span>
       </div>
-      <p class="tagline">A self-guided audio tour that keeps narrating after the cell service stops.</p>
-      <p class="lede">Pick a region and a tour, then drive. GPS triggers each stop's narration, a native map draws the route, and the whole tour downloads for places with no signal.</p>
-      <div class="figures row four" aria-label="Wander Guide App screens">
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-explore.png" alt="Wander Guide explore screen with a search field and region cards for Maine and New Hampshire" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Explore</b> &mdash; tours grouped by region, with a count on each.</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-tour.png" alt="Tour detail for the Kancamagus Highway Fall Foliage Tour showing 19 stops, starting point, driving distance and tips" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Tour detail</b> &mdash; 19 stops, starting point, driving distance, and the warning about no cell service.</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-map.png" alt="Tour in progress with a route on a native map, numbered stops, a now-playing audio bar and the next stop distance" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>On tour</b> &mdash; route and numbered stops on a native map, now-playing audio, and distance to the next stop.</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-mytours.png" alt="My Tours library listing three saved tours with thumbnails and regions" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>My Tours</b> &mdash; everything downloaded and ready to run offline.</figcaption>
-        </figure>
-      </div>
-      <p class="demo-note">Captured on an iPhone from the running app.</p>
-      <ul class="highlights">
-        <li><b>Offline by default</b><span>The Kancamagus tour's own tips say there is no cell service. One tap caches the lot.</span></li>
-        <li><b>A real map, not a web view</b><span>Stops render through the platform's native map, which is why it ships as an app.</span></li>
-        <li><b>Updates without the App Store</b><span>Over-the-air releases via expo-updates and EAS.</span></li>
-      </ul>
-    </article>
-  </div>
 
 <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
