@@ -456,7 +456,9 @@ article.plate[hidden]{display:none;}
 }
 .fig-slide a:hover{border-color:var(--ink-2);box-shadow:0 4px 22px rgba(27,42,51,.2);}
 .fig-slide a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
-.fig-slide img{display:block;width:100%;height:auto;}
+/* Never render a capture above its natural size - upscaling is what makes
+   a screenshot look soft. Wide ones are capped to the band instead. */
+.fig-slide img{display:block;width:auto;max-width:100%;height:auto;}
 .fig-slide.tall{padding:16px;}
 .fig-slide.tall a{width:auto;max-width:100%;}
 .fig-slide.tall img{width:auto;max-height:720px;max-width:100%;}
@@ -853,6 +855,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
           <li><span><b>Evidence or nothing.</b> No place is labelled "proven" or "hidden gem" without real search evidence, and an empty list ships as an honest result rather than padded filler.</span></li>
           <li><span><b>It watches its own bill, to the cent.</b> Every model call logs real billed cost &mdash; input, output, cache-write at 1.25&times;, cache-read at 0.1&times;, web search per use &mdash; to a spend table, so "what does clicking this actually cost" has an answer instead of a guess from token ceilings. A running meter against a weekly cap sits in the header. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">See <code>logUsage</code></a>.</span></li>
           <li><span><b>Awaited on purpose.</b> That cost write is deliberately not fire-and-forget: a serverless function freezes once it responds, so an un-awaited insert is a coin flip on whether it ever lands. The reasoning is written into the file, not just the behaviour.</span></li>
+          <li><span><b>It takes work already done.</b> If the reel is filmed, upload it and the tool writes around the footage rather than asking you to describe it.</span></li>
           <li><span><b>Format decided, not asked.</b> The tool judges whether a topic reads better as narrative or an itinerary list, so that never becomes a form field.</span></li>
           <li><span><b>131 commits in five days</b> &mdash; the most heavily iterated project on this sheet, by an order of magnitude.</span></li>
         </ul>
@@ -860,8 +863,11 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="Content: one idea fans out to TikTok, Instagram and YouTube in parallel. The 60-second option notes that it's the threshold for TikTok Creator Rewards to pay out.">
-              <img src="assets/wce-content.png" alt="Wanderlust Content Engine Content tab with an idea, location, story beat, three platform toggles and filming extras" loading="lazy">
+            <figure class="fig-slide" data-cap="Content: one idea fans out to Instagram, TikTok and YouTube in parallel. The 60-second option notes it is the threshold for TikTok Creator Rewards to pay out; an already-filmed reel can be uploaded instead.">
+              <img src="assets/wce-content-live.png" alt="Content tab filled in with a Maine cabin getaway idea, location, story beat, three platform toggles, filming extras and a reel upload field" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="The result, per platform: a finished Instagram caption written around the real place and the real details, with TikTok and YouTube versions on their own tabs.">
+              <img src="assets/wce-output-live.png" alt="Generated Instagram caption for a Maine cabin getaway, with separate TikTok and YouTube tabs alongside it" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="Discovery: nine categories across a location, an optional date that factors in seasonal timing and real events happening then, and saved searches kept with their place counts.">
               <img src="assets/wce-discovery-live.png" alt="Discovery tab with location, date and category pickers beside a sidebar of saved searches showing place counts" loading="lazy">
@@ -871,7 +877,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
           <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
         </div>
         <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 2</span>
+          <span class="fig-count">Fig. <b>1</b> / 3</span>
           <p class="fig-cap"></p>
           <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
         </div>
