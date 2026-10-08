@@ -486,6 +486,39 @@ h1{
   flex:1;margin:0;min-width:0;
   font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--ink-2);
 }
+/* Phone screens sit side by side rather than in a carousel - portrait
+   captures leave most of the band empty when shown one at a time. */
+.figures.row{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;
+  gap:30px;padding:26px 24px;
+}
+.phone{
+  margin:0;display:flex;flex-direction:column;gap:11px;
+  flex:0 1 auto;max-width:400px;min-width:0;
+}
+.phone a{
+  display:block;line-height:0;align-self:center;max-width:100%;
+  border:1px solid var(--rule-strong);
+  box-shadow:0 2px 14px rgba(27,42,51,.13);
+  transition:box-shadow .2s ease,border-color .2s ease;
+}
+.phone a:hover{border-color:var(--ink-2);box-shadow:0 4px 22px rgba(27,42,51,.2);}
+.phone a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+.phone img{display:block;width:auto;max-height:820px;max-width:100%;}
+.phone figcaption{
+  font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--ink-2);
+  max-width:40ch;
+}
+.phone figcaption b{color:var(--ink);font-weight:600;}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .phone a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
+}
+:root[data-theme="dark"] .phone a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
+@media (max-width:560px){
+  .figures.row{gap:22px;padding:18px 14px;}
+  .phone img{max-height:560px;}
+}
+
 .fig-bar::after{
   content:"\2922  full size";
   flex:none;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
@@ -904,23 +937,15 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">Photograph a meal, get its macros &mdash; but nothing is logged until you have corrected the estimate.</p>
 
-      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="MacroSnap screenshots">
-        <div class="fig-window">
-          <div class="fig-track">
-            <figure class="fig-slide" data-cap="History: fourteen days by day with a running average, each meal keeping the photo it was read from.">
-              <a href="assets/macrosnap-history.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"></a>
-            </figure>
-            <figure class="fig-slide" data-cap="Goals, and the disclaimer that stays on the screen: estimates are for trends, not for a medical or competition diet.">
-              <a href="assets/macrosnap-goals.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy"></a>
-            </figure>
-          </div>
-        </div>
-        <div class="fig-bar">
-          <button class="fig-nav" type="button" data-dir="-1" aria-label="Previous figure">&#8592;</button>
-          <span class="fig-count">Fig. <b>1</b> / 2</span>
-          <p class="fig-cap"></p>
-          <button class="fig-nav" type="button" data-dir="1" aria-label="Next figure">&#8594;</button>
-        </div>
+      <div class="figures row" aria-label="MacroSnap screens">
+        <figure class="phone">
+          <a href="assets/macrosnap-history.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"></a>
+          <figcaption><b>History</b> &mdash; fourteen days by day with a running average, each meal keeping the photo it was read from.</figcaption>
+        </figure>
+        <figure class="phone">
+          <a href="assets/macrosnap-goals.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy"></a>
+          <figcaption><b>Goals</b> &mdash; and the disclaimer that stays on screen: estimates are for trends, not for a medical or competition diet.</figcaption>
+        </figure>
       </div>
 
       <div class="plate-body">
