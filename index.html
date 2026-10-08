@@ -573,13 +573,18 @@ article.plate[hidden]{display:none;}
   flex:0 1 auto;max-width:400px;min-width:0;
 }
 /* Four screens still fit across the band; the frame scales with them. */
-.figures.row.four{gap:20px;}
-.figures.row.four .phone{max-width:300px;}
+.figures.row.four{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:18px;padding:26px 22px;align-items:start;justify-content:stretch;
+}
+.figures.row.four .phone{max-width:none;width:100%;}
+.figures.row.four .device{width:100%;}
+.figures.row.four .phone img{width:100%;}
 .figures.row.four .device{padding:8px;border-radius:42px;}
 .figures.row.four .device-screen{border-radius:34px;}
 .figures.row.four .device-island{top:8px;height:20px;}
 .figures.row.four .device-home{bottom:5px;height:3px;}
-.figures.row.four .phone img{max-height:620px;}
+.figures.row.four .phone img{max-height:none;}
 /* iPhone frame, drawn in CSS so it stays sharp at any size. */
 .device{
   align-self:center;padding:11px;border-radius:54px;
@@ -619,9 +624,9 @@ article.plate[hidden]{display:none;}
 :root[data-theme="dark"] .phone a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
 @media (max-width:560px){
   .figures.row{gap:22px;padding:18px 14px;}
+  .figures.row.four{grid-template-columns:repeat(2,1fr);gap:14px;padding:18px 14px;}
   .phone img{max-height:560px;}
 }
-
 
 .work-intro{
   margin:0 0 4px;max-width:78ch;
@@ -635,6 +640,11 @@ article.plate[hidden]{display:none;}
 .dataline b{
   color:var(--red);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:10px;
 }
+
+.principles.tight{gap:14px 26px;}
+.principles.tight .principle{padding-top:10px;}
+.principles.tight h4{margin:0 0 5px;}
+.principles.tight .ev{display:block;margin:0;}
 
 /* ---------- project card: lede, highlights, links ---------- */
 .lede{
@@ -827,58 +837,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
     </div>
   </section>
-<section class="capability" id="how">
-    <div class="about-head">
-      <h2>Data migration &amp; analytics</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="cap-grid">
-      <div>
-        <p class="big">A migration is only half a data problem. The other half is knowing, before you start, exactly how the source is going to betray you.</p>
-        <p>I've spent eight years on that half &mdash; profiling source systems, writing the mapping specs, running the cutovers, and explaining to a customer why their export has 4,000 records with no owner. Enterprise CRM and support platforms, at volumes up to twenty concurrent projects, with a standardised process behind them that took a quarter off delivery time.</p>
-        <p>The method is deliberately platform-agnostic. A helpdesk, a CRM, a project tracker, a pile of spreadsheets or a legacy database nobody has credentials for &mdash; the work is the same: understand the shape of the source, agree what must not break, move it, prove it landed.</p>
-        <p>The analytics side is the same discipline pointed forward instead of backward: reporting and dashboards for the teams I've supported, and statistical modelling where the question is genuinely probabilistic &mdash; opponent-adjusted ratings, recency-weighted distributions, and the discipline to score those predictions against what actually happened.</p>
-        <p><em>Both halves are why the tooling below exists.</em> When the same anomaly costs you a week for the third time, you stop writing it in a doc and start building something that catches it.</p>
-      </div>
-      <div>
-        <ul class="pipeline">
-          <li class="step">
-            <h4><span>01</span>Source profiling</h4>
-            <p>Encoding, nulls, duplicates, orphaned relations, rate limits and the fields the customer swore were populated. Found before the plan, not during the cutover.</p>
-          </li>
-          <li class="step">
-            <h4><span>02</span>Mapping &amp; transformation</h4>
-            <p>Field-level mapping specs agreed with the customer, auto-mapped where the names allow, saved and reused across jobs rather than rebuilt each time.</p>
-          </li>
-          <li class="step">
-            <h4><span>03</span>Phased cutover</h4>
-            <p>Mapping signoff, test migration, closed migration, go-live &mdash; each a date somebody owns, so "where is it?" has an answer without a status call.</p>
-          </li>
-          <li class="step">
-            <h4><span>04</span>Validation</h4>
-            <p>Reconciled counts, spot checks on the relations most likely to have broken, and a clear statement of what did not come across and why.</p>
-          </li>
-          <li class="step">
-            <h4><span>05</span>Retrospective</h4>
-            <p>Mandatory, not optional. Issues, root cause, and what to do differently &mdash; captured as structured data so the pattern is searchable across projects.</p>
-          </li>
-          <li class="step">
-            <h4><span>06</span>Analysis</h4>
-            <p>Reporting and dashboards on the result, and statistical modelling where the answer is a probability rather than a number &mdash; scored against the outcome, on a sample chosen so the scoring actually means something.</p>
-          </li>
-        </ul>
-        <div class="platforms">
-          <span class="lbl">Tooling</span>
-          <span class="chip">CRM &amp; helpdesk platforms</span>
-          <span class="chip">Postgres / Supabase</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Python / pandas</span>
-          <span class="chip">CSV &amp; API pipelines</span>
-          <span class="chip">Excel at scale</span>
-        </div>
-      </div>
-    </div>
-  </section>
+
 <section class="background" id="background">
     <div class="about-head">
       <h2>Background</h2>
@@ -928,7 +887,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <span class="count">Six projects &middot; all of them data problems</span>
     <span class="rule"></span>
   </div>
-  <p class="work-intro">A travel app, a meal tracker and a betting model do not look like data work. They are. Every one of these is the same job in different clothes: get the data in, decide what it is allowed to claim, and prove it held up. <em>That is the job I have done for eight years &mdash; these are the versions I built myself.</em></p>
+  <p class="work-intro">A travel app, a meal tracker, a betting model. Different clothes, same job: <em>get the data in, decide what it is allowed to claim, prove it held up.</em></p>
 
     <div class="filters" role="group" aria-label="Filter projects by type">
       <span class="f-label">Show</span>
@@ -938,9 +897,9 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <button type="button" class="chip-btn" data-cat="products">Apps &amp; pipelines <span class="n">2</span></button>
     </div>
   <div class="notice">
-    <b>Note</b>
-    <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. Their code is there to read, and the links below go straight to the files worth reading. Two are private, and Migration HQ is an internal tool with no public repo.</span>
-  </div>
+      <b>Note</b>
+      <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. The links below go straight to the files worth reading.</span>
+    </div>
   <div class="plates" id="projectList">
     <article class="plate" data-cat="products">
       <div class="plate-head">
@@ -949,31 +908,31 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp">Private repo</span>
       </div>
       <p class="tagline">A self-guided audio tour that keeps narrating after the cell service stops.</p>
-      <p class="lede">Pick a region and a tour, then drive. GPS triggers each stop's narration, a native map draws the route, and the whole tour downloads for places with no signal.</p>
-      <p class="dataline"><b>The data problem</b> &mdash; keeping a dataset usable when the network is not &mdash; tours, audio and routes cached to the device and reconciled when signal comes back.</p>
+      <p class="lede">Pick a region, then drive. GPS triggers each stop's narration, a native map draws the route, and the whole tour downloads first.</p>
+      <p class="dataline"><b>Data problem</b> &mdash; a dataset that has to stay usable with no network.</p>
       <div class="figures row four" aria-label="Wander Guide App screens">
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/wga-explore.png" alt="Wander Guide explore screen with a search field and region cards for Maine and New Hampshire" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Explore</b> &mdash; tours grouped by region, with a count on each.</figcaption>
+          <figcaption><b>Explore</b> &mdash; tours by region.</figcaption>
         </figure>
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/wga-tour.png" alt="Tour detail for the Kancamagus Highway Fall Foliage Tour showing 19 stops, starting point, driving distance and tips" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Tour detail</b> &mdash; 19 stops, starting point, driving distance, and the warning about no cell service.</figcaption>
+          <figcaption><b>Tour detail</b> &mdash; 19 stops, distance, no-service warning.</figcaption>
         </figure>
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/wga-map.png" alt="Tour in progress with a route on a native map, numbered stops, a now-playing audio bar and the next stop distance" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>On tour</b> &mdash; route and numbered stops on a native map, now-playing audio, and distance to the next stop.</figcaption>
+          <figcaption><b>On tour</b> &mdash; native map, now playing, next stop.</figcaption>
         </figure>
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/wga-mytours.png" alt="My Tours library listing three saved tours with thumbnails and regions" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>My Tours</b> &mdash; everything downloaded and ready to run offline.</figcaption>
+          <figcaption><b>My Tours</b> &mdash; downloaded, runs offline.</figcaption>
         </figure>
       </div>
       <p class="demo-note">Captured on an iPhone from the running app.</p>
       <ul class="highlights">
-        <li><b>Offline by default</b><span>The Kancamagus tour's own tips say there is no cell service. One tap caches the lot.</span></li>
-        <li><b>A real map, not a web view</b><span>Stops render through the platform's native map, which is why it ships as an app.</span></li>
-        <li><b>Updates without the App Store</b><span>Over-the-air releases via expo-updates and EAS.</span></li>
+        <li><b>Offline by default</b><span>One tap caches the whole tour.</span></li>
+        <li><b>A real map, not a web view</b><span>Which is why it ships as an app.</span></li>
+        <li><b>Updates without the App Store</b><span>Over-the-air releases via EAS.</span></li>
       </ul>
     </article>
 <article class="plate" data-cat="migration">
@@ -982,19 +941,19 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp">Supabase &middot; Vercel</span>
         <span class="stamp local">Internal team tool</span>
       </div>
-      <p class="tagline">The board a migration team actually runs on &mdash; and it will not let you close a project without writing down what went wrong.</p>
-      <p class="lede">A single-file Supabase client where every migration is a card moving through six phases, each with an owner and the four dates that matter. Archiving one opens a retrospective you cannot skip.</p>
-      <p class="dataline"><b>The data problem</b> &mdash; turning migration post-mortems into structured, searchable records instead of knowledge that leaves with whoever ran the job.</p>
+      <p class="tagline">The board a migration team runs on. It will not let you close a project without recording what went wrong.</p>
+      <p class="lede">Every migration is a card moving through six phases, each with an owner and the four dates that matter.</p>
+      <p class="dataline"><b>Data problem</b> &mdash; post-mortems as searchable records, not knowledge that walks out.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="The board: six phases from Kickoff to Post Go Live, each card carrying its EM, developer, owner, data sources and go-live date.">
+            <figure class="fig-slide" data-cap="The board &mdash; six phases, each card carrying its owners, sources and go-live date.">
               <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Reporting: counts that answer the standup questions, a projects-by-data-source chart, and filters down to data source, object and created-date range.">
+            <figure class="fig-slide" data-cap="Reporting &mdash; counts, a projects-by-source chart, filters to object and date range.">
               <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="The gate: no project leaves the board without this. The placeholder text names the four things that actually cost a week.">
+            <figure class="fig-slide" data-cap="The gate &mdash; no project leaves the board without this.">
               <img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
             </figure>
           </div>
@@ -1009,9 +968,9 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="demo-note">Screens captured against a local demo database &mdash; every company, person and date shown is invented. The production board holds live customer migrations.</p>
       <ul class="highlights">
-        <li><b>Institutional memory, as data</b><span>Every closed migration leaves a searchable record of what broke and why.</span></li>
-        <li><b>Reporting built in</b><span>Counts, a projects-by-source chart, and filters down to object and date range.</span></li>
-        <li><b>Security by policy</b><span>Access rules live in Postgres row-level security. Magic-link auth, no password to leak.</span></li>
+        <li><b>Institutional memory, as data</b><span>Every closed migration leaves a searchable record.</span></li>
+        <li><b>Reporting built in</b><span>Counts, a chart and filters, not an export.</span></li>
+        <li><b>Security by policy</b><span>Postgres row-level security, magic-link auth, no password to leak.</span></li>
       </ul>
     </article>
     <article class="plate" data-cat="products">
@@ -1020,19 +979,19 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp live">Live &middot; Vercel</span>
         <span class="stamp pub">Public repo &mdash; readable</span>
       </div>
-      <p class="tagline">One idea in, three genuinely different social packages out &mdash; not the same caption with a swapped hashtag suffix.</p>
-      <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals, after searching for what is genuinely trending.</p>
-      <p class="dataline"><b>The data problem</b> &mdash; ingesting live search results, enforcing evidence rules on what is allowed to be stored, and metering the cost of every call against a budget.</p>
+      <p class="tagline">One idea in, three genuinely different social packages out &mdash; not one caption with a swapped hashtag.</p>
+      <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals.</p>
+      <p class="dataline"><b>Data problem</b> &mdash; live search in, evidence rules enforced, every call metered.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="Content: one idea fans out to Instagram, TikTok and YouTube in parallel. The 60-second option notes it is the threshold for TikTok Creator Rewards to pay out; an already-filmed reel can be uploaded instead.">
+            <figure class="fig-slide" data-cap="Content &mdash; one idea fans out to three platforms in parallel.">
               <img src="assets/wce-content-live.png" alt="Content tab filled in with a Maine cabin getaway idea, location, story beat, three platform toggles, filming extras and a reel upload field" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="The result, per platform: a finished Instagram caption written around the real place and the real details, with TikTok and YouTube versions on their own tabs.">
+            <figure class="fig-slide" data-cap="The result &mdash; a finished caption per platform, each on its own tab.">
               <img src="assets/wce-output-live.png" alt="Generated Instagram caption for a Maine cabin getaway, with separate TikTok and YouTube tabs alongside it" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Discovery: nine categories across a location, an optional date that factors in seasonal timing and real events happening then, and saved searches kept with their place counts.">
+            <figure class="fig-slide" data-cap="Discovery &mdash; nine categories, an optional date for seasonal timing, saved searches.">
               <img src="assets/wce-discovery-live.png" alt="Discovery tab with location, date and category pickers beside a sidebar of saved searches showing place counts" loading="lazy">
             </figure>
           </div>
@@ -1046,9 +1005,9 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
       </div>
       <ul class="highlights">
-        <li><b>Evidence or nothing</b><span>No place is called a hidden gem without a real source, and an empty result ships empty.</span></li>
-        <li><b>It knows what it costs</b><span>Every model call logs its real billed cost against a weekly cap. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">logUsage</a></span></li>
-        <li><b>131 commits in five days</b><span>The most heavily iterated project here, by an order of magnitude.</span></li>
+        <li><b>Evidence or nothing</b><span>No hidden gem without a real source. Empty ships empty.</span></li>
+        <li><b>It knows what it costs</b><span>Every call logs its billed cost against a weekly cap. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">logUsage</a></span></li>
+        <li><b>131 commits in five days</b><span>The most heavily iterated project here.</span></li>
       </ul>
       <p class="plate-foot"><a class="golink" href="https://wanderlust-content-engine.vercel.app">Live &#8599;</a> <a class="golink" href="https://github.com/cannshan/wanderlust-content-engine">Code &#8599;</a></p>
     </article>
@@ -1058,23 +1017,23 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp">Next.js &middot; Claude vision</span>
         <span class="stamp pub">Public repo &mdash; readable</span>
       </div>
-      <p class="tagline">Photograph a meal, get its macros &mdash; but nothing is logged until you have corrected the estimate.</p>
-      <p class="lede">Claude reads the photo, identifies each item and estimates its portion, then you correct it before anything is saved. Runs on your own machine and installs to the phone's home screen.</p>
-      <p class="dataline"><b>The data problem</b> &mdash; extracting structured records from an unstructured source &mdash; a photograph &mdash; with a human check before anything is written.</p>
+      <p class="tagline">Photograph a meal, get its macros &mdash; nothing is logged until you have corrected the estimate.</p>
+      <p class="lede">Claude reads the photo, identifies each item and estimates the portion. You correct it before anything is saved.</p>
+      <p class="dataline"><b>Data problem</b> &mdash; structured records out of an unstructured source, with a human check.</p>
       <div class="figures row" aria-label="MacroSnap screens">
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>History</b> &mdash; fourteen days by day with a running average, each meal keeping the photo it was read from.</figcaption>
+          <figcaption><b>History</b> &mdash; fourteen days with a running average, each meal keeping its photo.</figcaption>
         </figure>
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Goals</b> &mdash; and the disclaimer that stays on screen: estimates are for trends, not for a medical or competition diet.</figcaption>
+          <figcaption><b>Goals</b> &mdash; and the disclaimer that stays on screen.</figcaption>
         </figure>
       </div>
       <ul class="highlights">
-        <li><b>The estimate is a draft</b><span>Nothing is logged from a photo alone. You review the per-item breakdown first.</span></li>
-        <li><b>Fourteen days of history</b><span>Grouped by day with a running average, each meal keeping the photo it came from.</span></li>
-        <li><b>Honest about its limits</b><span>It says on screen that estimates are for trends, not a medical or competition diet.</span></li>
+        <li><b>The estimate is a draft</b><span>Nothing is logged from a photo alone.</span></li>
+        <li><b>Fourteen days of history</b><span>Grouped by day with a running average.</span></li>
+        <li><b>Honest about its limits</b><span>On screen: estimates are for trends, not a medical diet.</span></li>
       </ul>
       <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/macrosnap">Code &#8599;</a></p>
     </article>
@@ -1084,19 +1043,19 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp">Python &middot; pywebview desktop app</span>
         <span class="stamp">Private repo</span>
       </div>
-      <p class="tagline">Import, update, delete and export Zendesk data without writing a line against the API.</p>
-      <p class="lede">A desktop tool that puts a platform's API behind a point-and-click wizard: pick the operation, map the fields, watch it run. Built for the admin with a spreadsheet and a deadline.</p>
-      <p class="dataline"><b>The data problem</b> &mdash; bulk extract, transform and load with field mapping and reusable mappings. The core migration job, productised.</p>
+      <p class="tagline">Import, update, delete and export without writing a line against the API.</p>
+      <p class="lede">A desktop tool that puts an API behind a point-and-click wizard: pick the operation, map the fields, watch it run.</p>
+      <p class="dataline"><b>Data problem</b> &mdash; bulk extract, transform and load with field mapping. The core migration job, productised.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="All four operations as equals — most teams end up with an import-only script and nothing for the other three.">
+            <figure class="fig-slide" data-cap="All four operations as equals &mdash; most teams settle for an import-only script.">
               <img src="assets/zendesk-select_action.png" alt="Select Action screen offering Import, Update, Delete and Export" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="A bulk run in flight: live progress, the destination for the result file, and a Stop that actually halts the operation mid-run.">
+            <figure class="fig-slide" data-cap="A run in flight &mdash; live progress, and a Stop that halts it mid-run.">
               <img src="assets/zendesk-progress.png" alt="Confirm Import screen with a progress bar part-way through, a save location and an active Stop button" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Sign-in: subdomain, email and API token, sent straight to the platform — the tool stores nothing it does not need.">
+            <figure class="fig-slide" data-cap="Sign-in &mdash; the tool stores nothing it does not need.">
               <img src="assets/zendesk-login.png" alt="Sign-in screen with subdomain, email and API token fields" loading="lazy">
             </figure>
           </div>
@@ -1110,9 +1069,9 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
       </div>
       <ul class="highlights">
-        <li><b>All four operations</b><span>Import, update, delete and export, not the import-only script most teams settle for.</span></li>
-        <li><b>Mappings are reusable</b><span>Auto-map guesses the columns, then save it and load it on the next job.</span></li>
-        <li><b>595 KB of Python</b><span>The oldest project here and still the largest single codebase.</span></li>
+        <li><b>All four operations</b><span>Import, update, delete and export, not import-only.</span></li>
+        <li><b>Mappings are reusable</b><span>Auto-map guesses the columns; save it for the next job.</span></li>
+        <li><b>595 KB of Python</b><span>The oldest project here and still the largest.</span></li>
       </ul>
     </article>
     <article class="plate" data-cat="modeling">
@@ -1121,16 +1080,16 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp">Python &middot; Live odds</span>
         <span class="stamp pub">Public repo &mdash; readable</span>
       </div>
-      <p class="tagline">A transparent probability model for NFL bets that refuses to quote correlated legs as independent math.</p>
-      <p class="lede">Live odds and public stats blended into an opponent-adjusted power rating, then pushed through a margin model for win, cover and total probabilities. It logs every suggestion and grades itself against the real result.</p>
-      <p class="dataline"><b>The data problem</b> &mdash; a full pipeline: ingest three sources, reconcile them, model the result, and validate the predictions against what actually happened.</p>
+      <p class="tagline">A probability model that refuses to quote correlated legs as independent math.</p>
+      <p class="lede">Live odds and public stats become an opponent-adjusted power rating, then win, cover and total probabilities.</p>
+      <p class="dataline"><b>Data problem</b> &mdash; ingest three sources, reconcile them, model the result, validate it against what happened.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="NFL Bet Generator screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="Week 1 board: live player props from four sportsbooks, each leg annotated with the real injury-report line behind it.">
+            <figure class="fig-slide" data-cap="Week 1 board &mdash; live props from four books, each leg annotated with the injury line.">
               <img src="assets/nfl-dashboard.png" alt="NFL Bet Generator dashboard showing a Broncos at Chiefs same-game parlay with eight annotated player-prop legs" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Track Record: every suggestion auto-logged and auto-settled. It says plainly that 0 settled bets is too small a sample to mean anything.">
+            <figure class="fig-slide" data-cap="Track Record &mdash; auto-logged and auto-settled, and plain that the sample is too small.">
               <img src="assets/nfl-track-record.png" alt="Track Record tab showing 0 settled bets, 44 pending, and a warning that the sample is too small to be meaningful" loading="lazy">
             </figure>
           </div>
@@ -1144,37 +1103,32 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
       </div>
       <ul class="highlights">
-        <li><b>Backtested on an unselected sample</b><span>Tuning on its own past picks would have been the easy, wrong answer. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">backtest_prop_blend.py</a></span></li>
-        <li><b>Honest about correlation</b><span>Same-game legs get flagged rather than quoted as clean independent math. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py">parlay_builder.py</a></span></li>
-        <li><b>It grades its own homework</b><span>Every call is auto-settled once the game finishes. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py">tracking.py</a></span></li>
+        <li><b>Backtested on an unselected sample</b><span>Tuning on its own past picks was the easy, wrong answer. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">backtest_prop_blend.py</a></span></li>
+        <li><b>Honest about correlation</b><span>Same-game legs get flagged, not quoted as clean math. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py">parlay_builder.py</a></span></li>
+        <li><b>It grades its own homework</b><span>Every call auto-settles once the game finishes. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py">tracking.py</a></span></li>
       </ul>
       <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/nfl-bet-generator">Code &#8599;</a></p>
     </article>
       </div>
 
-<section class="ethos">
+  <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
-    <p class="ethos-sub">Anyone can generate an app that demos well and falls over on contact with reality. The difference is in the decisions that never show up in a screenshot &mdash; and every one of these is a real line of code in a project below.</p>
-    <ul class="principles">
+    <ul class="principles tight">
       <li class="principle">
         <h4>It grades its own homework</h4>
-        <p>A model that won't tell you when it was wrong isn't finished. The betting model logs every suggestion the moment it's shown and settles it automatically against the real result once the game is played.</p>
-        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py"><b>tracking.py</b>, NFL Bet Generator</a></span>
+        <span class="ev">every suggestion auto-settled against the real result &middot; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py">tracking.py</a></span>
       </li>
       <li class="principle">
-        <h4>It's allowed to say "I don't know"</h4>
-        <p>An empty result ships empty rather than padded with filler. A photo estimate stays a draft until you correct it. Correlated bets get flagged instead of quoted as clean independent math.</p>
-        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py"><b>has_same_game_legs</b></a> &middot; evidence-or-nothing search rule</span>
+        <h4>It&rsquo;s allowed to say &ldquo;I don&rsquo;t know&rdquo;</h4>
+        <span class="ev">empty results ship empty; correlated legs get flagged &middot; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py">parlay_builder.py</a></span>
       </li>
       <li class="principle">
         <h4>It knows what it costs</h4>
-        <p>Every model call in the content engine writes its real billed cost to a spend table &mdash; cache reads and writes priced at their actual multipliers, web searches per use. The write is awaited rather than fired and forgotten, because a serverless function freezes the moment it responds.</p>
-        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js"><b>logUsage</b> in lib/claude.js</a> &middot; public repo</span>
+        <span class="ev">every model call priced and logged against a cap &middot; <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">logUsage</a></span>
       </li>
       <li class="principle">
         <h4>It solves a problem I actually have</h4>
-        <p>Every one of these started as something I wanted to exist &mdash; a bulk loader for the migrations I run, a macro tracker I use, an audio tour I wanted on a drive. None of them are portfolio filler.</p>
-        <span class="ev">Evidence &mdash; <b>2 deployed</b>, in use, not demos</span>
+        <span class="ev">two deployed and in use, not portfolio filler</span>
       </li>
     </ul>
   </section>
