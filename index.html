@@ -653,6 +653,11 @@ article.plate[hidden]{display:none;}
   .lede{font-size:16px;}
 }
 
+.bg-foot.edu{margin-top:14px;align-items:baseline;}
+.edu-body{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;}
+.edu-body b{font-family:var(--display);font-weight:600;font-size:15px;color:var(--ink);}
+.edu-body span{font-size:13.5px;color:var(--ink-2);}
+
 /* ---------- closing hire block ---------- */
 .hire{
   margin-top:46px;border:1.5px solid var(--ink);background:var(--plate);
@@ -894,7 +899,13 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>5</b> engineers led</li>
       </ul>
     </div>
-    <p class="edu-line"><strong>Michigan State University</strong> &middot; B.S. Media &amp; Information, B.A. Advertising &middot; 2009&ndash;2014</p>
+    <div class="bg-foot edu">
+      <span class="lbl">Education</span>
+      <div class="edu-body">
+        <b>Michigan State University</b>
+        <span>B.S. Media &amp; Information &middot; B.A. Advertising &middot; Graduated 2014</span>
+      </div>
+    </div>
   </section>
   </div>
 
