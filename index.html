@@ -847,11 +847,11 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="plate-body">
         <div>
           <p>Enter an idea and a location and the app fires an independent request per platform, in parallel. Each writes to that platform's own ranking signals &mdash; TikTok optimises for completion rate and comments/saves, Instagram for DM shares first &mdash; following a caption and hashtag formula derived from fourteen of the creator's real posts, and runs its own live web search for currently-trending tags and sounds before finalising.</p>
-          <p>Now nine tabs and forty-odd API routes across 15,500 lines: <em>Discovery</em> sorts real places into popular / interesting / hidden gem, <em>Planning</em> and two calendars turn those into a shoot schedule, and <em>Reel Voiceover</em>, <em>Stories</em>, <em>Collab Search</em> and a <em>Profile</em> of voice rules sit around the Content tab everything feeds.</p>
+          <p>Now nine tabs and forty-odd API routes across 15,500 lines: <em>Discovery</em> sorts real places into popular / interesting / hidden gem, <em>Planning</em> plus a trip calendar and a content calendar turn those into a shoot schedule, and <em>Reel Voiceover</em>, <em>Stories</em>, <em>Collab Search</em> and a <em>Profile</em> of voice rules sit around the Content tab everything feeds.</p>
         </div>
         <ul class="notes">
           <li><span><b>Evidence or nothing.</b> No place is labelled "proven" or "hidden gem" without real search evidence, and an empty list ships as an honest result rather than padded filler.</span></li>
-          <li><span><b>It watches its own bill, to the cent.</b> Every model call logs real billed cost &mdash; input, output, cache-write at 1.25&times;, cache-read at 0.1&times;, web search per use &mdash; to a spend table, so "what does clicking this actually cost" has an answer instead of a guess from token ceilings. A running meter sits in the header. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">See <code>logUsage</code></a>.</span></li>
+          <li><span><b>It watches its own bill, to the cent.</b> Every model call logs real billed cost &mdash; input, output, cache-write at 1.25&times;, cache-read at 0.1&times;, web search per use &mdash; to a spend table, so "what does clicking this actually cost" has an answer instead of a guess from token ceilings. A running meter against a weekly cap sits in the header. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">See <code>logUsage</code></a>.</span></li>
           <li><span><b>Awaited on purpose.</b> That cost write is deliberately not fire-and-forget: a serverless function freezes once it responds, so an un-awaited insert is a coin flip on whether it ever lands. The reasoning is written into the file, not just the behaviour.</span></li>
           <li><span><b>Format decided, not asked.</b> The tool judges whether a topic reads better as narrative or an itinerary list, so that never becomes a form field.</span></li>
           <li><span><b>131 commits in five days</b> &mdash; the most heavily iterated project on this sheet, by an order of magnitude.</span></li>
@@ -863,8 +863,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
             <figure class="fig-slide" data-cap="Content: one idea fans out to TikTok, Instagram and YouTube in parallel. The 60-second option notes that it's the threshold for TikTok Creator Rewards to pay out.">
               <img src="assets/wce-content.png" alt="Wanderlust Content Engine Content tab with an idea, location, story beat, three platform toggles and filming extras" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Discovery: nine categories across a location, with real saved searches — Portland 21 places, Newport 20, Charlevoix 17 — filterable by region.">
-              <img src="assets/wce-discovery.png" alt="Discovery tab with location and category pickers beside a sidebar of saved searches and their place counts" loading="lazy">
+            <figure class="fig-slide" data-cap="Discovery: nine categories across a location, an optional date that factors in seasonal timing and real events happening then, and saved searches kept with their place counts.">
+              <img src="assets/wce-discovery-live.png" alt="Discovery tab with location, date and category pickers beside a sidebar of saved searches showing place counts" loading="lazy">
             </figure>
           </div>
           <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
