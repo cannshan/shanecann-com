@@ -610,6 +610,35 @@ article.plate[hidden]{display:none;}
   .lede{font-size:16px;}
 }
 
+/* ---------- closing hire block ---------- */
+.hire{
+  margin-top:46px;border:1.5px solid var(--ink);background:var(--plate);
+  box-shadow:var(--plate-shadow);padding:30px 32px;
+  display:flex;flex-wrap:wrap;align-items:flex-start;gap:30px 48px;
+}
+.hire-main{flex:1 1 440px;min-width:0;}
+.hire-main h2{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(22px,2.9vw,30px);line-height:1.15;letter-spacing:-.02em;
+  margin:0 0 12px;max-width:22ch;text-wrap:balance;
+}
+.hire-main p{margin:0;font-size:16px;line-height:1.6;color:var(--ink-2);max-width:62ch;}
+.hire-links{flex:0 1 auto;display:flex;flex-direction:column;gap:12px;}
+.hire-primary{
+  display:inline-block;background:var(--red);color:#fff;text-decoration:none;
+  font-family:var(--mono);font-size:14px;letter-spacing:.03em;
+  padding:14px 22px;border:1px solid var(--red);white-space:nowrap;
+  transition:background .15s ease,color .15s ease;
+}
+.hire-primary:hover{background:transparent;color:var(--red);}
+.hire-primary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+.hire-secondary{display:flex;flex-wrap:wrap;gap:8px;}
+@media (max-width:620px){
+  .hire{padding:22px 20px;gap:22px;}
+  .hire-links{width:100%;}
+  .hire-primary{text-align:center;}
+}
+
 /* ---------- spec strip ---------- */
 .spec{
   border-top:1px solid var(--rule);margin-inline:-24px;padding:14px 24px 16px;
@@ -705,14 +734,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
     </div>
     <dl class="tb-grid">
-      <div class="cell"><dt>Projects</dt><dd>6 <span>/ 5 in git</span></dd></div>
-      <div class="cell"><dt>Tracked source</dt><dd>1.67 <span>MB</span></dd></div>
-      <div class="cell"><dt>Commits</dt><dd>173</dd></div>
-      <div class="cell"><dt>Languages</dt><dd>6</dd></div>
-      <div class="cell"><dt>Period</dt><dd>May 2025 <span>&mdash; Sep 2026</span></dd></div>
-      <div class="cell"><dt>Deployed</dt><dd>2 <span>on Vercel</span></dd></div>
-      <div class="cell"><dt>Stacks</dt><dd>Next 16 <span>&middot; Expo 54</span></dd></div>
-      <div class="cell"><dt>Revised</dt><dd>7 Oct 2026</dd></div>
+      <div class="cell"><dt>Experience</dt><dd>8+ <span>years</span></dd></div>
+      <div class="cell"><dt>Migrations at once</dt><dd>20</dd></div>
+      <div class="cell"><dt>Delivery time cut</dt><dd>25<span>%</span></dd></div>
+      <div class="cell"><dt>Engineers led</dt><dd>5</dd></div>
     </dl>
   </header>
 
@@ -737,14 +762,14 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <div class="about-body">
       <div>
         <p class="about-lead">I've spent eight years as a Technical Architect watching good ideas die in the gap between "someone should build that" and someone actually building it. AI closed that gap for me, and I haven't stopped since.</p>
-        <p>Now when I hit a problem worth solving, I build the thing. A meal tracker that reads a photo. A betting model that scores its own predictions. A content engine that writes for three platforms' algorithms instead of one. A tour app for a boat with no signal. Days, not quarters &mdash; and they get used, not screenshotted and abandoned.</p>
+        <p>Now when I hit a problem worth solving, I build the thing. A meal tracker that reads a photo. A betting model that scores its own predictions. A content engine that writes for three platforms' algorithms instead of one. An audio tour that keeps narrating where the cell service stops. Days, not quarters &mdash; and they get used, not screenshotted and abandoned.</p>
         <p>The day job is why they hold up. Running migrations for a living teaches you where systems break: the edge case nobody specified, the two clients that quietly disagree, the number that looks right and isn't. <em>I build with that already in mind, because I've spent a career cleaning up after it.</em></p>
         <p>None of it is a tutorial project. Each one started because something was costing me or somebody else real time, and the fastest route to not paying that cost again was to build the thing.</p>
       </div>
       <ul class="method">
         <li><span><b>Real tools.</b> Bulk data loading, migration tracking, tour operations, content production &mdash; things with a person on the other end and a job to finish.</span></li>
         <li><span><b>Honest models.</b> Probability and estimation that states its own confidence, gets graded against what actually happened, and is tuned on a sample that can bear the weight.</span></li>
-        <li><span><b>Built for the real conditions.</b> A tour app that assumes a boat with no signal, and a migration board that assumes somebody will forget the retrospective.</span></li>
+        <li><span><b>Built for the real conditions.</b> A tour app that assumes no cell service, and a migration board that assumes somebody will forget the retrospective.</span></li>
         <li><span><b>Whatever the stack needs to be.</b> Python, TypeScript, React Native, Postgres, Supabase &mdash; picked per problem, not per comfort zone.</span></li>
       </ul>
     </div>
@@ -775,7 +800,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </li>
       <li class="principle">
         <h4>It's built for the bad day</h4>
-        <p>The tour app assumes a boat with no signal: offline-tolerant storage so the itinerary survives losing service mid-tour, and over-the-air updates so a fix reaches passengers without an App Store round trip.</p>
+        <p>The tour app assumes no cell service: the whole tour caches locally so narration keeps playing through a mountain pass, and over-the-air updates reach travellers without an App Store round trip.</p>
         <span class="ev">Evidence &mdash; <b>NetInfo + AsyncStorage</b>, Wander Guide App</span>
       </li>
       <li class="principle">
@@ -785,7 +810,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </li>
       <li class="principle">
         <h4>It solves a problem I actually have</h4>
-        <p>Every one of these started as something I wanted to exist &mdash; a bulk loader for the migrations I run, a macro tracker I use, a tour app for a real operator. None of them are portfolio filler.</p>
+        <p>Every one of these started as something I wanted to exist &mdash; a bulk loader for the migrations I run, a macro tracker I use, an audio tour I wanted on a drive. None of them are portfolio filler.</p>
         <span class="ev">Evidence &mdash; <b>2 deployed</b>, in use, not demos</span>
       </li>
     </ul>
@@ -1106,9 +1131,23 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <p class="edu-line"><strong>Michigan State University</strong> &middot; B.S. Media &amp; Information, B.A. Advertising &middot; 2009&ndash;2014</p>
   </section>
   </div>
+  <section class="hire">
+    <div class="hire-main">
+      <h2>Got data that needs moving, or a job that should be a tool?</h2>
+      <p>Migrations between systems, spreadsheets cleaned up and made trustworthy, reporting set up on numbers you can rely on, and the small internal apps that replace a process nobody enjoys. Tell me what you are moving or what is broken, and I will tell you honestly whether I am the right person for it.</p>
+    </div>
+    <div class="hire-links">
+      <a class="hire-primary" href="mailto:cannshan@gmail.com">cannshan@gmail.com</a>
+      <div class="hire-secondary">
+        <a class="golink" href="https://www.linkedin.com/in/shane-cann/">LinkedIn &#8599;</a>
+        <a class="golink" href="https://github.com/cannshan">GitHub &#8599;</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
-    <span>Figures read from git &amp; the GitHub API &middot; 7 Oct 2026</span>
+    <span>Built and maintained by Shane Cann &middot; Last updated 8 Oct 2026</span>
   </footer>
 
 </div>
