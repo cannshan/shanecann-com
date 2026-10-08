@@ -527,6 +527,14 @@ article.plate[hidden]{display:none;}
   margin:0;display:flex;flex-direction:column;gap:11px;
   flex:0 1 auto;max-width:400px;min-width:0;
 }
+/* Four screens still fit across the band; the frame scales with them. */
+.figures.row.four{gap:20px;}
+.figures.row.four .phone{max-width:300px;}
+.figures.row.four .device{padding:8px;border-radius:42px;}
+.figures.row.four .device-screen{border-radius:34px;}
+.figures.row.four .device-island{top:8px;height:20px;}
+.figures.row.four .device-home{bottom:5px;height:3px;}
+.figures.row.four .phone img{max-height:620px;}
 /* iPhone frame, drawn in CSS so it stays sharp at any size. */
 .device{
   align-self:center;padding:11px;border-radius:54px;
@@ -1070,18 +1078,39 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp">Expo 54 &middot; React Native</span>
         <span class="stamp">Private repo</span>
       </div>
-      <p class="tagline">The same tour, in the passenger's hand, on a boat with no signal.</p>
+      <p class="tagline">A self-guided audio tour that keeps narrating after the cell service stops.</p>
       <div class="plate-body">
         <div>
-          <p>An Expo Router app on React Native 19 backed by Supabase. Location-aware via <code>expo-location</code>, with audio narration through <code>expo-av</code>, secure credential storage, haptics, and over-the-air updates so a fix reaches passengers without an App Store round trip.</p>
-          <p>Built for a working environment with intermittent connectivity: NetInfo plus AsyncStorage means the itinerary survives losing signal mid-tour.</p>
+          <p>Pick a region, pick a tour, start driving. The app tracks where you are through <code>expo-location</code> and plays each stop's narration as you reach it &mdash; a route drawn on a native map, numbered stops that tick off behind you, and the distance and drive time to whatever is next.</p>
+          <p>The Kancamagus Highway tour below is nineteen stops over a 34.5-mile scenic byway, and the app's own tips screen tells you to download it before you set off because there is no cell service out there. <em>That one sentence is the whole design constraint:</em> audio, images and route are cached locally first, so losing signal halfway through a mountain pass changes nothing.</p>
         </div>
         <ul class="notes">
-          <li><span><b>A real map, not a web view.</b> Tour stops render through native map components per platform &mdash; which is also why this one genuinely has to ship as an app rather than a mobile site.</span></li>
+          <li><span><b>A real map, not a web view.</b> Stops render through the platform's native map, which is why this genuinely has to ship as an app rather than a mobile site.</span></li>
+          <li><span><b>Offline by default, not as a setting.</b> One tap downloads a whole tour; NetInfo plus AsyncStorage keep it usable with no connection.</span></li>
           <li><span><b>PLpgSQL in the repo.</b> Real Supabase migrations and functions are versioned alongside the client, not clicked into a dashboard.</span></li>
-          <li><span><b>OTA updates</b> via <code>expo-updates</code> and EAS &mdash; the practical choice for software running on a seasonal tour schedule.</span></li>
+          <li><span><b>OTA updates</b> via <code>expo-updates</code> and EAS &mdash; a fix reaches travellers without an App Store round trip.</span></li>
         </ul>
       </div>
+
+      <div class="figures row four" aria-label="Wander Guide App screens">
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-explore.png" alt="Wander Guide explore screen with a search field and region cards for Maine and New Hampshire" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>Explore</b> &mdash; tours grouped by region, with a count on each.</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-tour.png" alt="Tour detail for the Kancamagus Highway Fall Foliage Tour showing 19 stops, starting point, driving distance and tips" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>Tour detail</b> &mdash; 19 stops, starting point, driving distance, and the warning about no cell service.</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-map.png" alt="Tour in progress with a route on a native map, numbered stops, a now-playing audio bar and the next stop distance" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>On tour</b> &mdash; route and numbered stops on a native map, now-playing audio, and distance to the next stop.</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/wga-mytours.png" alt="My Tours library listing three saved tours with thumbnails and regions" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>My Tours</b> &mdash; everything downloaded and ready to run offline.</figcaption>
+        </figure>
+      </div>
+      <p class="demo-note">Captured on an iPhone from the running app.</p>
       <div class="spec">
         <div class="spec-figures">
           <div class="fig"><span class="k">Commits</span><span class="v">3</span></div>
