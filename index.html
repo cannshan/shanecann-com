@@ -160,6 +160,31 @@ h1{
   .svc:last-child{border-bottom:none;}
 }
 
+/* ---------- keyword line + anchor nav (single page) ---------- */
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+.kw{
+  margin:0 0 14px;max-width:52ch;
+  font-family:var(--display);font-weight:500;font-size:17px;line-height:1.5;
+  color:var(--red);
+}
+.jump{
+  display:flex;flex-wrap:wrap;gap:0;
+  margin-top:18px;border:1px solid var(--rule-strong);
+  background:var(--plate);box-shadow:var(--plate-shadow);
+}
+.jump a{
+  flex:1 1 auto;min-width:110px;text-align:center;text-decoration:none;
+  padding:13px 16px;border-right:1px solid var(--rule);
+  color:var(--ink-2);font-family:var(--display);font-weight:600;font-size:13px;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:color .15s ease,background .15s ease;
+}
+.jump a:last-child{border-right:0;}
+.jump a:hover{color:var(--ink);background:var(--paper);}
+.jump a:focus-visible{outline:2px solid var(--red);outline-offset:-3px;}
+[id]{scroll-margin-top:18px;}
+
 /* ---------- tabs & views ---------- */
 .tabs{
   display:flex;flex-wrap:wrap;gap:0;
@@ -730,17 +755,16 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
 <div class="sheet">
 
-  <header class="titleblock">
+<header class="titleblock">
     <div class="tb-top">
       <figure class="portrait">
         <div class="frame"><img src="assets/shane.png" alt="Shane Cann"></div>
         <figcaption>Shane Cann</figcaption>
       </figure>
       <div class="tb-id">
-        <p class="eyebrow">Data migration &middot; Reporting &middot; Custom tools</p>
+        <p class="eyebrow">8+ years in data</p>
         <h1>Shane Cann</h1>
-        <p class="role">I move business data between systems, clean up the mess it leaves behind, and build the small tools that stop it happening again.</p>
-        <p class="credential">Senior Technical Architect at <strong>Zendesk</strong>. Eight years of migrations &mdash; up to twenty running at once, a process that cut delivery time by a quarter, and a team of five engineers.</p>
+        <p class="kw">Data migration &middot; Excel &amp; spreadsheet cleanup &middot; Reporting, dashboards &amp; insights &middot; App building</p>
         <p class="contact">
           <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
           <span><a href="https://github.com/cannshan">github.com/cannshan</a></span>
@@ -763,21 +787,15 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
     </div>
   </header>
-
-
-
-
-
-
-  <nav class="tabs" aria-label="Sections">
-    <button type="button" class="tab is-on" data-view="overview">Overview</button>
-    <button type="button" class="tab" data-view="projects">Projects <span class="n">6</span></button>
-    <button type="button" class="tab" data-view="expertise">Process</button>
-    <button type="button" class="tab" data-view="experience">Background</button>
+  <nav class="jump" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#how">How I work</a>
+    <a href="#background">Background</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <div class="view is-on" id="v-overview">
-  <section class="about">
+<section class="about" id="about">
     <div class="about-head">
       <h2>About</h2>
       <span class="rule"></span>
@@ -785,9 +803,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <div class="about-body">
       <div>
         <p class="about-lead">I've spent eight years as a Technical Architect watching good ideas die in the gap between "someone should build that" and someone actually building it. AI closed that gap for me, and I haven't stopped since.</p>
-        <p>Now when I hit a problem worth solving, I build the thing. A meal tracker that reads a photo. A betting model that scores its own predictions. A content engine that writes for three platforms' algorithms instead of one. An audio tour that keeps narrating where the cell service stops. Days, not quarters &mdash; and they get used, not screenshotted and abandoned.</p>
         <p>The day job is why they hold up. Running migrations for a living teaches you where systems break: the edge case nobody specified, the two clients that quietly disagree, the number that looks right and isn't. <em>I build with that already in mind, because I've spent a career cleaning up after it.</em></p>
-        <p>None of it is a tutorial project. Each one started because something was costing me or somebody else real time, and the fastest route to not paying that cost again was to build the thing.</p>
       </div>
       <ul class="method">
         <li><span><b>Real tools.</b> Bulk data loading, migration tracking, tour operations, content production &mdash; things with a person on the other end and a job to finish.</span></li>
@@ -797,50 +813,99 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </ul>
     </div>
   </section>
-  <section class="ethos">
-    <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
-    <p class="ethos-sub">Anyone can generate an app that demos well and falls over on contact with reality. The difference is in the decisions that never show up in a screenshot &mdash; and every one of these is a real line of code in a project on the Projects tab.</p>
-    <ul class="principles">
-      <li class="principle">
-        <h4>It grades its own homework</h4>
-        <p>A model that won't tell you when it was wrong isn't finished. The betting model logs every suggestion the moment it's shown and settles it automatically against the real result once the game is played.</p>
-        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py"><b>tracking.py</b>, NFL Bet Generator</a></span>
-      </li>
-      <li class="principle">
-        <h4>It's allowed to say "I don't know"</h4>
-        <p>An empty result ships empty rather than padded with filler. A photo estimate stays a draft until you correct it. Correlated bets get flagged instead of quoted as clean independent math.</p>
-        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py"><b>has_same_game_legs</b></a> &middot; evidence-or-nothing search rule</span>
-      </li>
-      <li class="principle">
-        <h4>The architecture is a decision</h4>
-        <p>The betting model's backtests import the live pricing functions rather than reimplementing them, so a test can never quietly drift from the code it is testing. Migration HQ keeps every project's phase, owner and dates in one row rather than scattered across a board and a spreadsheet.</p>
-        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">shared pricing module in <b>backtest_prop_blend</b></a></span>
-      </li>
-      <li class="principle">
-        <h4>It knows what it costs</h4>
-        <p>Every model call in the content engine writes its real billed cost to a spend table &mdash; cache reads and writes priced at their actual multipliers, web searches per use. The write is awaited rather than fired and forgotten, because a serverless function freezes the moment it responds.</p>
-        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js"><b>logUsage</b> in lib/claude.js</a> &middot; public repo</span>
-      </li>
-      <li class="principle">
-        <h4>It's built for the bad day</h4>
-        <p>The tour app assumes no cell service: the whole tour caches locally so narration keeps playing through a mountain pass, and over-the-air updates reach travellers without an App Store round trip.</p>
-        <span class="ev">Evidence &mdash; <b>NetInfo + AsyncStorage</b>, Wander Guide App</span>
-      </li>
-      <li class="principle">
-        <h4>It gets iterated, not one-shot</h4>
-        <p>The content engine took 131 commits in five days. That's not a prompt and a deploy &mdash; that's building it, using it, finding what's wrong, and going again.</p>
-        <span class="ev">Evidence &mdash; <b>131 commits</b> in 5 days, Wanderlust Content Engine</span>
-      </li>
-      <li class="principle">
-        <h4>It solves a problem I actually have</h4>
-        <p>Every one of these started as something I wanted to exist &mdash; a bulk loader for the migrations I run, a macro tracker I use, an audio tour I wanted on a drive. None of them are portfolio filler.</p>
-        <span class="ev">Evidence &mdash; <b>2 deployed</b>, in use, not demos</span>
-      </li>
-    </ul>
+<section class="capability" id="how">
+    <div class="about-head">
+      <h2>Data migration &amp; analytics</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="cap-grid">
+      <div>
+        <p class="big">A migration is only half a data problem. The other half is knowing, before you start, exactly how the source is going to betray you.</p>
+        <p>I've spent eight years on that half &mdash; profiling source systems, writing the mapping specs, running the cutovers, and explaining to a customer why their export has 4,000 records with no owner. Enterprise CRM and support platforms, at volumes up to twenty concurrent projects, with a standardised process behind them that took a quarter off delivery time.</p>
+        <p>The method is deliberately platform-agnostic. A helpdesk, a CRM, a project tracker, a pile of spreadsheets or a legacy database nobody has credentials for &mdash; the work is the same: understand the shape of the source, agree what must not break, move it, prove it landed.</p>
+        <p>The analytics side is the same discipline pointed forward instead of backward: reporting and dashboards for the teams I've supported, and statistical modelling where the question is genuinely probabilistic &mdash; opponent-adjusted ratings, recency-weighted distributions, and the discipline to score those predictions against what actually happened.</p>
+        <p><em>Both halves are why the tooling below exists.</em> When the same anomaly costs you a week for the third time, you stop writing it in a doc and start building something that catches it.</p>
+      </div>
+      <div>
+        <ul class="pipeline">
+          <li class="step">
+            <h4><span>01</span>Source profiling</h4>
+            <p>Encoding, nulls, duplicates, orphaned relations, rate limits and the fields the customer swore were populated. Found before the plan, not during the cutover.</p>
+          </li>
+          <li class="step">
+            <h4><span>02</span>Mapping &amp; transformation</h4>
+            <p>Field-level mapping specs agreed with the customer, auto-mapped where the names allow, saved and reused across jobs rather than rebuilt each time.</p>
+          </li>
+          <li class="step">
+            <h4><span>03</span>Phased cutover</h4>
+            <p>Mapping signoff, test migration, closed migration, go-live &mdash; each a date somebody owns, so "where is it?" has an answer without a status call.</p>
+          </li>
+          <li class="step">
+            <h4><span>04</span>Validation</h4>
+            <p>Reconciled counts, spot checks on the relations most likely to have broken, and a clear statement of what did not come across and why.</p>
+          </li>
+          <li class="step">
+            <h4><span>05</span>Retrospective</h4>
+            <p>Mandatory, not optional. Issues, root cause, and what to do differently &mdash; captured as structured data so the pattern is searchable across projects.</p>
+          </li>
+          <li class="step">
+            <h4><span>06</span>Analysis</h4>
+            <p>Reporting and dashboards on the result, and statistical modelling where the answer is a probability rather than a number &mdash; scored against the outcome, on a sample chosen so the scoring actually means something.</p>
+          </li>
+        </ul>
+        <div class="platforms">
+          <span class="lbl">Tooling</span>
+          <span class="chip">CRM &amp; helpdesk platforms</span>
+          <span class="chip">Postgres / Supabase</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Python / pandas</span>
+          <span class="chip">CSV &amp; API pipelines</span>
+          <span class="chip">Excel at scale</span>
+        </div>
+      </div>
+    </div>
   </section>
+<section class="background" id="background">
+    <div class="about-head">
+      <h2>Background</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="bg-grid">
+
+      <div class="bg-item now">
+        <span class="role">Senior Technical Architect, and Technical Architect before that</span>
+        <span class="when">2021 &mdash; present &middot; Enterprise SaaS</span>
+      </div>
+      <div class="bg-item">
+        <span class="role">Data Team Lead, up from Project Manager, Consultant and Support</span>
+        <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
+      </div>
+      <div class="bg-item">
+        <span class="role">Customer Experience Technical Specialist</span>
+        <span class="when">2014 &mdash; 2017 &middot; Accounting software</span>
+      </div>
+      <div class="bg-item">
+        <span class="role">Student Technician Supervisor</span>
+        <span class="when">2011 &mdash; 2014 &middot; University IT</span>
+      </div>
+    </div>
+    <div class="bg-foot">
+      <span class="lbl">Along the way</span>
+      <ul class="wins">
+        <li><b>20</b> concurrent migrations run</li>
+        <li><b>25%</b> faster migrations</li>
+        <li><b>50%</b> throughput lift</li>
+        <li><b>5</b> engineers led</li>
+      </ul>
+    </div>
+    <p class="edu-line"><strong>Michigan State University</strong> &middot; B.S. Media &amp; Information, B.A. Advertising &middot; 2009&ndash;2014</p>
+  </section>
+  <div class="section-head" id="work">
+    <h2>Work</h2>
+    <span class="count">Six things built because something needed building</span>
+    <span class="rule"></span>
   </div>
 
-  <div class="view" id="v-projects">
     <div class="filters" role="group" aria-label="Filter projects by type">
       <span class="f-label">Show</span>
       <button type="button" class="chip-btn is-on" data-cat="all">All <span class="n">6</span></button>
@@ -1056,105 +1121,34 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </ul>
     </article>
   </div>
-  </div>
 
-  <div class="view" id="v-expertise">
-  <section class="capability">
-    <div class="about-head">
-      <h2>Data migration &amp; analytics</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="cap-grid">
-      <div>
-        <p class="big">A migration is only half a data problem. The other half is knowing, before you start, exactly how the source is going to betray you.</p>
-        <p>I've spent eight years on that half &mdash; profiling source systems, writing the mapping specs, running the cutovers, and explaining to a customer why their export has 4,000 records with no owner. Enterprise CRM and support platforms, at volumes up to twenty concurrent projects, with a standardised process behind them that took a quarter off delivery time.</p>
-        <p>The method is deliberately platform-agnostic. A helpdesk, a CRM, a project tracker, a pile of spreadsheets or a legacy database nobody has credentials for &mdash; the work is the same: understand the shape of the source, agree what must not break, move it, prove it landed.</p>
-        <p>The analytics side is the same discipline pointed forward instead of backward: reporting and dashboards for the teams I've supported, and statistical modelling where the question is genuinely probabilistic &mdash; opponent-adjusted ratings, recency-weighted distributions, and the discipline to score those predictions against what actually happened.</p>
-        <p><em>Both halves are why the tooling below exists.</em> When the same anomaly costs you a week for the third time, you stop writing it in a doc and start building something that catches it.</p>
-      </div>
-      <div>
-        <ul class="pipeline">
-          <li class="step">
-            <h4><span>01</span>Source profiling</h4>
-            <p>Encoding, nulls, duplicates, orphaned relations, rate limits and the fields the customer swore were populated. Found before the plan, not during the cutover.</p>
-          </li>
-          <li class="step">
-            <h4><span>02</span>Mapping &amp; transformation</h4>
-            <p>Field-level mapping specs agreed with the customer, auto-mapped where the names allow, saved and reused across jobs rather than rebuilt each time.</p>
-          </li>
-          <li class="step">
-            <h4><span>03</span>Phased cutover</h4>
-            <p>Mapping signoff, test migration, closed migration, go-live &mdash; each a date somebody owns, so "where is it?" has an answer without a status call.</p>
-          </li>
-          <li class="step">
-            <h4><span>04</span>Validation</h4>
-            <p>Reconciled counts, spot checks on the relations most likely to have broken, and a clear statement of what did not come across and why.</p>
-          </li>
-          <li class="step">
-            <h4><span>05</span>Retrospective</h4>
-            <p>Mandatory, not optional. Issues, root cause, and what to do differently &mdash; captured as structured data so the pattern is searchable across projects.</p>
-          </li>
-          <li class="step">
-            <h4><span>06</span>Analysis</h4>
-            <p>Reporting and dashboards on the result, and statistical modelling where the answer is a probability rather than a number &mdash; scored against the outcome, on a sample chosen so the scoring actually means something.</p>
-          </li>
-        </ul>
-        <div class="platforms">
-          <span class="lbl">Tooling</span>
-          <span class="chip">CRM &amp; helpdesk platforms</span>
-          <span class="chip">Postgres / Supabase</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Python / pandas</span>
-          <span class="chip">CSV &amp; API pipelines</span>
-          <span class="chip">Excel at scale</span>
-        </div>
-      </div>
-    </div>
+<section class="ethos">
+    <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
+    <p class="ethos-sub">Anyone can generate an app that demos well and falls over on contact with reality. The difference is in the decisions that never show up in a screenshot &mdash; and every one of these is a real line of code in a project below.</p>
+    <ul class="principles">
+      <li class="principle">
+        <h4>It grades its own homework</h4>
+        <p>A model that won't tell you when it was wrong isn't finished. The betting model logs every suggestion the moment it's shown and settles it automatically against the real result once the game is played.</p>
+        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py"><b>tracking.py</b>, NFL Bet Generator</a></span>
+      </li>
+      <li class="principle">
+        <h4>It's allowed to say "I don't know"</h4>
+        <p>An empty result ships empty rather than padded with filler. A photo estimate stays a draft until you correct it. Correlated bets get flagged instead of quoted as clean independent math.</p>
+        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py"><b>has_same_game_legs</b></a> &middot; evidence-or-nothing search rule</span>
+      </li>
+      <li class="principle">
+        <h4>It knows what it costs</h4>
+        <p>Every model call in the content engine writes its real billed cost to a spend table &mdash; cache reads and writes priced at their actual multipliers, web searches per use. The write is awaited rather than fired and forgotten, because a serverless function freezes the moment it responds.</p>
+        <span class="ev">Evidence &mdash; <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js"><b>logUsage</b> in lib/claude.js</a> &middot; public repo</span>
+      </li>
+      <li class="principle">
+        <h4>It solves a problem I actually have</h4>
+        <p>Every one of these started as something I wanted to exist &mdash; a bulk loader for the migrations I run, a macro tracker I use, an audio tour I wanted on a drive. None of them are portfolio filler.</p>
+        <span class="ev">Evidence &mdash; <b>2 deployed</b>, in use, not demos</span>
+      </li>
+    </ul>
   </section>
-  </div>
-
-  <div class="view" id="v-experience">
-  <section class="background">
-    <div class="about-head">
-      <h2>The background behind it</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="bg-grid">
-
-      <div class="bg-item now">
-        <span class="org">Zendesk</span>
-        <span class="role">Senior Technical Architect, and Technical Architect before that</span>
-        <span class="when">2021 &mdash; present &middot; 5 yrs 6 mos</span>
-      </div>
-      <div class="bg-item">
-        <span class="org">Apto</span>
-        <span class="role">Data Team Lead, up from Project Manager, Consultant and Support</span>
-        <span class="when">2017 &mdash; 2021 &middot; Denver, CO</span>
-      </div>
-      <div class="bg-item">
-        <span class="org">Xero</span>
-        <span class="role">Customer Experience Technical Specialist</span>
-        <span class="when">2014 &mdash; 2017 &middot; Denver, CO</span>
-      </div>
-      <div class="bg-item">
-        <span class="org">Michigan State</span>
-        <span class="role">Student Technician Supervisor</span>
-        <span class="when">2011 &mdash; 2014</span>
-      </div>
-    </div>
-    <div class="bg-foot">
-      <span class="lbl">Along the way</span>
-      <ul class="wins">
-        <li><b>20</b> concurrent migrations run</li>
-        <li><b>25%</b> faster migrations</li>
-        <li><b>50%</b> throughput lift</li>
-        <li><b>5</b> engineers led</li>
-      </ul>
-    </div>
-    <p class="edu-line"><strong>Michigan State University</strong> &middot; B.S. Media &amp; Information, B.A. Advertising &middot; 2009&ndash;2014</p>
-  </section>
-  </div>
-  <section class="hire">
+<section class="hire" id="contact">
     <div class="hire-main">
       <h2>Got data that needs moving, or a job that should be a tool?</h2>
       <p>Migrations between systems, spreadsheets cleaned up and made trustworthy, reporting set up on numbers you can rely on, and the small internal apps that replace a process nobody enjoys. Tell me what you are moving or what is broken, and I will tell you honestly whether I am the right person for it.</p>
@@ -1167,7 +1161,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
     </div>
   </section>
-
   <footer>
     <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
     <span>Built and maintained by Shane Cann &middot; Last updated 8 Oct 2026</span>
@@ -1176,43 +1169,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 </div>
 
 <script>
-// Tabs — also reflected in the URL hash so a view can be linked to directly.
-(function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
-  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
-
-  function show(name, push) {
-    var found = false;
-    views.forEach(function (v) {
-      var on = v.id === "v-" + name;
-      v.classList.toggle("is-on", on);
-      if (on) found = true;
-    });
-    if (!found) return false;
-    tabs.forEach(function (t) {
-      var on = t.dataset.view === name;
-      t.classList.toggle("is-on", on);
-      t.setAttribute("aria-selected", on ? "true" : "false");
-    });
-    if (push && history.replaceState) history.replaceState(null, "", "#" + name);
-    return true;
-  }
-
-  tabs.forEach(function (t) {
-    t.setAttribute("role", "tab");
-    t.addEventListener("click", function () {
-      show(t.dataset.view, true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  });
-
-  var initial = (location.hash || "").replace("#", "");
-  if (!initial || !show(initial, false)) show("overview", false);
-  window.addEventListener("hashchange", function () {
-    show((location.hash || "").replace("#", "") || "overview", false);
-  });
-})();
-
 // Project category filter.
 (function () {
   var chips = Array.prototype.slice.call(document.querySelectorAll(".chip-btn"));
