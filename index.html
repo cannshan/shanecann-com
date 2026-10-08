@@ -610,7 +610,7 @@ body{
 }
 code{font-family:var(--mono);font-size:.88em;}
 img{max-width:100%;}
-.sheet{max-width:1240px;margin:0 auto;padding-inline:24px;padding-block:36px 64px;}
+.sheet{max-width:1400px;margin:0 auto;padding-inline:24px;padding-block:36px 64px;}
 
 /* ---------- title block ---------- */
 .titleblock{border:1.5px solid var(--ink);background:var(--plate);box-shadow:var(--plate-shadow);}
@@ -960,8 +960,11 @@ h1{
 .notes b{color:var(--ink);font-weight:600;font-family:var(--display);font-size:13.5px;}
 
 /* ---------- figure carousel ---------- */
+/* Figures run the full width of the plate: the text column stays readable
+   while the screenshots get every pixel available. */
 .figures{
-  margin:0 0 20px;border:1px solid var(--rule);background:var(--paper);
+  margin:0 -24px 20px;border:1px solid var(--rule);
+  border-left:0;border-right:0;background:var(--paper);
 }
 .figures:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
 .fig-window{overflow:hidden;}
@@ -970,7 +973,7 @@ h1{
 .fig-slide{
   flex:0 0 100%;margin:0;min-width:0;
   display:flex;align-items:center;justify-content:center;
-  padding:20px;background:var(--paper);
+  padding:14px;background:var(--paper);
 }
 /* Landscape captures fill the column; portrait ones are capped by height
    instead, or a phone screenshot would run metres down the page. */
@@ -985,14 +988,14 @@ h1{
 .fig-slide img{display:block;width:100%;height:auto;}
 .fig-slide.tall{padding:16px;}
 .fig-slide.tall a{max-width:none;}
-.fig-slide.tall img{width:auto;max-height:620px;max-width:100%;}
+.fig-slide.tall img{width:auto;max-height:720px;max-width:100%;}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]) .fig-slide a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
 }
 :root[data-theme="dark"] .fig-slide a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
 .fig-bar{
   display:flex;align-items:center;gap:12px;
-  border-top:1px solid var(--rule);padding:9px 12px;background:var(--plate);
+  border-top:1px solid var(--rule);padding:10px 24px;background:var(--plate);
 }
 .fig-nav{
   flex:none;width:26px;height:26px;padding:0;cursor:pointer;
@@ -1084,6 +1087,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   .about,.ethos,.background,.capability{padding:18px;}
   .bg-grid{grid-template-columns:1fr;gap:14px;}
   .plate{padding:18px 18px 0;}
+  .figures{margin-inline:-18px;}
+  .fig-bar{padding-inline:18px;}
   .spec{margin-inline:-18px;padding-inline:18px;}
   .fig-slide img{max-height:320px;}
   .fig-slide.tall img{max-height:420px;}
