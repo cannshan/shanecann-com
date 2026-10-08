@@ -1,0 +1,43 @@
+# Rebuild index.html from _head.html plus the portfolio source.
+#
+# Do NOT rebuild by slicing the previous index.html up to "</head>" - the
+# portfolio's own <title>, font <link>s and <style> live inside <head>, so
+# that slice re-absorbs them and every rebuild appends another copy of the
+# stylesheet. The stale copy then wins on any property the new one does not
+# explicitly set (this is what pinned screenshots to max-height:420px).
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+SRC = os.path.join(
+    os.environ["APPDATA"],
+    "Claude", "scratch-workspaces",
+    "7afa947c-15ad-4ce4-87de-f8ddcac31216",
+    "325141be-ad42-4572-9543-3fdce5957c82",
+    "scratch-2026-09-14-228101",
+    "portfolio.html",
+)
+HEAD = os.path.join(HERE, "_head.html")
+OUT = os.path.join(HERE, "index.html")
+
+if not os.path.exists(SRC):
+    sys.exit("source not found: " + SRC)
+
+with open(HEAD, encoding="utf-8") as f:
+    head = f.read()
+with open(SRC, encoding="utf-8") as f:
+    body = f.read()
+
+out = head + "</head>\n<body>\n\n" + body + "\n</body>\n</html>\n"
+
+# Guard against the duplication bug ever coming back.
+expected = {"<title>": 1, "<style>": 2, '<div class="sheet">': 1, "<html": 1, "<body>": 1}
+for tag, want in expected.items():
+    got = out.count(tag)
+    if got != want:
+        sys.exit("ABORT: %r appears %d times, expected %d" % (tag, got, want))
+
+with open(OUT, "w", encoding="utf-8") as f:
+    f.write(out)
+
+print("built index.html - %d bytes, no duplication" % len(out))
