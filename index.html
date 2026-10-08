@@ -198,7 +198,7 @@ h1{
 .chip-btn.is-on{border-color:var(--red);color:var(--red);}
 .chip-btn.is-on .n{color:var(--red);}
 .chip-btn:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
-.proj-group[hidden]{display:none;}
+article.plate[hidden]{display:none;}
 
 .demo-note{
   margin:-8px 0 18px;padding:9px 12px;
@@ -527,15 +527,34 @@ h1{
   margin:0;display:flex;flex-direction:column;gap:11px;
   flex:0 1 auto;max-width:400px;min-width:0;
 }
-.phone a{
-  display:block;line-height:0;align-self:center;max-width:100%;
-  border:1px solid var(--rule-strong);
-  box-shadow:0 2px 14px rgba(27,42,51,.13);
-  transition:box-shadow .2s ease,border-color .2s ease;
+/* iPhone frame, drawn in CSS so it stays sharp at any size. */
+.device{
+  align-self:center;padding:11px;border-radius:54px;
+  background:linear-gradient(150deg,#45454b 0%,#15151a 18%,#0e0e12 50%,#15151a 82%,#45454b 100%);
+  box-shadow:0 14px 34px rgba(27,42,51,.3),0 2px 6px rgba(27,42,51,.25);
+  position:relative;line-height:0;max-width:100%;
 }
-.phone a:hover{border-color:var(--ink-2);box-shadow:0 4px 22px rgba(27,42,51,.2);}
-.phone a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
-.phone img{display:block;width:auto;max-height:820px;max-width:100%;}
+/* side buttons */
+.device::before,.device::after{
+  content:"";position:absolute;width:3px;border-radius:2px;
+  background:linear-gradient(180deg,#3a3a40,#1b1b20);
+}
+.device::before{left:-3px;top:23%;height:9%;box-shadow:0 0 0 0 transparent;}
+.device::after{right:-3px;top:27%;height:13%;}
+.device-screen{
+  position:relative;border-radius:43px;overflow:hidden;
+  background:#000;line-height:0;
+}
+.phone img{display:block;width:auto;max-height:760px;max-width:100%;}
+.device-island{
+  position:absolute;top:11px;left:50%;transform:translateX(-50%);
+  width:31%;height:26px;border-radius:99px;background:#000;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08);
+}
+.device-home{
+  position:absolute;bottom:7px;left:50%;transform:translateX(-50%);
+  width:34%;height:4px;border-radius:99px;background:rgba(255,255,255,.5);
+}
 .phone figcaption{
   font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--ink-2);
   max-width:40ch;
@@ -745,16 +764,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <b>Note</b>
     <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. Their code is there to read, and the links below go straight to the files worth reading. The remaining four are private.</span>
   </div>
-  <div class="proj-group" data-cat="migration">
-  <div class="section-head">
-    <h2>Data Migration Tooling</h2>
-    <span class="count">2 projects &middot; the day job, productised</span>
-    <span class="rule"></span>
-  </div>
-
-  <div class="plates">
-
-    <article class="plate">
+  <div class="plates" id="projectList">
+    <article class="plate" data-cat="migration">
       <div class="plate-head">
         <h3>Migration HQ</h3>
         <span class="stamp">Supabase &middot; Vercel</span>
@@ -762,6 +773,20 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">The board a migration team actually runs on &mdash; and it will not let you close a project without writing down what went wrong.</p>
 
+
+      <div class="plate-body">
+        <div>
+          <p>A single-file static client on Supabase, deployed to Vercel with no build step. Every migration is a card on a board: engagement manager, developer and owner, the data source and objects in scope, and the four dates that actually matter &mdash; mapping signoff, test migration, closed migration, go live. Cards drag between groups, and the board filters by source, object, created-date range and whether it's yours or the team's.</p>
+          <p>The feature it exists for is the one at the end. <em>Archiving a project opens a retrospective you cannot skip:</em> the data-source issues and anomalies field is required, with root cause analysis and recommendations beside it. The button says "Complete Retrospective &amp; Archive" because that is the only way a project leaves the board.</p>
+          <p>Its placeholder text is the giveaway that a practitioner wrote it &mdash; <em>formatting errors, missing fields, API limitations, bad CSV exports.</em> Those are the four things that cost you a week, every time.</p>
+        </div>
+        <ul class="notes">
+          <li><span><b>Institutional memory as structured data.</b> Every closed migration leaves behind a searchable record of what broke and why, so the same anomaly stops costing a different engineer the same week.</span></li>
+          <li><span><b>Phases with owners and dates</b> &mdash; "where is it?" has an answer without a status call.</span></li>
+          <li><span><b>Security by policy, not by secrecy.</b> The anon key is deliberately client-visible; every access rule lives in Postgres row-level security, with magic-link auth and no password to leak.</span></li>
+          <li><span><b>No build step.</b> One HTML file, a CDN client library and a schema &mdash; the right weight for a tool a small team maintains itself.</span></li>
+        </ul>
+      </div>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -785,20 +810,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
       </div>
       <p class="demo-note">Screens captured against a local demo database &mdash; every company, person and date shown is invented. The production board holds live customer migrations.</p>
-
-      <div class="plate-body">
-        <div>
-          <p>A single-file static client on Supabase, deployed to Vercel with no build step. Every migration is a card on a board: engagement manager, developer and owner, the data source and objects in scope, and the four dates that actually matter &mdash; mapping signoff, test migration, closed migration, go live. Cards drag between groups, and the board filters by source, object, created-date range and whether it's yours or the team's.</p>
-          <p>The feature it exists for is the one at the end. <em>Archiving a project opens a retrospective you cannot skip:</em> the data-source issues and anomalies field is required, with root cause analysis and recommendations beside it. The button says "Complete Retrospective &amp; Archive" because that is the only way a project leaves the board.</p>
-          <p>Its placeholder text is the giveaway that a practitioner wrote it &mdash; <em>formatting errors, missing fields, API limitations, bad CSV exports.</em> Those are the four things that cost you a week, every time.</p>
-        </div>
-        <ul class="notes">
-          <li><span><b>Institutional memory as structured data.</b> Every closed migration leaves behind a searchable record of what broke and why, so the same anomaly stops costing a different engineer the same week.</span></li>
-          <li><span><b>Phases with owners and dates</b> &mdash; "where is it?" has an answer without a status call.</span></li>
-          <li><span><b>Security by policy, not by secrecy.</b> The anon key is deliberately client-visible; every access rule lives in Postgres row-level security, with magic-link auth and no password to leak.</span></li>
-          <li><span><b>No build step.</b> One HTML file, a CDN client library and a schema &mdash; the right weight for a tool a small team maintains itself.</span></li>
-        </ul>
-      </div>
       <div class="spec">
         <div class="spec-figures">
           <div class="fig"><span class="k">Client</span><span class="v">59 KB, single file</span></div>
@@ -816,210 +827,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
       </div>
     </article>
-
-    <article class="plate">
-      <div class="plate-head">
-        <h3>Zendesk Data Loader</h3>
-        <span class="stamp">Python &middot; pywebview desktop app</span>
-        <span class="stamp">Private repo</span>
-      </div>
-      <p class="tagline">Import, update, delete and export Zendesk data without writing a line against the API.</p>
-
-      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
-        <div class="fig-window">
-          <div class="fig-track">
-            <figure class="fig-slide" data-cap="All four operations as equals — most teams end up with an import-only script and nothing for the other three.">
-              <img src="assets/zendesk-select_action.png" alt="Select Action screen offering Import, Update, Delete and Export" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="A bulk run in flight: live progress, the destination for the result file, and a Stop that actually halts the operation mid-run.">
-              <img src="assets/zendesk-progress.png" alt="Confirm Import screen with a progress bar part-way through, a save location and an active Stop button" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="Sign-in: subdomain, email and API token, sent straight to the platform — the tool stores nothing it does not need.">
-              <img src="assets/zendesk-login.png" alt="Sign-in screen with subdomain, email and API token fields" loading="lazy">
-            </figure>
-          </div>
-          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
-          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
-        </div>
-        <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 3</span>
-          <p class="fig-cap"></p>
-          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
-        </div>
-      </div>
-
-      <div class="plate-body">
-        <div>
-          <p>The oldest project in the set and still the largest single body of Python here &mdash; a full CRUD-and-export tool that puts the Zendesk API behind a desktop interface for people who are never going to script against it themselves.</p>
-          <p>Built because bulk data work is what I do all day, for the admin who has a spreadsheet and a deadline and no intention of learning an API. <em>A personal project, not a vendor product &mdash; but built by someone who knows exactly where these jobs go wrong.</em></p>
-        </div>
-        <ul class="notes">
-          <li><span><b>All four operations</b> &mdash; import, update, delete, export &mdash; rather than the import-only script most teams settle for.</span></li>
-          <li><span><b>Mappings are reusable.</b> Auto-map guesses the columns, then save it and load it on the next job.</span></li>
-          <li><span><b>595 KB</b> of Python, HTML and CSS: close to a third of all the tracked source on this sheet.</span></li>
-        </ul>
-      </div>
-      <div class="spec">
-        <div class="spec-figures">
-          <div class="fig"><span class="k">Commits</span><span class="v">2</span></div>
-          <div class="fig"><span class="k">Source</span><span class="v">595 KB</span></div>
-          <div class="fig"><span class="k">Updated</span><span class="v">23 May 2025</span></div>
-          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/Zendesk-Data-Loader">cannshan/Zendesk-Data-Loader</a></span></div>
-        </div>
-        <div class="langs">
-          <div class="bar">
-            <span style="width:79.9%;background:var(--lang-py)"></span>
-            <span style="width:17.8%;background:var(--lang-html)"></span>
-            <span style="width:2.3%;background:var(--lang-css)"></span>
-          </div>
-          <p class="legend">
-            <span><i style="background:var(--lang-py)"></i>Python 79.9%</span>
-            <span><i style="background:var(--lang-html)"></i>HTML 17.8%</span>
-            <span><i style="background:var(--lang-css)"></i>CSS 2.3%</span>
-          </p>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-  </div>
-  <div class="proj-group" data-cat="modeling">
-  <div class="section-head">
-    <h2>Modeling &amp; Inference</h2>
-    <span class="count">2 projects &middot; Python, TypeScript</span>
-    <span class="rule" style="animation-delay:.08s"></span>
-  </div>
-
-  <div class="plates">
-
-    <article class="plate">
-      <div class="plate-head">
-        <h3>NFL Bet Generator</h3>
-        <span class="stamp">Python &middot; Live odds</span>
-        <span class="stamp pub">Public repo &mdash; readable</span>
-      </div>
-      <p class="tagline">A transparent probability model for NFL bets that refuses to quote correlated legs as independent math.</p>
-
-      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="NFL Bet Generator screenshots">
-        <div class="fig-window">
-          <div class="fig-track">
-            <figure class="fig-slide" data-cap="Week 1 board: live player props from four sportsbooks, each leg annotated with the real injury-report line behind it.">
-              <img src="assets/nfl-dashboard.png" alt="NFL Bet Generator dashboard showing a Broncos at Chiefs same-game parlay with eight annotated player-prop legs" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="Track Record: every suggestion auto-logged and auto-settled. It says plainly that 0 settled bets is too small a sample to mean anything.">
-              <img src="assets/nfl-track-record.png" alt="Track Record tab showing 0 settled bets, 44 pending, and a warning that the sample is too small to be meaningful" loading="lazy">
-            </figure>
-          </div>
-          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
-          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
-        </div>
-        <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 2</span>
-          <p class="fig-cap"></p>
-          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
-        </div>
-      </div>
-
-      <div class="plate-body">
-        <div>
-          <p>Live lines come from The Odds API, completed-game scores from ESPN, and team efficiency plus weekly player stat lines from nflverse's free CSV releases. Team side: an opponent-adjusted power rating in the spirit of a Massey rating, blended with EPA per game and pushed through a normal-distribution margin model to get win, cover and total probabilities.</p>
-          <p>Player props are each player's own weighted recent-game mean and standard deviation, adjusted for opponent run/pass defense, a ~10%-per-week recency decay, target-share trend over the last three games, weather, and the opposing defense's fresh injuries.</p>
-        </div>
-        <ul class="notes">
-          <li><span><b>Two parlay builders</b> toward a target payout &mdash; same-game, and unrestricted best-odds.</span></li>
-          <li><span><b>Honest about correlation.</b> Any combo with multiple legs from one game is flagged <code>has_same_game_legs</code> and its probability labelled illustrative. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py">parlay_builder.py</a></span></li>
-          <li><span><b>Track Record tab</b> logs every suggestion and auto-grades it against the real result once the game finishes. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py">tracking.py</a></span></li>
-          <li><span><b>Backtested against an unselected sample.</b> The obvious way to tune the model is on its own settled bets &mdash; and it's wrong, because those are only the legs the model already liked. The backtests rebuild a clean sample from every cached pre-kickoff board instead, and import the production pricing functions so the test can't drift from the app. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">Read the reasoning in backtest_prop_blend.py</a> &mdash; it's in the docstring.</span></li>
-        </ul>
-      </div>
-      <div class="spec">
-        <div class="spec-figures">
-          <div class="fig"><span class="k">Commits</span><span class="v">1</span></div>
-          <div class="fig"><span class="k">Source</span><span class="v">122 KB</span></div>
-          <div class="fig"><span class="k">Updated</span><span class="v">14 Sep 2026</span></div>
-          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/nfl-bet-generator">cannshan/nfl-bet-generator</a></span></div>
-        </div>
-        <div class="langs">
-          <div class="bar">
-            <span style="width:82.3%;background:var(--lang-py)"></span>
-            <span style="width:11.5%;background:var(--lang-html)"></span>
-            <span style="width:6.2%;background:var(--lang-css)"></span>
-          </div>
-          <p class="legend">
-            <span><i style="background:var(--lang-py)"></i>Python 82.3%</span>
-            <span><i style="background:var(--lang-html)"></i>HTML 11.5%</span>
-            <span><i style="background:var(--lang-css)"></i>CSS 6.2%</span>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="plate">
-      <div class="plate-head">
-        <h3>MacroSnap</h3>
-        <span class="stamp">Next.js &middot; Claude vision</span>
-        <span class="stamp pub">Public repo &mdash; readable</span>
-      </div>
-      <p class="tagline">Photograph a meal, get its macros &mdash; but nothing is logged until you have corrected the estimate.</p>
-
-      <div class="figures row" aria-label="MacroSnap screens">
-        <figure class="phone">
-          <img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy">
-          <figcaption><b>History</b> &mdash; fourteen days by day with a running average, each meal keeping the photo it was read from.</figcaption>
-        </figure>
-        <figure class="phone">
-          <img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy">
-          <figcaption><b>Goals</b> &mdash; and the disclaimer that stays on screen: estimates are for trends, not for a medical or competition diet.</figcaption>
-        </figure>
-      </div>
-
-      <div class="plate-body">
-        <div>
-          <p>A mobile-first web app that runs on your own machine. The camera button opens the real camera on a phone; Claude identifies each food in the frame, estimates its portion, and returns macros per item. You review and adjust the breakdown first &mdash; the estimate is a draft, not a record.</p>
-          <p>The dev server binds to <code>0.0.0.0</code>, so the phone on the same Wi-Fi can install it to the home screen and run it full-screen with no browser chrome.</p>
-        </div>
-        <ul class="notes">
-          <li><span><b>Today</b> &mdash; a calorie ring, macro bars, and every logged meal expandable to its per-item breakdown.</span></li>
-          <li><span><b>History</b> &mdash; the last fourteen days grouped by day, with a running daily average.</span></li>
-          <li><span><b>Goals that argue back.</b> It flags the case where your macro split and your calorie target disagree by more than 5%.</span></li>
-        </ul>
-      </div>
-      <div class="spec">
-        <div class="spec-figures">
-          <div class="fig"><span class="k">Commits</span><span class="v">1</span></div>
-          <div class="fig"><span class="k">Source</span><span class="v">71 KB</span></div>
-          <div class="fig"><span class="k">Updated</span><span class="v">14 Sep 2026</span></div>
-          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/macrosnap">cannshan/macrosnap</a></span></div>
-        </div>
-        <div class="langs">
-          <div class="bar">
-            <span style="width:97.0%;background:var(--lang-ts)"></span>
-            <span style="width:2.2%;background:var(--lang-css)"></span>
-            <span style="width:0.8%;background:var(--lang-js)"></span>
-          </div>
-          <p class="legend">
-            <span><i style="background:var(--lang-ts)"></i>TypeScript 97.0%</span>
-            <span><i style="background:var(--lang-css)"></i>CSS 2.2%</span>
-            <span><i style="background:var(--lang-js)"></i>JS 0.8%</span>
-          </p>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-  </div>
-  <div class="proj-group" data-cat="products">
-  <div class="section-head">
-    <h2>Products &amp; Tools</h2>
-    <span class="count">2 projects &middot; JavaScript, TypeScript</span>
-    <span class="rule" style="animation-delay:.16s"></span>
-  </div>
-
-  <div class="plates">
-
-    <article class="plate">
+    <article class="plate" data-cat="products">
       <div class="plate-head">
         <h3>Wanderlust Content Engine</h3>
         <span class="stamp live">Live &middot; Vercel</span>
@@ -1027,6 +835,20 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">One idea in, three genuinely different social packages out &mdash; not the same caption with a swapped hashtag suffix.</p>
 
+
+      <div class="plate-body">
+        <div>
+          <p>Enter an idea and a location and the app fires an independent request per platform, in parallel. Each writes to that platform's own ranking signals &mdash; TikTok optimises for completion rate and comments/saves, Instagram for DM shares first &mdash; following a caption and hashtag formula derived from fourteen of the creator's real posts, and runs its own live web search for currently-trending tags and sounds before finalising.</p>
+          <p>Now nine tabs and forty-odd API routes across 15,500 lines: <em>Discovery</em> sorts real places into popular / interesting / hidden gem, <em>Planning</em> and two calendars turn those into a shoot schedule, and <em>Reel Voiceover</em>, <em>Stories</em>, <em>Collab Search</em> and a <em>Profile</em> of voice rules sit around the Content tab everything feeds.</p>
+        </div>
+        <ul class="notes">
+          <li><span><b>Evidence or nothing.</b> No place is labelled "proven" or "hidden gem" without real search evidence, and an empty list ships as an honest result rather than padded filler.</span></li>
+          <li><span><b>It watches its own bill, to the cent.</b> Every model call logs real billed cost &mdash; input, output, cache-write at 1.25&times;, cache-read at 0.1&times;, web search per use &mdash; to a spend table, so "what does clicking this actually cost" has an answer instead of a guess from token ceilings. A running meter sits in the header. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">See <code>logUsage</code></a>.</span></li>
+          <li><span><b>Awaited on purpose.</b> That cost write is deliberately not fire-and-forget: a serverless function freezes once it responds, so an un-awaited insert is a coin flip on whether it ever lands. The reasoning is written into the file, not just the behaviour.</span></li>
+          <li><span><b>Format decided, not asked.</b> The tool judges whether a topic reads better as narrative or an itinerary list, so that never becomes a form field.</span></li>
+          <li><span><b>131 commits in five days</b> &mdash; the most heavily iterated project on this sheet, by an order of magnitude.</span></li>
+        </ul>
+      </div>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -1045,20 +867,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
           <p class="fig-cap"></p>
           <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
         </div>
-      </div>
-
-      <div class="plate-body">
-        <div>
-          <p>Enter an idea and a location and the app fires an independent request per platform, in parallel. Each writes to that platform's own ranking signals &mdash; TikTok optimises for completion rate and comments/saves, Instagram for DM shares first &mdash; following a caption and hashtag formula derived from fourteen of the creator's real posts, and runs its own live web search for currently-trending tags and sounds before finalising.</p>
-          <p>Now nine tabs and forty-odd API routes across 15,500 lines: <em>Discovery</em> sorts real places into popular / interesting / hidden gem, <em>Planning</em> and two calendars turn those into a shoot schedule, and <em>Reel Voiceover</em>, <em>Stories</em>, <em>Collab Search</em> and a <em>Profile</em> of voice rules sit around the Content tab everything feeds.</p>
-        </div>
-        <ul class="notes">
-          <li><span><b>Evidence or nothing.</b> No place is labelled "proven" or "hidden gem" without real search evidence, and an empty list ships as an honest result rather than padded filler.</span></li>
-          <li><span><b>It watches its own bill, to the cent.</b> Every model call logs real billed cost &mdash; input, output, cache-write at 1.25&times;, cache-read at 0.1&times;, web search per use &mdash; to a spend table, so "what does clicking this actually cost" has an answer instead of a guess from token ceilings. A running meter sits in the header. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">See <code>logUsage</code></a>.</span></li>
-          <li><span><b>Awaited on purpose.</b> That cost write is deliberately not fire-and-forget: a serverless function freezes once it responds, so an un-awaited insert is a coin flip on whether it ever lands. The reasoning is written into the file, not just the behaviour.</span></li>
-          <li><span><b>Format decided, not asked.</b> The tool judges whether a topic reads better as narrative or an itinerary list, so that never becomes a form field.</span></li>
-          <li><span><b>131 commits in five days</b> &mdash; the most heavily iterated project on this sheet, by an order of magnitude.</span></li>
-        </ul>
       </div>
       <div class="spec">
         <div class="spec-figures">
@@ -1081,8 +889,182 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
       </div>
     </article>
+    <article class="plate" data-cat="modeling">
+      <div class="plate-head">
+        <h3>MacroSnap</h3>
+        <span class="stamp">Next.js &middot; Claude vision</span>
+        <span class="stamp pub">Public repo &mdash; readable</span>
+      </div>
+      <p class="tagline">Photograph a meal, get its macros &mdash; but nothing is logged until you have corrected the estimate.</p>
 
-    <article class="plate">
+
+      <div class="plate-body">
+        <div>
+          <p>A mobile-first web app that runs on your own machine. The camera button opens the real camera on a phone; Claude identifies each food in the frame, estimates its portion, and returns macros per item. You review and adjust the breakdown first &mdash; the estimate is a draft, not a record.</p>
+          <p>The dev server binds to <code>0.0.0.0</code>, so the phone on the same Wi-Fi can install it to the home screen and run it full-screen with no browser chrome.</p>
+        </div>
+        <ul class="notes">
+          <li><span><b>Today</b> &mdash; a calorie ring, macro bars, and every logged meal expandable to its per-item breakdown.</span></li>
+          <li><span><b>History</b> &mdash; the last fourteen days grouped by day, with a running daily average.</span></li>
+          <li><span><b>Goals that argue back.</b> It flags the case where your macro split and your calorie target disagree by more than 5%.</span></li>
+        </ul>
+      </div>
+      <div class="figures row" aria-label="MacroSnap screens">
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>History</b> &mdash; fourteen days by day with a running average, each meal keeping the photo it was read from.</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="device"><div class="device-screen"><img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
+          <figcaption><b>Goals</b> &mdash; and the disclaimer that stays on screen: estimates are for trends, not for a medical or competition diet.</figcaption>
+        </figure>
+      </div>
+      <div class="spec">
+        <div class="spec-figures">
+          <div class="fig"><span class="k">Commits</span><span class="v">1</span></div>
+          <div class="fig"><span class="k">Source</span><span class="v">71 KB</span></div>
+          <div class="fig"><span class="k">Updated</span><span class="v">14 Sep 2026</span></div>
+          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/macrosnap">cannshan/macrosnap</a></span></div>
+        </div>
+        <div class="langs">
+          <div class="bar">
+            <span style="width:97.0%;background:var(--lang-ts)"></span>
+            <span style="width:2.2%;background:var(--lang-css)"></span>
+            <span style="width:0.8%;background:var(--lang-js)"></span>
+          </div>
+          <p class="legend">
+            <span><i style="background:var(--lang-ts)"></i>TypeScript 97.0%</span>
+            <span><i style="background:var(--lang-css)"></i>CSS 2.2%</span>
+            <span><i style="background:var(--lang-js)"></i>JS 0.8%</span>
+          </p>
+        </div>
+      </div>
+    </article>
+    <article class="plate" data-cat="migration">
+      <div class="plate-head">
+        <h3>Zendesk Data Loader</h3>
+        <span class="stamp">Python &middot; pywebview desktop app</span>
+        <span class="stamp">Private repo</span>
+      </div>
+      <p class="tagline">Import, update, delete and export Zendesk data without writing a line against the API.</p>
+
+
+      <div class="plate-body">
+        <div>
+          <p>The oldest project in the set and still the largest single body of Python here &mdash; a full CRUD-and-export tool that puts the Zendesk API behind a desktop interface for people who are never going to script against it themselves.</p>
+          <p>Built because bulk data work is what I do all day, for the admin who has a spreadsheet and a deadline and no intention of learning an API. <em>A personal project, not a vendor product &mdash; but built by someone who knows exactly where these jobs go wrong.</em></p>
+        </div>
+        <ul class="notes">
+          <li><span><b>All four operations</b> &mdash; import, update, delete, export &mdash; rather than the import-only script most teams settle for.</span></li>
+          <li><span><b>Mappings are reusable.</b> Auto-map guesses the columns, then save it and load it on the next job.</span></li>
+          <li><span><b>595 KB</b> of Python, HTML and CSS: close to a third of all the tracked source on this sheet.</span></li>
+        </ul>
+      </div>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="All four operations as equals — most teams end up with an import-only script and nothing for the other three.">
+              <img src="assets/zendesk-select_action.png" alt="Select Action screen offering Import, Update, Delete and Export" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="A bulk run in flight: live progress, the destination for the result file, and a Stop that actually halts the operation mid-run.">
+              <img src="assets/zendesk-progress.png" alt="Confirm Import screen with a progress bar part-way through, a save location and an active Stop button" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Sign-in: subdomain, email and API token, sent straight to the platform — the tool stores nothing it does not need.">
+              <img src="assets/zendesk-login.png" alt="Sign-in screen with subdomain, email and API token fields" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 3</span>
+          <p class="fig-cap"></p>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+      <div class="spec">
+        <div class="spec-figures">
+          <div class="fig"><span class="k">Commits</span><span class="v">2</span></div>
+          <div class="fig"><span class="k">Source</span><span class="v">595 KB</span></div>
+          <div class="fig"><span class="k">Updated</span><span class="v">23 May 2025</span></div>
+          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/Zendesk-Data-Loader">cannshan/Zendesk-Data-Loader</a></span></div>
+        </div>
+        <div class="langs">
+          <div class="bar">
+            <span style="width:79.9%;background:var(--lang-py)"></span>
+            <span style="width:17.8%;background:var(--lang-html)"></span>
+            <span style="width:2.3%;background:var(--lang-css)"></span>
+          </div>
+          <p class="legend">
+            <span><i style="background:var(--lang-py)"></i>Python 79.9%</span>
+            <span><i style="background:var(--lang-html)"></i>HTML 17.8%</span>
+            <span><i style="background:var(--lang-css)"></i>CSS 2.3%</span>
+          </p>
+        </div>
+      </div>
+    </article>
+    <article class="plate" data-cat="modeling">
+      <div class="plate-head">
+        <h3>NFL Bet Generator</h3>
+        <span class="stamp">Python &middot; Live odds</span>
+        <span class="stamp pub">Public repo &mdash; readable</span>
+      </div>
+      <p class="tagline">A transparent probability model for NFL bets that refuses to quote correlated legs as independent math.</p>
+
+
+      <div class="plate-body">
+        <div>
+          <p>Live lines come from The Odds API, completed-game scores from ESPN, and team efficiency plus weekly player stat lines from nflverse's free CSV releases. Team side: an opponent-adjusted power rating in the spirit of a Massey rating, blended with EPA per game and pushed through a normal-distribution margin model to get win, cover and total probabilities.</p>
+          <p>Player props are each player's own weighted recent-game mean and standard deviation, adjusted for opponent run/pass defense, a ~10%-per-week recency decay, target-share trend over the last three games, weather, and the opposing defense's fresh injuries.</p>
+        </div>
+        <ul class="notes">
+          <li><span><b>Two parlay builders</b> toward a target payout &mdash; same-game, and unrestricted best-odds.</span></li>
+          <li><span><b>Honest about correlation.</b> Any combo with multiple legs from one game is flagged <code>has_same_game_legs</code> and its probability labelled illustrative. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py">parlay_builder.py</a></span></li>
+          <li><span><b>Track Record tab</b> logs every suggestion and auto-grades it against the real result once the game finishes. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py">tracking.py</a></span></li>
+          <li><span><b>Backtested against an unselected sample.</b> The obvious way to tune the model is on its own settled bets &mdash; and it's wrong, because those are only the legs the model already liked. The backtests rebuild a clean sample from every cached pre-kickoff board instead, and import the production pricing functions so the test can't drift from the app. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">Read the reasoning in backtest_prop_blend.py</a> &mdash; it's in the docstring.</span></li>
+        </ul>
+      </div>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="NFL Bet Generator screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="Week 1 board: live player props from four sportsbooks, each leg annotated with the real injury-report line behind it.">
+              <img src="assets/nfl-dashboard.png" alt="NFL Bet Generator dashboard showing a Broncos at Chiefs same-game parlay with eight annotated player-prop legs" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Track Record: every suggestion auto-logged and auto-settled. It says plainly that 0 settled bets is too small a sample to mean anything.">
+              <img src="assets/nfl-track-record.png" alt="Track Record tab showing 0 settled bets, 44 pending, and a warning that the sample is too small to be meaningful" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 2</span>
+          <p class="fig-cap"></p>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+      <div class="spec">
+        <div class="spec-figures">
+          <div class="fig"><span class="k">Commits</span><span class="v">1</span></div>
+          <div class="fig"><span class="k">Source</span><span class="v">122 KB</span></div>
+          <div class="fig"><span class="k">Updated</span><span class="v">14 Sep 2026</span></div>
+          <div class="fig"><span class="k">Repo</span><span class="v"><a href="https://github.com/cannshan/nfl-bet-generator">cannshan/nfl-bet-generator</a></span></div>
+        </div>
+        <div class="langs">
+          <div class="bar">
+            <span style="width:82.3%;background:var(--lang-py)"></span>
+            <span style="width:11.5%;background:var(--lang-html)"></span>
+            <span style="width:6.2%;background:var(--lang-css)"></span>
+          </div>
+          <p class="legend">
+            <span><i style="background:var(--lang-py)"></i>Python 82.3%</span>
+            <span><i style="background:var(--lang-html)"></i>HTML 11.5%</span>
+            <span><i style="background:var(--lang-css)"></i>CSS 6.2%</span>
+          </p>
+        </div>
+      </div>
+    </article>
+    <article class="plate" data-cat="products">
       <div class="plate-head">
         <h3>Wander Guide App</h3>
         <span class="stamp">Expo 54 &middot; React Native</span>
@@ -1121,10 +1103,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
       </div>
     </article>
-
-
-  </div>
-
   </div>
   </div>
 
@@ -1272,7 +1250,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 // Project category filter.
 (function () {
   var chips = Array.prototype.slice.call(document.querySelectorAll(".chip-btn"));
-  var groups = Array.prototype.slice.call(document.querySelectorAll(".proj-group"));
+  var groups = Array.prototype.slice.call(document.querySelectorAll("article.plate[data-cat]"));
   chips.forEach(function (c) {
     c.addEventListener("click", function () {
       var cat = c.dataset.cat;
