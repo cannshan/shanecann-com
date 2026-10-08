@@ -187,7 +187,7 @@ html{scroll-behavior:smooth;}
 /* ---------- tabs & views ---------- */
 .tabs{
   display:flex;flex-wrap:wrap;gap:0;
-  margin-top:18px;border:1px solid var(--rule-strong);
+  margin-top:0;border:1.5px solid var(--ink);border-top:0;
   background:var(--plate);box-shadow:var(--plate-shadow);
 }
 .tab{
@@ -365,6 +365,27 @@ article.plate[hidden]{display:none;}
   color:var(--red);font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   font-size:10px;flex:none;
 }
+
+/* ---------- profile: about and background share one box ---------- */
+.profile{
+  margin-top:18px;border:1px solid var(--rule-strong);background:var(--plate);
+  box-shadow:var(--plate-shadow);padding:24px;
+}
+.profile-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:0;}
+.profile-col:first-child{padding-right:30px;}
+.profile-col:last-child{padding-left:30px;border-left:1px solid var(--rule);}
+.profile-col p{margin:0 0 13px;max-width:60ch;color:var(--ink-2);}
+.profile-col p:last-child{margin-bottom:0;}
+.profile-col em{color:var(--ink);font-style:italic;}
+.profile .bg-grid{grid-template-columns:1fr;gap:12px;margin-bottom:15px;}
+.profile .bg-foot{padding-top:12px;}
+.profile .bg-foot.edu{margin-top:12px;}
+@media (max-width:860px){
+  .profile-grid{grid-template-columns:1fr;gap:24px;}
+  .profile-col:first-child{padding-right:0;}
+  .profile-col:last-child{padding-left:0;border-left:0;border-top:1px solid var(--rule);padding-top:22px;}
+}
+@media (max-width:480px){.profile{padding:18px;}}
 
 /* ---------- section headers ---------- */
 .section-head{display:flex;align-items:center;gap:16px;margin:52px 0 20px;}
@@ -634,7 +655,7 @@ article.plate[hidden]{display:none;}
 
 /* ---------- closing hire block ---------- */
 .hire{
-  margin-top:46px;border:1.5px solid var(--ink);background:var(--plate);
+  margin-top:30px;border:1.5px solid var(--ink);background:var(--plate);
   box-shadow:var(--plate-shadow);padding:30px 32px;
   display:flex;flex-wrap:wrap;align-items:flex-start;gap:30px 48px;
 }
@@ -644,7 +665,7 @@ article.plate[hidden]{display:none;}
   font-size:clamp(22px,2.9vw,30px);line-height:1.15;letter-spacing:-.02em;
   margin:0 0 12px;max-width:22ch;text-wrap:balance;
 }
-.hire-main p{margin:0;font-size:16px;line-height:1.6;color:var(--ink-2);max-width:62ch;}
+.hire-main p{margin:0;font-size:16px;line-height:1.6;color:var(--ink-2);max-width:none;}
 .hire-links{flex:0 1 auto;display:flex;flex-direction:column;gap:12px;}
 .hire-primary{
   display:inline-block;background:var(--red);color:#fff;text-decoration:none;
@@ -772,72 +793,72 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   </nav>
 
   <div class="view is-on" id="v-overview">
-<section class="about" id="about">
-    <div class="about-head">
-      <h2>About</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="about-body one-col">
-      <div>
+  <section class="profile" id="about">
+    <div class="profile-grid">
+      <div class="profile-col">
+      <div class="about-head">
+        <h2>About</h2>
+        <span class="rule"></span>
+      </div>
         <p class="about-lead">I&rsquo;ve spent eight years as a Technical Architect watching good ideas die in the gap between &ldquo;someone should build that&rdquo; and someone actually building it. AI closed that gap for me, and I haven&rsquo;t stopped since.</p>
         <p>Eight years of migrations taught me where things break: the export that truncates silently, the two systems that quietly disagree, the number that looks right and isn&rsquo;t. I always knew what would have caught it. I just never had time to build it.</p>
         <p>Now I build it. A bulk loader for the imports I run. A board that will not let a migration close without a retrospective. An audio tour app, because I wanted one for a drive. <em>None of it took a team, and none of it took a year.</em></p>
       </div>
+      <div class="profile-col" id="background">
+      <div class="about-head">
+        <h2>Background</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="bg-grid">
+
+        <div class="bg-item now">
+          <span class="role">Senior Technical Architect, and Technical Architect before that</span>
+          <span class="when">2021 &mdash; present &middot; Enterprise SaaS</span>
+        </div>
+        <div class="bg-item">
+          <span class="role">Data Team Lead, up from Project Manager, Consultant and Support</span>
+          <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
+        </div>
+        <div class="bg-item">
+          <span class="role">Customer Experience Technical Specialist</span>
+          <span class="when">2014 &mdash; 2017 &middot; Accounting software</span>
+        </div>
+        <div class="bg-item">
+          <span class="role">Student Technician Supervisor</span>
+          <span class="when">2011 &mdash; 2014 &middot; University IT</span>
+        </div>
+      </div>
+      <div class="bg-foot">
+        <span class="lbl">Along the way</span>
+        <ul class="wins">
+          <li><b>20</b> concurrent migrations run</li>
+          <li><b>25%</b> faster migrations</li>
+          <li><b>50%</b> throughput lift</li>
+          <li><b>5</b> engineers led</li>
+        </ul>
+      </div>
+      <div class="bg-foot">
+        <span class="lbl">Tooling</span>
+        <div class="chips">
+          <span class="chip">SQL</span>
+          <span class="chip">Python / pandas</span>
+          <span class="chip">Postgres / Supabase</span>
+          <span class="chip">Excel at scale</span>
+          <span class="chip">CSV &amp; API pipelines</span>
+          <span class="chip">CRM &amp; helpdesk platforms</span>
+        </div>
+      </div>
+      <div class="bg-foot edu">
+        <span class="lbl">Education</span>
+        <div class="edu-body">
+          <b>Michigan State University</b>
+          <span>B.S. Media &amp; Information &middot; B.A. Advertising &middot; Graduated 2014</span>
+        </div>
+      </div>
+      </div>
     </div>
   </section>
 
-<section class="background" id="background">
-    <div class="about-head">
-      <h2>Background</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="bg-grid">
-
-      <div class="bg-item now">
-        <span class="role">Senior Technical Architect, and Technical Architect before that</span>
-        <span class="when">2021 &mdash; present &middot; Enterprise SaaS</span>
-      </div>
-      <div class="bg-item">
-        <span class="role">Data Team Lead, up from Project Manager, Consultant and Support</span>
-        <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
-      </div>
-      <div class="bg-item">
-        <span class="role">Customer Experience Technical Specialist</span>
-        <span class="when">2014 &mdash; 2017 &middot; Accounting software</span>
-      </div>
-      <div class="bg-item">
-        <span class="role">Student Technician Supervisor</span>
-        <span class="when">2011 &mdash; 2014 &middot; University IT</span>
-      </div>
-    </div>
-    <div class="bg-foot">
-      <span class="lbl">Along the way</span>
-      <ul class="wins">
-        <li><b>20</b> concurrent migrations run</li>
-        <li><b>25%</b> faster migrations</li>
-        <li><b>50%</b> throughput lift</li>
-        <li><b>5</b> engineers led</li>
-      </ul>
-    </div>
-    <div class="bg-foot">
-      <span class="lbl">Tooling</span>
-      <div class="chips">
-        <span class="chip">SQL</span>
-        <span class="chip">Python / pandas</span>
-        <span class="chip">Postgres / Supabase</span>
-        <span class="chip">Excel at scale</span>
-        <span class="chip">CSV &amp; API pipelines</span>
-        <span class="chip">CRM &amp; helpdesk platforms</span>
-      </div>
-    </div>
-    <div class="bg-foot edu">
-      <span class="lbl">Education</span>
-      <div class="edu-body">
-        <b>Michigan State University</b>
-        <span>B.S. Media &amp; Information &middot; B.A. Advertising &middot; Graduated 2014</span>
-      </div>
-    </div>
-  </section>
   </div>
 
   <div class="view" id="v-work">
