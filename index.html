@@ -623,6 +623,19 @@ article.plate[hidden]{display:none;}
 }
 
 
+.work-intro{
+  margin:0 0 4px;max-width:78ch;
+  font-size:16px;line-height:1.6;color:var(--ink-2);
+}
+.work-intro em{color:var(--ink);font-style:italic;}
+.dataline{
+  margin:-8px 0 20px;padding:9px 0 0;border-top:1px solid var(--rule);
+  max-width:74ch;font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(--ink-3);
+}
+.dataline b{
+  color:var(--red);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:10px;
+}
+
 /* ---------- project card: lede, highlights, links ---------- */
 .lede{
   margin:0 0 20px;max-width:74ch;
@@ -912,20 +925,21 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   <div class="view" id="v-work">
   <div class="section-head">
     <h2>Work</h2>
-    <span class="count">Six things built because something needed building</span>
+    <span class="count">Six projects &middot; all of them data problems</span>
     <span class="rule"></span>
   </div>
+  <p class="work-intro">A travel app, a meal tracker and a betting model do not look like data work. They are. Every one of these is the same job in different clothes: get the data in, decide what it is allowed to claim, and prove it held up. <em>That is the job I have done for eight years &mdash; these are the versions I built myself.</em></p>
 
     <div class="filters" role="group" aria-label="Filter projects by type">
       <span class="f-label">Show</span>
       <button type="button" class="chip-btn is-on" data-cat="all">All <span class="n">6</span></button>
       <button type="button" class="chip-btn" data-cat="migration">Data migration <span class="n">2</span></button>
       <button type="button" class="chip-btn" data-cat="modeling">Modeling &amp; analytics <span class="n">2</span></button>
-      <button type="button" class="chip-btn" data-cat="products">Products <span class="n">2</span></button>
+      <button type="button" class="chip-btn" data-cat="products">Apps &amp; pipelines <span class="n">2</span></button>
     </div>
   <div class="notice">
     <b>Note</b>
-    <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. Their code is there to read, and the links below go straight to the files worth reading. The remaining four are private.</span>
+    <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. Their code is there to read, and the links below go straight to the files worth reading. Two are private, and Migration HQ is an internal tool with no public repo.</span>
   </div>
   <div class="plates" id="projectList">
     <article class="plate" data-cat="products">
@@ -936,6 +950,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">A self-guided audio tour that keeps narrating after the cell service stops.</p>
       <p class="lede">Pick a region and a tour, then drive. GPS triggers each stop's narration, a native map draws the route, and the whole tour downloads for places with no signal.</p>
+      <p class="dataline"><b>The data problem</b> &mdash; keeping a dataset usable when the network is not &mdash; tours, audio and routes cached to the device and reconciled when signal comes back.</p>
       <div class="figures row four" aria-label="Wander Guide App screens">
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/wga-explore.png" alt="Wander Guide explore screen with a search field and region cards for Maine and New Hampshire" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
@@ -969,6 +984,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">The board a migration team actually runs on &mdash; and it will not let you close a project without writing down what went wrong.</p>
       <p class="lede">A single-file Supabase client where every migration is a card moving through six phases, each with an owner and the four dates that matter. Archiving one opens a retrospective you cannot skip.</p>
+      <p class="dataline"><b>The data problem</b> &mdash; turning migration post-mortems into structured, searchable records instead of knowledge that leaves with whoever ran the job.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -1006,6 +1022,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">One idea in, three genuinely different social packages out &mdash; not the same caption with a swapped hashtag suffix.</p>
       <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals, after searching for what is genuinely trending.</p>
+      <p class="dataline"><b>The data problem</b> &mdash; ingesting live search results, enforcing evidence rules on what is allowed to be stored, and metering the cost of every call against a budget.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -1043,6 +1060,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">Photograph a meal, get its macros &mdash; but nothing is logged until you have corrected the estimate.</p>
       <p class="lede">Claude reads the photo, identifies each item and estimates its portion, then you correct it before anything is saved. Runs on your own machine and installs to the phone's home screen.</p>
+      <p class="dataline"><b>The data problem</b> &mdash; extracting structured records from an unstructured source &mdash; a photograph &mdash; with a human check before anything is written.</p>
       <div class="figures row" aria-label="MacroSnap screens">
         <figure class="phone">
           <div class="device"><div class="device-screen"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
@@ -1068,6 +1086,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">Import, update, delete and export Zendesk data without writing a line against the API.</p>
       <p class="lede">A desktop tool that puts a platform's API behind a point-and-click wizard: pick the operation, map the fields, watch it run. Built for the admin with a spreadsheet and a deadline.</p>
+      <p class="dataline"><b>The data problem</b> &mdash; bulk extract, transform and load with field mapping and reusable mappings. The core migration job, productised.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
         <div class="fig-window">
           <div class="fig-track">
@@ -1104,6 +1123,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <p class="tagline">A transparent probability model for NFL bets that refuses to quote correlated legs as independent math.</p>
       <p class="lede">Live odds and public stats blended into an opponent-adjusted power rating, then pushed through a margin model for win, cover and total probabilities. It logs every suggestion and grades itself against the real result.</p>
+      <p class="dataline"><b>The data problem</b> &mdash; a full pipeline: ingest three sources, reconcile them, model the result, and validate the predictions against what actually happened.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="NFL Bet Generator screenshots">
         <div class="fig-window">
           <div class="fig-track">
