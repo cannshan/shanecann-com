@@ -268,16 +268,6 @@ article.plate[hidden]{display:none;}
   font-weight:600;
 }
 .about-body em{color:var(--ink);font-style:italic;}
-.method{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px;}
-.method li{
-  display:grid;grid-template-columns:auto 1fr;gap:10px;
-  font-size:14px;line-height:1.5;color:var(--ink-2);
-}
-.method li::before{
-  content:"";width:7px;height:7px;margin-top:8px;
-  border:1px solid var(--ink-3);transform:rotate(45deg);
-}
-.method b{color:var(--ink);font-weight:600;font-family:var(--display);font-size:13.5px;}
 
 /* ---------- ethos ---------- */
 .ethos{
@@ -290,9 +280,6 @@ article.plate[hidden]{display:none;}
   margin:0 0 6px;max-width:34ch;text-wrap:balance;
 }
 .ethos-lead em{color:var(--red);font-style:normal;}
-.ethos-sub{
-  margin:0 0 22px;font-size:15.5px;line-height:1.55;color:var(--ink-2);max-width:66ch;
-}
 .principles{
   margin:0;padding:0;list-style:none;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 30px;
@@ -314,33 +301,6 @@ article.plate[hidden]{display:none;}
 .notes a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
 .notes a:hover{color:var(--red);}
 
-/* ---------- capability (data/analytics pitch) ---------- */
-.capability{
-  margin-top:18px;border:1px solid var(--rule-strong);background:var(--plate);
-  box-shadow:var(--plate-shadow);padding:24px;
-}
-.cap-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:30px;}
-.cap-grid > div > p{margin:0 0 13px;font-size:15px;line-height:1.6;color:var(--ink-2);max-width:56ch;}
-.cap-grid > div > p:last-child{margin-bottom:0;}
-.cap-grid .big{
-  font-family:var(--display);font-weight:600;font-size:17.5px;line-height:1.45;
-  color:var(--ink);letter-spacing:-.01em;
-}
-.cap-grid em{color:var(--ink);font-style:italic;}
-.pipeline{
-  margin:0;padding:0;list-style:none;
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;
-}
-.step{border-top:1px solid var(--rule);padding-top:10px;}
-.step h4{
-  font-family:var(--display);font-weight:600;font-size:13.5px;margin:0 0 4px;
-  letter-spacing:-.005em;
-}
-.step h4 span{
-  font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--red);
-  margin-right:7px;font-weight:500;
-}
-.step p{margin:0;font-size:13px;line-height:1.5;color:var(--ink-2);}
 .platforms{
   display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 10px;
   margin-top:20px;padding-top:15px;border-top:1px solid var(--rule);
@@ -397,6 +357,8 @@ article.plate[hidden]{display:none;}
   font-family:var(--mono);font-size:11px;
 }
 .edu-line strong{color:var(--ink-2);font-weight:500;}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px 8px;flex:1;min-width:0;}
 
 .notice{
   display:flex;gap:12px;align-items:baseline;margin-top:14px;padding:11px 14px;
@@ -753,12 +715,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
 @media (max-width:820px){
   .about-body{grid-template-columns:1fr;gap:20px;}
-  .cap-grid{grid-template-columns:1fr;gap:22px;}
   .bg-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
 }
 @media (max-width:600px){
   .principles{grid-template-columns:1fr;gap:16px;}
-  .pipeline{grid-template-columns:1fr;gap:12px;}
 }
 @media (max-width:760px){
   .tb-grid{grid-template-columns:repeat(2,1fr);}
@@ -773,7 +733,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   .sheet{padding-block:24px 48px;}
   .tb-top{padding:20px;gap:18px;}
   .portrait{width:96px;}
-  .about,.ethos,.background,.capability{padding:18px;}
+  .about,.ethos,.background{padding:18px;}
   .bg-grid{grid-template-columns:1fr;gap:14px;}
   .plate{padding:18px 18px 0;}
   .figures{margin-inline:-18px;}
@@ -870,6 +830,17 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>50%</b> throughput lift</li>
         <li><b>5</b> engineers led</li>
       </ul>
+    </div>
+    <div class="bg-foot">
+      <span class="lbl">Tooling</span>
+      <div class="chips">
+        <span class="chip">SQL</span>
+        <span class="chip">Python / pandas</span>
+        <span class="chip">Postgres / Supabase</span>
+        <span class="chip">Excel at scale</span>
+        <span class="chip">CSV &amp; API pipelines</span>
+        <span class="chip">CRM &amp; helpdesk platforms</span>
+      </div>
     </div>
     <div class="bg-foot edu">
       <span class="lbl">Education</span>
