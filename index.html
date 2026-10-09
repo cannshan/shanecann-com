@@ -270,30 +270,16 @@ article.plate[hidden]{display:none;}
   margin-top:18px;border:1.5px solid var(--ink);background:var(--plate);
   box-shadow:var(--plate-shadow);padding:24px;
 }
+.ethos .work-intro{
+  margin:10px 0 0;max-width:80ch;font-size:16px;line-height:1.6;color:var(--ink-2);
+}
+.ethos .work-intro em{color:var(--ink);font-style:italic;}
 .ethos-lead{
   font-family:var(--display);font-weight:600;
   font-size:clamp(19px,2.4vw,24px);line-height:1.3;letter-spacing:-.015em;
   margin:0 0 6px;max-width:34ch;text-wrap:balance;
 }
 .ethos-lead em{color:var(--red);font-style:normal;}
-.principles{
-  margin:0;padding:0;list-style:none;
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 30px;
-}
-.principle{padding-top:13px;border-top:1px solid var(--rule-strong);}
-.principle h4{
-  font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em;
-  margin:0 0 6px;
-}
-.principle p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-2);}
-.principle .ev{
-  display:block;margin-top:7px;font-family:var(--mono);font-size:10.5px;
-  line-height:1.5;color:var(--ink-3);
-}
-.principle .ev b{color:var(--red);font-weight:600;}
-.principle .ev a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
-.principle .ev a b{color:inherit;}
-.principle .ev a:hover{color:var(--red);}
 .notes a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
 .notes a:hover{color:var(--red);}
 
@@ -716,8 +702,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   .bg-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
 }
 @media (max-width:600px){
-  .principles{grid-template-columns:1fr;gap:16px;}
-}
+  }
 @media (max-width:760px){
   .tb-grid{grid-template-columns:repeat(2,1fr);}
   .cell:nth-child(4n){border-right:1px solid var(--rule);}
@@ -853,28 +838,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <span class="count">Six tools &middot; phone, web, desktop and analytics</span>
     <span class="rule"></span>
   </div>
-  <p class="work-intro">Two phone apps, two web apps, a desktop data loader and a probability model. Some solve a problem at work, some solve one of mine. <em>None of them are demos.</em></p>
 
   <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
-    <ul class="principles">
-      <li class="principle">
-        <h4>Find out how it breaks before you start</h4>
-        <p>Profile the source. Hunt the export that truncates silently, the field nobody populated, the case the happy path never hits. Finding it at go-live is what costs a week.</p>
-      </li>
-      <li class="principle">
-        <h4>Nothing gets claimed that cannot be backed up</h4>
-        <p>Reconciled counts on a migration, and a clear statement of what did not come across. A photo estimate that stays a draft until a person corrects it.</p>
-      </li>
-      <li class="principle">
-        <h4>It has to be able to say &ldquo;I don&rsquo;t know&rdquo;</h4>
-        <p>An empty result ships empty rather than padded with something plausible. A confident wrong answer costs more than no answer, because people act on it.</p>
-      </li>
-      <li class="principle">
-        <h4>Write down what went wrong, every time</h4>
-        <p>The same failure twice is a process problem, not bad luck. It is the reason the migration board will not let you close a project without a retrospective.</p>
-      </li>
-    </ul>
+    <p class="work-intro">Two phone apps, two web apps, a desktop data loader and a probability model. Some solve a problem at work, some solve one of mine. <em>None of them are demos.</em></p>
   </section>
 
     <div class="filters" role="group" aria-label="Filter projects by type">
