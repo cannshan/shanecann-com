@@ -916,6 +916,9 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
             <figure class="fig-slide" data-cap="The board &mdash; six phases, each card carrying its owners, sources and go-live date.">
               <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
             </figure>
+            <figure class="fig-slide" data-cap="Behind a card &mdash; phase, owners, the four dates that matter, data source and the objects being migrated.">
+              <img src="assets/mhq-edit.png" alt="Edit migration project form with fields for project name, status, engagement manager, developer, owner, phase, mapping signoff, test migration, closed migration and go-live dates, data source, and checkboxes for the objects migrated" loading="lazy">
+            </figure>
             <figure class="fig-slide" data-cap="Reporting &mdash; counts, a projects-by-source chart, filters to object and date range.">
               <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
             </figure>
@@ -927,7 +930,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
           <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
         </div>
         <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 3</span>
+          <span class="fig-count">Fig. <b>1</b> / 4</span>
           <p class="fig-cap"></p>
           <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
         </div>
@@ -1176,6 +1179,14 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     var capEl = root.querySelector(".fig-cap");
     var numEl = root.querySelector(".fig-count b");
     var index = 0;
+
+    // The total is written from the slide count, so adding a screenshot
+    // cannot leave the caption bar claiming the old number.
+    var countEl = root.querySelector(".fig-count");
+    if (countEl) {
+      countEl.innerHTML = 'Fig. <b>1</b> / ' + slides.length;
+      numEl = countEl.querySelector("b");
+    }
 
     // Portrait screenshots get more vertical room than landscape ones.
     slides.forEach(function (slide) {
