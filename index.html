@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Shane Cann &mdash; data migration, reporting and dashboards, and the web and phone apps that replace a manual process. Six projects, all built solo.">
+<meta name="description" content="Shane Cann &mdash; data migration, reporting and dashboards, and the web apps and internal tools that replace a manual process. Six projects, all built solo.">
 <meta name="author" content="Shane Cann">
 <link rel="canonical" href="https://shanecann.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shanecann.com/">
-<meta property="og:title" content="Shane Cann &mdash; Data migration, reporting &amp; app building">
-<meta property="og:description" content="Migrations, spreadsheet cleanup, reporting, and the apps that replace a manual process. Six projects, all built solo.">
+<meta property="og:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
+<meta property="og:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process. Four projects, all built solo.">
 <meta property="og:image" content="https://shanecann.com/assets/shane.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shane Cann &mdash; Data migration, reporting &amp; app building">
-<meta name="twitter:description" content="Migrations, spreadsheet cleanup, reporting, and the apps that replace a manual process. Six projects, all built solo.">
+<meta name="twitter:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
+<meta name="twitter:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process. Four projects, all built solo.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231B2A33'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='58' font-weight='bold' fill='%23E9EBE4' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E">
 <style>
   *{box-sizing:border-box}
@@ -217,27 +217,6 @@ html{scroll-behavior:smooth;}
 .view > section:first-child{margin-top:18px;}
 
 /* project filter chips */
-.filters{
-  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
-  margin-top:18px;padding:14px 16px;
-  border:1px solid var(--rule-strong);background:var(--plate);box-shadow:var(--plate-shadow);
-}
-.f-label{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3);margin-right:4px;
-}
-.chip-btn{
-  cursor:pointer;background:var(--paper);border:1px solid var(--rule-strong);
-  color:var(--ink-2);padding:5px 11px;
-  font-family:var(--mono);font-size:11px;letter-spacing:.04em;
-  transition:border-color .15s ease,color .15s ease;
-}
-.chip-btn .n{color:var(--ink-3);margin-left:4px;}
-.chip-btn:hover{border-color:var(--ink-2);color:var(--ink);}
-.chip-btn.is-on{border-color:var(--red);color:var(--red);}
-.chip-btn.is-on .n{color:var(--red);}
-.chip-btn:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
-article.plate[hidden]{display:none;}
 
 .demo-note{
   margin:-8px 0 18px;padding:9px 12px;
@@ -452,7 +431,7 @@ article.plate[hidden]{display:none;}
   padding:14px;background:var(--paper);
 }
 /* Landscape captures fill the column; portrait ones are capped by height
-   instead, or a phone screenshot would run metres down the page. */
+   instead, or a portrait screenshot would run metres down the page. */
 .fig-slide a{
   display:block;line-height:0;width:100%;max-width:100%;flex:0 1 auto;
   border:1px solid var(--rule-strong);
@@ -524,71 +503,8 @@ article.plate[hidden]{display:none;}
   flex:1;margin:0;min-width:0;
   font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--ink-2);
 }
-/* Phone screens sit side by side rather than in a carousel - portrait
-   captures leave most of the band empty when shown one at a time. */
-.figures.row{
-  display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;
-  gap:30px;padding:26px 24px;
-}
-.phone{
-  margin:0;display:flex;flex-direction:column;gap:11px;
-  flex:0 1 auto;max-width:400px;min-width:0;
-}
 /* Four screens still fit across the band; the frame scales with them. */
-.figures.row.four{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:18px;padding:26px 22px;align-items:start;justify-content:stretch;
-}
-.figures.row.four .phone{max-width:none;width:100%;}
-.figures.row.four .device{width:100%;}
-.figures.row.four .phone img{width:100%;}
-.figures.row.four .device{padding:8px;border-radius:42px;}
-.figures.row.four .device-screen{border-radius:34px;}
-.figures.row.four .device-island{top:8px;height:20px;}
-.figures.row.four .device-home{bottom:5px;height:3px;}
-.figures.row.four .phone img{max-height:none;}
-/* iPhone frame, drawn in CSS so it stays sharp at any size. */
-.device{
-  align-self:center;padding:11px;border-radius:54px;
-  background:linear-gradient(150deg,#45454b 0%,#15151a 18%,#0e0e12 50%,#15151a 82%,#45454b 100%);
-  box-shadow:0 14px 34px rgba(27,42,51,.3),0 2px 6px rgba(27,42,51,.25);
-  position:relative;line-height:0;max-width:100%;
-}
 /* side buttons */
-.device::before,.device::after{
-  content:"";position:absolute;width:3px;border-radius:2px;
-  background:linear-gradient(180deg,#3a3a40,#1b1b20);
-}
-.device::before{left:-3px;top:23%;height:9%;box-shadow:0 0 0 0 transparent;}
-.device::after{right:-3px;top:27%;height:13%;}
-.device-screen{
-  position:relative;border-radius:43px;overflow:hidden;
-  background:#000;line-height:0;
-}
-.phone img{display:block;width:auto;max-height:760px;max-width:100%;}
-.device-island{
-  position:absolute;top:11px;left:50%;transform:translateX(-50%);
-  width:31%;height:26px;border-radius:99px;background:#000;
-  box-shadow:0 0 0 1px rgba(255,255,255,.08);
-}
-.device-home{
-  position:absolute;bottom:7px;left:50%;transform:translateX(-50%);
-  width:34%;height:4px;border-radius:99px;background:rgba(255,255,255,.5);
-}
-.phone figcaption{
-  font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--ink-2);
-  max-width:40ch;
-}
-.phone figcaption b{color:var(--ink);font-weight:600;}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .phone a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
-}
-:root[data-theme="dark"] .phone a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
-@media (max-width:560px){
-  .figures.row{gap:22px;padding:18px 14px;}
-  .figures.row.four{grid-template-columns:repeat(2,1fr);gap:14px;padding:18px 14px;}
-  .phone img{max-height:560px;}
-}
 
 .work-intro{
   margin:0 0 4px;max-width:78ch;
@@ -705,8 +621,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   .about-body{grid-template-columns:1fr;gap:20px;}
   .bg-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
 }
-@media (max-width:600px){
-  }
 @media (max-width:760px){
   .tb-grid{grid-template-columns:repeat(2,1fr);}
   .cell:nth-child(4n){border-right:1px solid var(--rule);}
@@ -741,7 +655,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </figure>
       <div class="tb-id">
         <h1>Shane Cann</h1>
-        <p class="kw">Data migration &middot; Spreadsheet cleanup &middot; Reporting &amp; dashboards &middot; Web and phone apps</p>
+        <p class="kw">Data migration &middot; Spreadsheet cleanup &middot; Reporting &amp; dashboards &middot; Web apps and internal tools</p>
         <p class="contact">
           <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
           <span><a href="https://github.com/cannshan">github.com/cannshan</a></span>
@@ -760,13 +674,13 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
       <div class="svc">
         <h2>Build the tool or app</h2>
-        <p>Web apps, phone apps, internal tools &mdash; whatever the job needs. The six below are what that looks like.</p>
+        <p>The web app or internal tool that replaces the spreadsheet &mdash; usually standing up in days. The four below are what that looks like.</p>
       </div>
     </div>
   </header>
   <nav class="tabs" aria-label="Sections">
     <button type="button" class="tab is-on" data-view="overview">Overview</button>
-    <button type="button" class="tab" data-view="work">Work <span class="n">6</span></button>
+    <button type="button" class="tab" data-view="work">Work <span class="n">4</span></button>
   </nav>
 
   <div class="view is-on" id="v-overview">
@@ -779,7 +693,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </div>
         <p class="about-lead">I&rsquo;ve spent eight years as a Technical Architect watching good ideas die in the gap between &ldquo;someone should build that&rdquo; and someone actually building it. AI closed that gap for me, and I haven&rsquo;t stopped since.</p>
         <p>That work taught me how things actually fail: the export that truncates silently, the two tools that quietly disagree, the process everyone works around instead of fixing. I could always see the fix, but getting it built meant a business case, a backlog, and usually a no.</p>
-        <p>Now I just build it. A project board my team runs migrations on, and a data loader that moves records in bulk. For myself, a nutrition app that tracks macros just from a photo of a meal. Different problems, same process &mdash; work out what the gaps are, then build the thing that fixes them, usually within days. <em>All three built solo.</em></p>
+        <p>Now I just build it. A project board my team runs migrations on, and a data loader that moves records in bulk. Different problems, same process &mdash; work out what the gaps are, then build the thing that fixes them, usually within days. <em>Both built solo.</em></p>
       </div>
       <div class="profile-col" id="background">
       <div class="about-head">
@@ -839,63 +753,22 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   <div class="view" id="v-work">
   <div class="section-head">
     <h2>Work</h2>
-    <span class="count">Six tools &middot; phone, web, desktop and analytics</span>
+    <span class="count">Four tools &middot; migrations, reporting and the apps behind them</span>
     <span class="rule"></span>
   </div>
 
   <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
     <p class="ethos-sub">Every feature is decided before it is written &mdash; what it does, what it refuses to do, and how I would know it worked.</p>
-    <p class="work-intro">Two phone apps, two web apps, a desktop data loader and a probability model. Some solve a problem at work, some solve one of mine. <em>None of them are demos.</em></p>
+    <p class="work-intro">Two web apps, a desktop data loader and a probability model. Some solve a problem at work, some solve one of mine. <em>None of them are demos.</em></p>
   </section>
 
-    <div class="filters" role="group" aria-label="Filter projects by type">
-      <span class="f-label">Show</span>
-      <button type="button" class="chip-btn is-on" data-cat="all">All <span class="n">6</span></button>
-      <button type="button" class="chip-btn" data-cat="phone">Phone apps <span class="n">2</span></button>
-      <button type="button" class="chip-btn" data-cat="web">Web apps <span class="n">2</span></button>
-      <button type="button" class="chip-btn" data-cat="desktop">Desktop tools <span class="n">1</span></button>
-      <button type="button" class="chip-btn" data-cat="analytics">Analytics &amp; modeling <span class="n">1</span></button>
-    </div>
   <div class="notice">
       <b>Note</b>
-      <span><b style="color:var(--teal);">Three repositories are public</b> &mdash; Wanderlust Content Engine, NFL Bet Generator and MacroSnap. The links below go straight to the files worth reading.</span>
+      <span><b style="color:var(--teal);">Two repositories are public</b> &mdash; Wanderlust Content Engine and NFL Bet Generator. The links below go straight to the files worth reading.</span>
     </div>
   <div class="plates" id="projectList">
-    <article class="plate" data-cat="phone">
-      <div class="plate-head">
-        <h3>Wander Guide App</h3>
-        <span class="stamp">Expo 54 &middot; React Native</span>
-        <span class="stamp">Private repo</span>
-      </div>
-      <p class="tagline">A self-guided audio tour that keeps narrating after the cell service stops.</p>
-      <p class="lede">Pick a region, then drive. GPS triggers each stop's narration, a native map draws the route, and the whole tour downloads first.</p>
-      <div class="figures row four" aria-label="Wander Guide App screens">
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-explore.png" alt="Wander Guide explore screen with a search field and region cards for Maine and New Hampshire" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Explore</b> &mdash; tours by region.</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-tour.png" alt="Tour detail for the Kancamagus Highway Fall Foliage Tour showing 19 stops, starting point, driving distance and tips" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Tour detail</b> &mdash; 19 stops, distance, no-service warning.</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-map.png" alt="Tour in progress with a route on a native map, numbered stops, a now-playing audio bar and the next stop distance" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>On tour</b> &mdash; native map, now playing, next stop.</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/wga-mytours.png" alt="My Tours library listing three saved tours with thumbnails and regions" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>My Tours</b> &mdash; downloaded, runs offline.</figcaption>
-        </figure>
-      </div>
-      <p class="demo-note">Captured on an iPhone from the running app.</p>
-      <ul class="highlights">
-        <li><b>Offline by default</b><span>One tap caches the whole tour.</span></li>
-        <li><b>A real map, not a web view</b><span>Which is why it ships as an app.</span></li>
-        <li><b>Updates without the App Store</b><span>Over-the-air releases via EAS.</span></li>
-      </ul>
-    </article>
-<article class="plate" data-cat="web">
+    <article class="plate" data-cat="web">
       <div class="plate-head">
         <h3>Migration HQ</h3>
         <span class="stamp">Supabase &middot; Vercel</span>
@@ -935,69 +808,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>Security by policy</b><span>Postgres row-level security, magic-link auth, no password to leak.</span></li>
       </ul>
     </article>
-    <article class="plate" data-cat="web">
-      <div class="plate-head">
-        <h3>Wanderlust Content Engine</h3>
-        <span class="stamp live">Live &middot; Vercel</span>
-        <span class="stamp pub">Public repo &mdash; readable</span>
-      </div>
-      <p class="tagline">One idea in, three genuinely different social packages out &mdash; not one caption with a swapped hashtag.</p>
-      <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals.</p>
-      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
-        <div class="fig-window">
-          <div class="fig-track">
-            <figure class="fig-slide" data-cap="Content &mdash; one idea fans out to three platforms in parallel.">
-              <img src="assets/wce-content-live.png" alt="Content tab filled in with a Maine cabin getaway idea, location, story beat, three platform toggles, filming extras and a reel upload field" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="The result &mdash; a finished caption per platform, each on its own tab.">
-              <img src="assets/wce-output-live.png" alt="Generated Instagram caption for a Maine cabin getaway, with separate TikTok and YouTube tabs alongside it" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="Discovery &mdash; nine categories, an optional date for seasonal timing, saved searches.">
-              <img src="assets/wce-discovery-live.png" alt="Discovery tab with location, date and category pickers beside a sidebar of saved searches showing place counts" loading="lazy">
-            </figure>
-          </div>
-          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
-          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
-        </div>
-        <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 3</span>
-          <p class="fig-cap"></p>
-          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
-        </div>
-      </div>
-      <ul class="highlights">
-        <li><b>Evidence or nothing</b><span>No hidden gem without a real source. Empty ships empty.</span></li>
-        <li><b>It knows what it costs</b><span>Every call logs its billed cost against a weekly cap. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">logUsage</a></span></li>
-        <li><b>131 commits in five days</b><span>The most heavily iterated project here.</span></li>
-      </ul>
-      <p class="plate-foot"><a class="golink" href="https://wanderlust-content-engine.vercel.app">Live &#8599;</a> <a class="golink" href="https://github.com/cannshan/wanderlust-content-engine">Code &#8599;</a></p>
-    </article>
-    <article class="plate" data-cat="phone">
-      <div class="plate-head">
-        <h3>MacroSnap</h3>
-        <span class="stamp">Next.js &middot; Claude vision</span>
-        <span class="stamp pub">Public repo &mdash; readable</span>
-      </div>
-      <p class="tagline">Photograph a meal, get its macros &mdash; nothing is logged until you have corrected the estimate.</p>
-      <p class="lede">Claude reads the photo, identifies each item and estimates the portion. You correct it before anything is saved.</p>
-      <div class="figures row" aria-label="MacroSnap screens">
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/macrosnap-history.png" alt="MacroSnap History screen showing Monday September 14 at 1156 kcal with three logged meals and their photos" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>History</b> &mdash; fourteen days with a running average, each meal keeping its photo.</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="device"><div class="device-screen"><img src="assets/macrosnap-goals.png" alt="MacroSnap Daily goals screen with calorie, protein, carb, fat and fiber targets" loading="lazy"><span class="device-island" aria-hidden="true"></span><span class="device-home" aria-hidden="true"></span></div></div>
-          <figcaption><b>Goals</b> &mdash; and the disclaimer that stays on screen.</figcaption>
-        </figure>
-      </div>
-      <ul class="highlights">
-        <li><b>The estimate is a draft</b><span>Nothing is logged from a photo alone.</span></li>
-        <li><b>Fourteen days of history</b><span>Grouped by day with a running average.</span></li>
-        <li><b>Honest about its limits</b><span>On screen: estimates are for trends, not a medical diet.</span></li>
-      </ul>
-      <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/macrosnap">Code &#8599;</a></p>
-    </article>
-    <article class="plate" data-cat="desktop">
+            <article class="plate" data-cat="desktop">
       <div class="plate-head">
         <h3>Zendesk Data Loader</h3>
         <span class="stamp">Python &middot; pywebview desktop app</span>
@@ -1067,6 +878,43 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </ul>
       <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/nfl-bet-generator">Code &#8599;</a></p>
     </article>
+<article class="plate" data-cat="web">
+      <div class="plate-head">
+        <h3>Wanderlust Content Engine</h3>
+        <span class="stamp live">Live &middot; Vercel</span>
+        <span class="stamp pub">Public repo &mdash; readable</span>
+      </div>
+      <p class="tagline">One idea in, three genuinely different social packages out &mdash; not one caption with a swapped hashtag.</p>
+      <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals.</p>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="Content &mdash; one idea fans out to three platforms in parallel.">
+              <img src="assets/wce-content-live.png" alt="Content tab filled in with a Maine cabin getaway idea, location, story beat, three platform toggles, filming extras and a reel upload field" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="The result &mdash; a finished caption per platform, each on its own tab.">
+              <img src="assets/wce-output-live.png" alt="Generated Instagram caption for a Maine cabin getaway, with separate TikTok and YouTube tabs alongside it" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Discovery &mdash; nine categories, an optional date for seasonal timing, saved searches.">
+              <img src="assets/wce-discovery-live.png" alt="Discovery tab with location, date and category pickers beside a sidebar of saved searches showing place counts" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 3</span>
+          <p class="fig-cap"></p>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+      <ul class="highlights">
+        <li><b>Evidence or nothing</b><span>No hidden gem without a real source. Empty ships empty.</span></li>
+        <li><b>It knows what it costs</b><span>Every call logs its billed cost against a weekly cap. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">logUsage</a></span></li>
+        <li><b>131 commits in five days</b><span>The most heavily iterated project here.</span></li>
+      </ul>
+      <p class="plate-foot"><a class="golink" href="https://wanderlust-content-engine.vercel.app">Live &#8599;</a> <a class="golink" href="https://github.com/cannshan/wanderlust-content-engine">Code &#8599;</a></p>
+    </article>
       </div>
 
   </div>
@@ -1126,21 +974,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   if (!initial || !show(initial, false)) show("overview", false);
   window.addEventListener("hashchange", function () {
     show((location.hash || "").replace("#", "") || "overview", false);
-  });
-})();
-
-// Project category filter.
-(function () {
-  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip-btn"));
-  var groups = Array.prototype.slice.call(document.querySelectorAll("article.plate[data-cat]"));
-  chips.forEach(function (c) {
-    c.addEventListener("click", function () {
-      var cat = c.dataset.cat;
-      chips.forEach(function (o) { o.classList.toggle("is-on", o === c); });
-      groups.forEach(function (g) {
-        g.hidden = !(cat === "all" || g.dataset.cat === cat);
-      });
-    });
   });
 })();
 

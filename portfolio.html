@@ -1,0 +1,1037 @@
+<title>Shane Cann</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#E9EBE4;
+  --plate:#F3F4EF;
+  --ink:#1B2A33;
+  --ink-2:#4B5D67;
+  --ink-3:#7F8D94;
+  --rule:#C3CAC1;
+  --rule-strong:#9EA8A0;
+  --red:#B8372A;
+  --teal:#2A6E7A;
+  --grid:rgba(27,42,51,.055);
+  --plate-shadow:0 1px 0 rgba(27,42,51,.06);
+  --lang-cs:#7A5EA8;
+  --lang-ts:#2A6E7A;
+  --lang-py:#B5822A;
+  --lang-js:#B8372A;
+  --lang-html:#4B5D67;
+  --lang-css:#94A6AA;
+  --lang-sql:#3D7A54;
+  --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono","Consolas",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121A1F; --plate:#18232A; --ink:#E4E8E2; --ink-2:#9FACB1; --ink-3:#6E7C82;
+    --rule:#2D3B43; --rule-strong:#44555E; --red:#E4705C; --teal:#64B8C4;
+    --grid:rgba(228,232,226,.042); --plate-shadow:0 1px 0 rgba(0,0,0,.25);
+    --lang-cs:#A98CD8; --lang-ts:#64B8C4; --lang-py:#DDAE5A; --lang-js:#E4705C;
+    --lang-html:#8B9CA4; --lang-css:#5D7075; --lang-sql:#6BB585;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121A1F; --plate:#18232A; --ink:#E4E8E2; --ink-2:#9FACB1; --ink-3:#6E7C82;
+  --rule:#2D3B43; --rule-strong:#44555E; --red:#E4705C; --teal:#64B8C4;
+  --grid:rgba(228,232,226,.042); --plate-shadow:0 1px 0 rgba(0,0,0,.25);
+  --lang-cs:#A98CD8; --lang-ts:#64B8C4; --lang-py:#DDAE5A; --lang-js:#E4705C;
+  --lang-html:#8B9CA4; --lang-css:#5D7075; --lang-sql:#6BB585;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+code{font-family:var(--mono);font-size:.88em;}
+img{max-width:100%;}
+.sheet{max-width:1400px;margin:0 auto;padding-inline:24px;padding-block:36px 64px;}
+
+/* ---------- title block ---------- */
+.titleblock{border:1.5px solid var(--ink);background:var(--plate);box-shadow:var(--plate-shadow);}
+.tb-top{
+  display:flex;flex-wrap:wrap;align-items:flex-start;gap:26px;
+  padding:26px 26px 24px;border-bottom:1px solid var(--rule-strong);
+}
+.portrait{flex:0 0 auto;width:132px;}
+.portrait .frame{
+  border:1px solid var(--ink);
+  padding:5px;background:var(--paper);
+  line-height:0;
+}
+.portrait img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 22%;display:block;}
+.portrait figcaption{
+  font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:7px;text-align:center;
+}
+.tb-id{flex:1 1 300px;min-width:0;}
+h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(36px,6.4vw,58px);line-height:1;letter-spacing:-.028em;
+  margin:0 0 12px;text-wrap:balance;
+}
+.role{
+  font-family:var(--display);font-weight:500;font-size:17px;line-height:1.4;
+  color:var(--red);margin:0 0 10px;max-width:44ch;
+}
+.credential{
+  margin:0 0 14px;font-family:var(--mono);font-size:11.5px;line-height:1.5;
+  color:var(--ink-3);letter-spacing:.02em;
+}
+.credential strong{color:var(--ink-2);font-weight:600;}
+.contact{
+  display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;
+  font-family:var(--mono);font-size:12px;
+}
+.contact a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
+.contact a:hover{color:var(--red);}
+
+.tb-grid{display:grid;grid-template-columns:repeat(4,1fr);margin:0;}
+.cell{padding:12px 14px 13px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.cell:nth-child(4n){border-right:none;}
+.cell:nth-last-child(-n+4){border-bottom:none;}
+.cell dt{
+  font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 5px;
+}
+.cell dd{
+  margin:0;font-family:var(--display);font-weight:600;font-size:19px;
+  letter-spacing:-.01em;font-variant-numeric:tabular-nums;
+}
+.cell dd span{font-size:12px;font-weight:400;color:var(--ink-3);letter-spacing:0;}
+
+/* ---------- what you can hire me for ---------- */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.svc{padding:17px 20px 19px;border-right:1px solid var(--rule);}
+.svc:last-child{border-right:none;}
+.svc h2{
+  font-family:var(--display);font-weight:700;font-size:16.5px;
+  letter-spacing:-.015em;margin:0 0 7px;
+}
+.svc p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2);}
+@media (max-width:760px){
+  .services{grid-template-columns:1fr;}
+  .svc{border-right:none;border-bottom:1px solid var(--rule);}
+  .svc:last-child{border-bottom:none;}
+}
+
+.about-body.one-col{grid-template-columns:1fr;}
+.about-body.one-col .about-lead{max-width:72ch;}
+
+/* ---------- keyword line + anchor nav (single page) ---------- */
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+.kw{
+  margin:0 0 14px;max-width:52ch;
+  font-family:var(--display);font-weight:500;font-size:17px;line-height:1.5;
+  color:var(--red);
+}
+.jump{
+  display:flex;flex-wrap:wrap;gap:0;
+  margin-top:18px;border:1px solid var(--rule-strong);
+  background:var(--plate);box-shadow:var(--plate-shadow);
+}
+.jump a{
+  flex:1 1 auto;min-width:110px;text-align:center;text-decoration:none;
+  padding:13px 16px;border-right:1px solid var(--rule);
+  color:var(--ink-2);font-family:var(--display);font-weight:600;font-size:13px;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:color .15s ease,background .15s ease;
+}
+.jump a:last-child{border-right:0;}
+.jump a:hover{color:var(--ink);background:var(--paper);}
+.jump a:focus-visible{outline:2px solid var(--red);outline-offset:-3px;}
+[id]{scroll-margin-top:18px;}
+
+/* ---------- tabs & views ---------- */
+.tabs{
+  display:flex;flex-wrap:wrap;gap:0;
+  margin-top:0;border:1.5px solid var(--ink);border-top:0;
+  background:var(--plate);box-shadow:var(--plate-shadow);
+}
+.tab{
+  flex:1 1 auto;min-width:112px;cursor:pointer;
+  background:transparent;border:0;border-right:1px solid var(--rule);
+  padding:13px 16px;color:var(--ink-2);
+  font-family:var(--display);font-weight:600;font-size:13px;
+  letter-spacing:.07em;text-transform:uppercase;
+  position:relative;transition:color .15s ease,background .15s ease;
+}
+.tab:last-child{border-right:0;}
+.tab:hover{color:var(--ink);background:var(--paper);}
+.tab .n{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--ink-3);margin-left:5px;letter-spacing:0;
+}
+.tab.is-on{color:var(--ink);background:var(--paper);}
+.tab.is-on::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--red);
+}
+.tab:focus-visible{outline:2px solid var(--red);outline-offset:-3px;}
+
+.view{display:none;}
+.view.is-on{display:block;}
+.view > .section-head:first-child,
+.view > .proj-group:first-child .section-head{margin-top:30px;}
+.view > section:first-child{margin-top:18px;}
+
+/* project filter chips */
+
+.demo-note{
+  margin:-8px 0 18px;padding:9px 12px;
+  border-left:2px solid var(--rule-strong);
+  font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--ink-3);
+}
+
+/* ---------- about ---------- */
+.about{
+  margin-top:18px;border:1px solid var(--rule-strong);background:var(--plate);
+  box-shadow:var(--plate-shadow);padding:24px;
+}
+.about-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.about-head h2{
+  font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0;flex:none;
+}
+.about-head .rule{flex:1;height:1px;background:var(--rule-strong);min-width:20px;}
+.about-body{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;}
+.about-body p{margin:0 0 13px;max-width:62ch;color:var(--ink-2);}
+.about-body p:last-child{margin-bottom:0;}
+.about-lead{
+  font-size:18px !important;line-height:1.5;color:var(--ink) !important;
+  font-weight:600;
+}
+.about-body em{color:var(--ink);font-style:italic;}
+
+/* ---------- ethos ---------- */
+.ethos{
+  margin-top:18px;border:1.5px solid var(--ink);background:var(--plate);
+  box-shadow:var(--plate-shadow);padding:24px;
+}
+.ethos-sub{
+  margin:9px 0 0;max-width:68ch;
+  font-size:16.5px;line-height:1.55;color:var(--ink);
+}
+.ethos .work-intro{
+  margin:14px 0 0;max-width:80ch;font-size:16px;line-height:1.6;color:var(--ink-2);
+}
+.ethos .work-intro em{color:var(--ink);font-style:italic;}
+.ethos-lead{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(19px,2.4vw,24px);line-height:1.3;letter-spacing:-.015em;
+  margin:0 0 6px;max-width:34ch;text-wrap:balance;
+}
+.ethos-lead em{color:var(--red);font-style:normal;}
+.notes a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
+.notes a:hover{color:var(--red);}
+
+.platforms{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 10px;
+  margin-top:20px;padding-top:15px;border-top:1px solid var(--rule);
+}
+.platforms .lbl{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-right:4px;
+}
+.chip{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+  padding:4px 9px;border:1px solid var(--rule-strong);color:var(--ink-2);
+}
+
+/* ---------- background band ---------- */
+.background{
+  margin-top:18px;border:1px solid var(--rule-strong);background:var(--plate);
+  box-shadow:var(--plate-shadow);padding:22px 24px;
+}
+.bg-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;margin-bottom:18px;
+}
+.bg-item{border-left:2px solid var(--rule-strong);padding-left:12px;}
+.bg-item.now{border-left-color:var(--red);}
+.bg-item .org{
+  font-family:var(--display);font-weight:700;font-size:15px;
+  letter-spacing:-.01em;display:block;
+}
+.bg-item .role{
+  font-size:13.5px;line-height:1.4;color:var(--ink-2);display:block;margin-top:2px;
+}
+.bg-item .when{
+  font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);display:block;margin-top:5px;font-variant-numeric:tabular-nums;
+}
+.bg-foot{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 22px;
+  border-top:1px solid var(--rule);padding-top:14px;
+}
+.bg-foot .lbl{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);flex:none;
+}
+.edu-line{
+  margin:12px 0 0;font-size:13px;line-height:1.5;color:var(--ink-3);
+  font-family:var(--mono);font-size:11px;
+}
+.edu-line strong{color:var(--ink-2);font-weight:500;}
+
+.chip.ai{border-color:var(--teal);color:var(--teal);}
+.chips{display:flex;flex-wrap:wrap;gap:7px 8px;flex:1;min-width:0;}
+
+.notice{
+  display:flex;gap:12px;align-items:baseline;margin-top:14px;padding:11px 14px;
+  border:1px dashed var(--rule-strong);font-family:var(--mono);
+  font-size:11.5px;line-height:1.65;color:var(--ink-2);
+}
+.notice b{
+  color:var(--red);font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  font-size:10px;flex:none;
+}
+
+/* ---------- profile: about and background share one box ---------- */
+.profile{
+  margin-top:18px;border:1px solid var(--rule-strong);background:var(--plate);
+  box-shadow:var(--plate-shadow);padding:24px;
+}
+.profile-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:0;}
+.profile-col:first-child{padding-right:30px;}
+.profile-col:last-child{padding-left:30px;border-left:1px solid var(--rule);}
+.profile-col p{margin:0 0 13px;max-width:60ch;color:var(--ink-2);}
+.profile-col p:last-child{margin-bottom:0;}
+.profile-col em{color:var(--ink);font-style:italic;}
+.profile .bg-grid{grid-template-columns:1fr;gap:12px;margin-bottom:15px;}
+.profile .bg-foot{padding-top:12px;}
+.profile .bg-foot.edu{margin-top:12px;}
+@media (max-width:860px){
+  .profile-grid{grid-template-columns:1fr;gap:24px;}
+  .profile-col:first-child{padding-right:0;}
+  .profile-col:last-child{padding-left:0;border-left:0;border-top:1px solid var(--rule);padding-top:22px;}
+}
+@media (max-width:480px){.profile{padding:18px;}}
+
+/* ---------- section headers ---------- */
+.section-head{display:flex;align-items:center;gap:16px;margin:52px 0 20px;}
+.section-head h2{
+  font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0;flex:none;
+}
+.section-head .count{
+  font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;
+  font-variant-numeric:tabular-nums;
+}
+.section-head .rule{
+  flex:1;height:1px;min-width:20px;background:var(--rule-strong);
+  transform-origin:left;animation:draw .7s cubic-bezier(.2,.7,.3,1) both;
+}
+@keyframes draw{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+@media (prefers-reduced-motion:reduce){.section-head .rule{animation:none;}}
+
+/* ---------- plates ---------- */
+.plates{display:flex;flex-direction:column;gap:18px;}
+.plate{
+  position:relative;background:var(--plate);border:1px solid var(--rule-strong);
+  box-shadow:var(--plate-shadow);padding:22px 24px 0;transition:border-color .2s ease;
+}
+.plate:hover{border-color:var(--ink-2);}
+.plate::after{
+  content:"";position:absolute;top:-1px;right:-1px;width:11px;height:11px;
+  border-top:2px solid var(--red);border-right:2px solid var(--red);
+  opacity:0;transition:opacity .2s ease;
+}
+.plate:hover::after{opacity:1;}
+.plate-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:6px;}
+.plate-head h3{
+  font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em;
+  line-height:1.15;margin:0;text-wrap:balance;
+}
+.stamp{
+  font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;padding:3px 7px;border:1px solid var(--rule-strong);
+  color:var(--ink-3);white-space:nowrap;
+}
+.stamp.live{color:var(--teal);border-color:var(--teal);}
+.stamp.pub{color:var(--teal);border-color:var(--teal);background:var(--paper);}
+.stamp.local{color:var(--red);border-color:var(--red);}
+.tagline{
+  font-family:var(--display);font-weight:500;font-size:15px;line-height:1.45;
+  color:var(--red);margin:0 0 12px;max-width:62ch;
+}
+.plate-body{
+  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:26px;padding-bottom:20px;
+}
+.plate-body p{margin:0 0 12px;max-width:62ch;color:var(--ink-2);}
+.plate-body p:last-child{margin-bottom:0;}
+.plate-body p em{color:var(--ink);font-style:italic;}
+.notes{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;}
+.notes li{
+  display:grid;grid-template-columns:auto 1fr;gap:10px;
+  font-size:14px;line-height:1.5;color:var(--ink-2);
+}
+.notes li::before{
+  content:"";width:7px;height:7px;margin-top:8px;
+  border:1px solid var(--ink-3);transform:rotate(45deg);
+}
+.notes b{color:var(--ink);font-weight:600;font-family:var(--display);font-size:13.5px;}
+
+/* ---------- figure carousel ---------- */
+/* Figures run the full width of the plate: the text column stays readable
+   while the screenshots get every pixel available. */
+.figures{
+  margin:0 -24px 20px;border:1px solid var(--rule);
+  border-left:0;border-right:0;background:var(--paper);
+}
+.figures:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+.fig-window{overflow:hidden;}
+.fig-track{display:flex;transition:transform .34s cubic-bezier(.3,.7,.3,1);}
+@media (prefers-reduced-motion:reduce){.fig-track{transition:none;}}
+.fig-slide{
+  flex:0 0 100%;margin:0;min-width:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:14px;background:var(--paper);
+}
+/* Landscape captures fill the column; portrait ones are capped by height
+   instead, or a portrait screenshot would run metres down the page. */
+.fig-slide a{
+  display:block;line-height:0;width:100%;max-width:100%;flex:0 1 auto;
+  border:1px solid var(--rule-strong);
+  box-shadow:0 2px 14px rgba(27,42,51,.13);
+  transition:box-shadow .2s ease,border-color .2s ease;
+}
+.fig-slide a:hover{border-color:var(--ink-2);box-shadow:0 4px 22px rgba(27,42,51,.2);}
+.fig-slide a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+/* Never render a capture above its natural size - upscaling is what makes
+   a screenshot look soft. Wide ones are capped to the band instead. */
+.fig-slide img{display:block;width:auto;max-width:100%;height:auto;}
+.fig-slide.tall{padding:16px;}
+.fig-slide.tall a{width:auto;max-width:100%;}
+.fig-slide.tall img{width:auto;max-height:720px;max-width:100%;}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .fig-slide a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
+}
+:root[data-theme="dark"] .fig-slide a{box-shadow:0 2px 14px rgba(0,0,0,.45);}
+.fig-bar{
+  display:flex;align-items:center;gap:12px;
+  border-top:1px solid var(--rule);padding:10px 24px;background:var(--plate);
+}
+/* Arrows sit on the image itself - in a thin bar underneath nobody
+   noticed there was more than one screenshot. */
+.fig-window{position:relative;}
+.fig-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:46px;height:46px;padding:0;cursor:pointer;border-radius:50%;
+  background:var(--plate);border:1px solid var(--rule-strong);color:var(--ink);
+  font-family:var(--display);font-size:26px;font-weight:600;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 12px rgba(27,42,51,.22);
+  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .15s ease;
+}
+.fig-arrow.prev{left:16px;}
+.fig-arrow.next{right:16px;}
+.fig-arrow span{display:block;margin-top:-3px;}
+.fig-arrow:hover{
+  background:var(--red);border-color:var(--red);color:#fff;
+  transform:translateY(-50%) scale(1.07);
+}
+.fig-arrow:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+@media (prefers-reduced-motion:reduce){
+  .fig-arrow,.fig-arrow:hover{transition:none;transform:translateY(-50%);}
+}
+
+/* Dots make the number of images visible at a glance. */
+.fig-dots{display:flex;gap:7px;flex:none;align-items:center;}
+.fig-dot{
+  width:9px;height:9px;padding:0;cursor:pointer;border-radius:50%;
+  background:transparent;border:1px solid var(--ink-3);
+  transition:background .15s ease,border-color .15s ease;
+}
+.fig-dot:hover{border-color:var(--red);}
+.fig-dot.on{background:var(--red);border-color:var(--red);}
+.fig-dot:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+
+@media (max-width:560px){
+  .fig-arrow{width:38px;height:38px;font-size:22px;}
+  .fig-arrow.prev{left:8px;}
+  .fig-arrow.next{right:8px;}
+}
+.fig-count{
+  flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-3);font-variant-numeric:tabular-nums;
+}
+.fig-count b{color:var(--ink);font-weight:600;}
+.fig-cap{
+  flex:1;margin:0;min-width:0;
+  font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--ink-2);
+}
+/* Four screens still fit across the band; the frame scales with them. */
+/* side buttons */
+
+.work-intro{
+  margin:0 0 4px;max-width:78ch;
+  font-size:16px;line-height:1.6;color:var(--ink-2);
+}
+.work-intro em{color:var(--ink);font-style:italic;}
+
+/* ---------- project card: lede, highlights, links ---------- */
+.lede{
+  margin:0 0 20px;max-width:74ch;
+  font-size:17px;line-height:1.6;color:var(--ink-2);
+}
+.lede em{color:var(--ink);font-style:italic;}
+.highlights{
+  margin:0;padding:0;list-style:none;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 30px;
+}
+.highlights li{display:flex;flex-direction:column;gap:5px;padding-top:11px;border-top:1px solid var(--rule-strong);}
+.highlights b{
+  font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:-.005em;color:var(--ink);
+}
+.highlights span{font-size:13.5px;line-height:1.55;color:var(--ink-2);}
+.highlights a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;font-family:var(--mono);font-size:11.5px;}
+.highlights a:hover{color:var(--red);}
+.plate-foot{display:flex;flex-wrap:wrap;gap:8px 18px;margin:20px 0 0;}
+.golink{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal);text-decoration:none;border:1px solid var(--rule-strong);padding:6px 12px;
+  transition:border-color .15s ease,color .15s ease;
+}
+.golink:hover{border-color:var(--red);color:var(--red);}
+.plate{padding-bottom:24px;}
+@media (max-width:820px){
+  .highlights{grid-template-columns:1fr;gap:16px;}
+  .lede{font-size:16px;}
+}
+
+.bg-foot.edu{margin-top:14px;align-items:baseline;}
+.edu-body{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;}
+.edu-body b{font-family:var(--display);font-weight:600;font-size:15px;color:var(--ink);}
+.edu-body span{font-size:13.5px;color:var(--ink-2);}
+
+/* ---------- closing hire block ---------- */
+.hire{
+  margin-top:30px;border:1.5px solid var(--ink);background:var(--plate);
+  box-shadow:var(--plate-shadow);padding:30px 32px;
+  display:flex;flex-wrap:wrap;align-items:flex-start;gap:30px 48px;
+}
+.hire-main{flex:1 1 440px;min-width:0;}
+.hire-main h2{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(22px,2.9vw,30px);line-height:1.15;letter-spacing:-.02em;
+  margin:0 0 12px;max-width:22ch;text-wrap:balance;
+}
+.hire-main p{margin:0;font-size:16px;line-height:1.6;color:var(--ink-2);max-width:none;}
+.hire-links{flex:0 1 auto;display:flex;flex-direction:column;gap:12px;}
+.hire-primary{
+  display:inline-block;background:var(--red);color:#fff;text-decoration:none;
+  font-family:var(--mono);font-size:14px;letter-spacing:.03em;
+  padding:14px 22px;border:1px solid var(--red);white-space:nowrap;
+  transition:background .15s ease,color .15s ease;
+}
+.hire-primary:hover{background:transparent;color:var(--red);}
+.hire-primary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+.hire-secondary{display:flex;flex-wrap:wrap;gap:8px;}
+@media (max-width:620px){
+  .hire{padding:22px 20px;gap:22px;}
+  .hire-links{width:100%;}
+  .hire-primary{text-align:center;}
+}
+
+/* ---------- spec strip ---------- */
+.spec{
+  border-top:1px solid var(--rule);margin-inline:-24px;padding:14px 24px 16px;
+  display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px 32px;
+}
+.spec-figures{display:flex;flex-wrap:wrap;gap:12px 26px;flex:1 1 300px;min-width:0;}
+.fig{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.fig .k{
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.fig .v{
+  font-family:var(--mono);font-size:13px;font-weight:500;
+  font-variant-numeric:tabular-nums;overflow-wrap:anywhere;
+}
+.fig .v a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
+.fig .v a:hover{color:var(--red);}
+.langs{flex:0 1 270px;min-width:190px;}
+.bar{
+  display:flex;height:9px;width:100%;
+  border:1px solid var(--rule-strong);background:var(--paper);overflow:hidden;
+}
+.bar span{display:block;height:100%;}
+.bar span + span{border-left:1px solid var(--plate);}
+.legend{
+  display:flex;flex-wrap:wrap;gap:4px 14px;margin:7px 0 0;
+  font-family:var(--mono);font-size:10.5px;color:var(--ink-2);
+  font-variant-numeric:tabular-nums;
+}
+.legend i{display:inline-block;width:7px;height:7px;margin-right:5px;}
+
+footer{
+  margin-top:56px;border-top:1.5px solid var(--ink);padding-top:16px;
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  color:var(--ink-3);text-transform:uppercase;
+}
+footer a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
+footer a:hover{color:var(--red);}
+a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+
+@media (max-width:820px){
+  .about-body{grid-template-columns:1fr;gap:20px;}
+  .bg-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+}
+@media (max-width:760px){
+  .tb-grid{grid-template-columns:repeat(2,1fr);}
+  .cell:nth-child(4n){border-right:1px solid var(--rule);}
+  .cell:nth-child(2n){border-right:none;}
+  .cell:nth-last-child(-n+4){border-bottom:1px solid var(--rule);}
+  .cell:nth-last-child(-n+2){border-bottom:none;}
+  .plate-body{grid-template-columns:1fr;gap:18px;}
+  .fig-cap{display:none;}
+}
+@media (max-width:480px){
+  .sheet{padding-block:24px 48px;}
+  .tb-top{padding:20px;gap:18px;}
+  .portrait{width:96px;}
+  .about,.ethos,.background{padding:18px;}
+  .bg-grid{grid-template-columns:1fr;gap:14px;}
+  .plate{padding:18px 18px 0;}
+  .figures{margin-inline:-18px;}
+  .fig-bar{padding-inline:18px;}
+  .spec{margin-inline:-18px;padding-inline:18px;}
+  .fig-slide{padding:10px;}
+  .fig-slide.tall img{max-height:460px;}
+}
+</style>
+
+<div class="sheet">
+
+<header class="titleblock">
+    <div class="tb-top">
+      <figure class="portrait">
+        <div class="frame"><img src="assets/shane.png" alt="Shane Cann"></div>
+        <figcaption>Shane Cann</figcaption>
+      </figure>
+      <div class="tb-id">
+        <h1>Shane Cann</h1>
+        <p class="kw">Data migration &middot; Spreadsheet cleanup &middot; Reporting &amp; dashboards &middot; Web apps and internal tools</p>
+        <p class="contact">
+          <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
+          <span><a href="https://github.com/cannshan">github.com/cannshan</a></span>
+          <span><a href="https://www.linkedin.com/in/shane-cann/">linkedin.com/in/shane-cann</a></span>
+        </p>
+      </div>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <h2>Move your data</h2>
+        <p>Export, transform, migrate into your target platform. I find the bad data before the import does.</p>
+      </div>
+      <div class="svc">
+        <h2>Report on it</h2>
+        <p>The dashboard that answers the question people keep asking in Slack &mdash; built on numbers that hold up.</p>
+      </div>
+      <div class="svc">
+        <h2>Build the tool or app</h2>
+        <p>The web app or internal tool that replaces the spreadsheet &mdash; usually standing up in days. The four below are what that looks like.</p>
+      </div>
+    </div>
+  </header>
+  <nav class="tabs" aria-label="Sections">
+    <button type="button" class="tab is-on" data-view="overview">Overview</button>
+    <button type="button" class="tab" data-view="work">Work <span class="n">4</span></button>
+  </nav>
+
+  <div class="view is-on" id="v-overview">
+  <section class="profile" id="about">
+    <div class="profile-grid">
+      <div class="profile-col">
+      <div class="about-head">
+        <h2>About</h2>
+        <span class="rule"></span>
+      </div>
+        <p class="about-lead">I&rsquo;ve spent eight years as a Technical Architect watching good ideas die in the gap between &ldquo;someone should build that&rdquo; and someone actually building it. AI closed that gap for me, and I haven&rsquo;t stopped since.</p>
+        <p>That work taught me how things actually fail: the export that truncates silently, the two tools that quietly disagree, the process everyone works around instead of fixing. I could always see the fix, but getting it built meant a business case, a backlog, and usually a no.</p>
+        <p>Now I just build it. A project board my team runs migrations on, and a data loader that moves records in bulk. Different problems, same process &mdash; work out what the gaps are, then build the thing that fixes them, usually within days. <em>Both built solo.</em></p>
+      </div>
+      <div class="profile-col" id="background">
+      <div class="about-head">
+        <h2>Background</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="bg-grid">
+
+        <div class="bg-item now">
+          <span class="role">Senior Technical Architect, and Technical Architect before that</span>
+          <span class="when">2021 &mdash; present &middot; Enterprise SaaS</span>
+        </div>
+        <div class="bg-item">
+          <span class="role">Data Team Lead, up from Project Manager, Consultant and Support</span>
+          <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
+        </div>
+        <div class="bg-item">
+          <span class="role">Customer Experience Technical Specialist</span>
+          <span class="when">2014 &mdash; 2017 &middot; Accounting software</span>
+        </div>
+        <div class="bg-item">
+          <span class="role">Student Technician Supervisor</span>
+          <span class="when">2011 &mdash; 2014 &middot; University IT</span>
+        </div>
+      </div>
+      <div class="bg-foot">
+        <span class="lbl">Tooling</span>
+        <div class="chips">
+          <span class="chip">SQL</span>
+          <span class="chip">Python / pandas</span>
+          <span class="chip">Postgres / Supabase</span>
+          <span class="chip">Excel at scale</span>
+          <span class="chip">CSV &amp; API pipelines</span>
+          <span class="chip">CRM &amp; helpdesk platforms</span>
+        </div>
+      </div>
+      <div class="bg-foot">
+        <span class="lbl">Built with</span>
+        <div class="chips">
+          <span class="chip ai">Claude Code</span>
+          <span class="chip ai">Codex</span>
+        </div>
+      </div>
+      <div class="bg-foot edu">
+        <span class="lbl">Education</span>
+        <div class="edu-body">
+          <b>Michigan State University</b>
+          <span>B.S. Media &amp; Information &middot; B.A. Advertising &middot; Graduated 2014</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <div class="view" id="v-work">
+  <div class="section-head">
+    <h2>Work</h2>
+    <span class="count">Four tools &middot; migrations, reporting and the apps behind them</span>
+    <span class="rule"></span>
+  </div>
+
+  <section class="ethos">
+    <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
+    <p class="ethos-sub">Every feature is decided before it is written &mdash; what it does, what it refuses to do, and how I would know it worked.</p>
+    <p class="work-intro">Two web apps, a desktop data loader and a probability model. Some solve a problem at work, some solve one of mine. <em>None of them are demos.</em></p>
+  </section>
+
+  <div class="notice">
+      <b>Note</b>
+      <span><b style="color:var(--teal);">Two repositories are public</b> &mdash; Wanderlust Content Engine and NFL Bet Generator. The links below go straight to the files worth reading.</span>
+    </div>
+  <div class="plates" id="projectList">
+    <article class="plate" data-cat="web">
+      <div class="plate-head">
+        <h3>Migration HQ</h3>
+        <span class="stamp">Supabase &middot; Vercel</span>
+        <span class="stamp local">Internal team tool</span>
+      </div>
+      <p class="tagline">The board a migration team runs on.</p>
+      <p class="lede">Every migration is a card moving through six phases, each with an owner and the four dates that matter.</p>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="The board &mdash; six phases, each card carrying its owners, sources and go-live date.">
+              <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Behind a card &mdash; phase, owners, the four dates that matter, data source and the objects being migrated.">
+              <img src="assets/mhq-edit.png" alt="Edit migration project form with fields for project name, status, engagement manager, developer, owner, phase, mapping signoff, test migration, closed migration and go-live dates, data source, and checkboxes for the objects migrated" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Reporting &mdash; counts, a projects-by-source chart, filters to object and date range.">
+              <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="The gate &mdash; no project leaves the board without this.">
+              <img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 4</span>
+          <p class="fig-cap"></p>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+      <p class="demo-note">Screens captured against a local demo database &mdash; every company, person and date shown is invented. The production board holds live customer migrations.</p>
+      <ul class="highlights">
+        <li><b>Institutional memory, as data</b><span>Every closed migration leaves a searchable record.</span></li>
+        <li><b>Reporting built in</b><span>Counts, a chart and filters, not an export.</span></li>
+        <li><b>Security by policy</b><span>Postgres row-level security, magic-link auth, no password to leak.</span></li>
+      </ul>
+    </article>
+            <article class="plate" data-cat="desktop">
+      <div class="plate-head">
+        <h3>Zendesk Data Loader</h3>
+        <span class="stamp">Python &middot; pywebview desktop app</span>
+        <span class="stamp">Private repo</span>
+      </div>
+      <p class="tagline">Import, update, delete and export without writing a line against the API.</p>
+      <p class="lede">A desktop tool that puts an API behind a point-and-click wizard: pick the operation, map the fields, watch it run.</p>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="All four operations as equals &mdash; most teams settle for an import-only script.">
+              <img src="assets/zendesk-select_action.png" alt="Select Action screen offering Import, Update, Delete and Export" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="A run in flight &mdash; live progress, and a Stop that halts it mid-run.">
+              <img src="assets/zendesk-progress.png" alt="Confirm Import screen with a progress bar part-way through, a save location and an active Stop button" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Sign-in &mdash; the tool stores nothing it does not need.">
+              <img src="assets/zendesk-login.png" alt="Sign-in screen with subdomain, email and API token fields" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 3</span>
+          <p class="fig-cap"></p>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+      <ul class="highlights">
+        <li><b>All four operations</b><span>Import, update, delete and export, not import-only.</span></li>
+        <li><b>Mappings are reusable</b><span>Auto-map guesses the columns; save it for the next job.</span></li>
+        <li><b>595 KB of Python</b><span>The oldest project here and still the largest.</span></li>
+      </ul>
+    </article>
+    <article class="plate" data-cat="analytics">
+      <div class="plate-head">
+        <h3>NFL Bet Generator</h3>
+        <span class="stamp">Python &middot; Live odds</span>
+        <span class="stamp pub">Public repo &mdash; readable</span>
+      </div>
+      <p class="tagline">A probability model that refuses to quote correlated legs as independent math.</p>
+      <p class="lede">Live odds and public stats become an opponent-adjusted power rating, then win, cover and total probabilities.</p>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="NFL Bet Generator screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="Week 1 board &mdash; live props from four books, each leg annotated with the injury line.">
+              <img src="assets/nfl-dashboard.png" alt="NFL Bet Generator dashboard showing a Broncos at Chiefs same-game parlay with eight annotated player-prop legs" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Track Record &mdash; auto-logged and auto-settled, and plain that the sample is too small.">
+              <img src="assets/nfl-track-record.png" alt="Track Record tab showing 0 settled bets, 44 pending, and a warning that the sample is too small to be meaningful" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 2</span>
+          <p class="fig-cap"></p>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+      <ul class="highlights">
+        <li><b>Backtested on an unselected sample</b><span>Tuning on its own past picks was the easy, wrong answer. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">backtest_prop_blend.py</a></span></li>
+        <li><b>Honest about correlation</b><span>Same-game legs get flagged, not quoted as clean math. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py">parlay_builder.py</a></span></li>
+        <li><b>It grades its own homework</b><span>Every call auto-settles once the game finishes. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py">tracking.py</a></span></li>
+      </ul>
+      <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/nfl-bet-generator">Code &#8599;</a></p>
+    </article>
+<article class="plate" data-cat="web">
+      <div class="plate-head">
+        <h3>Wanderlust Content Engine</h3>
+        <span class="stamp live">Live &middot; Vercel</span>
+        <span class="stamp pub">Public repo &mdash; readable</span>
+      </div>
+      <p class="tagline">One idea in, three genuinely different social packages out &mdash; not one caption with a swapped hashtag.</p>
+      <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals.</p>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="Content &mdash; one idea fans out to three platforms in parallel.">
+              <img src="assets/wce-content-live.png" alt="Content tab filled in with a Maine cabin getaway idea, location, story beat, three platform toggles, filming extras and a reel upload field" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="The result &mdash; a finished caption per platform, each on its own tab.">
+              <img src="assets/wce-output-live.png" alt="Generated Instagram caption for a Maine cabin getaway, with separate TikTok and YouTube tabs alongside it" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Discovery &mdash; nine categories, an optional date for seasonal timing, saved searches.">
+              <img src="assets/wce-discovery-live.png" alt="Discovery tab with location, date and category pickers beside a sidebar of saved searches showing place counts" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 3</span>
+          <p class="fig-cap"></p>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+      <ul class="highlights">
+        <li><b>Evidence or nothing</b><span>No hidden gem without a real source. Empty ships empty.</span></li>
+        <li><b>It knows what it costs</b><span>Every call logs its billed cost against a weekly cap. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">logUsage</a></span></li>
+        <li><b>131 commits in five days</b><span>The most heavily iterated project here.</span></li>
+      </ul>
+      <p class="plate-foot"><a class="golink" href="https://wanderlust-content-engine.vercel.app">Live &#8599;</a> <a class="golink" href="https://github.com/cannshan/wanderlust-content-engine">Code &#8599;</a></p>
+    </article>
+      </div>
+
+  </div>
+
+<section class="hire" id="contact">
+    <div class="hire-main">
+      <h2>Got data that needs moving, or an app that needs building?</h2>
+      <p>Migrations, spreadsheet cleanup, reporting, or an app that does not exist yet. Tell me what you are moving, what is broken, or what you want built, and I will tell you honestly whether I am the right person for it.</p>
+    </div>
+    <div class="hire-links">
+      <a class="hire-primary" href="mailto:cannshan@gmail.com">cannshan@gmail.com</a>
+      <div class="hire-secondary">
+        <a class="golink" href="https://www.linkedin.com/in/shane-cann/">LinkedIn &#8599;</a>
+        <a class="golink" href="https://github.com/cannshan">GitHub &#8599;</a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
+    <span>Built and maintained by Shane Cann &middot; Last updated 8 Oct 2026</span>
+  </footer>
+
+</div>
+
+<script>
+// Two views, with the choice reflected in the URL so a view can be linked to.
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+
+  function show(name, push) {
+    var found = false;
+    views.forEach(function (v) {
+      var on = v.id === "v-" + name;
+      v.classList.toggle("is-on", on);
+      if (on) found = true;
+    });
+    if (!found) return false;
+    tabs.forEach(function (t) {
+      var on = t.dataset.view === name;
+      t.classList.toggle("is-on", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    if (push && history.replaceState) history.replaceState(null, "", "#" + name);
+    return true;
+  }
+
+  tabs.forEach(function (t) {
+    t.setAttribute("role", "tab");
+    t.addEventListener("click", function () {
+      show(t.dataset.view, true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  var initial = (location.hash || "").replace("#", "");
+  if (!initial || !show(initial, false)) show("overview", false);
+  window.addEventListener("hashchange", function () {
+    show((location.hash || "").replace("#", "") || "overview", false);
+  });
+})();
+
+(function () {
+  document.querySelectorAll("[data-carousel]").forEach(function (root) {
+    var track = root.querySelector(".fig-track");
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".fig-slide"));
+    var capEl = root.querySelector(".fig-cap");
+    var numEl = root.querySelector(".fig-count b");
+    var index = 0;
+
+    // The total is written from the slide count, so adding a screenshot
+    // cannot leave the caption bar claiming the old number.
+    var countEl = root.querySelector(".fig-count");
+    if (countEl) {
+      countEl.innerHTML = 'Fig. <b>1</b> / ' + slides.length;
+      numEl = countEl.querySelector("b");
+    }
+
+    // Portrait screenshots get more vertical room than landscape ones.
+    slides.forEach(function (slide) {
+      var img = slide.querySelector("img");
+      if (!img) return;
+      var mark = function () {
+        if (img.naturalHeight > img.naturalWidth) slide.classList.add("tall");
+      };
+      if (img.complete && img.naturalWidth) mark();
+      else img.addEventListener("load", mark, { once: true });
+    });
+
+    // Slides past the first are lazy and sit offscreen, so they would not
+    // start loading until shown. Warm the neighbours instead.
+    function warm(i) {
+      [i, (i + 1) % slides.length, (i - 1 + slides.length) % slides.length].forEach(function (n) {
+        var img = slides[n] && slides[n].querySelector("img");
+        if (img && img.getAttribute("loading") === "lazy") img.setAttribute("loading", "eager");
+      });
+    }
+
+    // One dot per image, so the count is visible without clicking anything.
+    var dotsEl = root.querySelector(".fig-dots");
+    var dots = [];
+    if (dotsEl && slides.length > 1) {
+      slides.forEach(function (_, i) {
+        var d = document.createElement("button");
+        d.type = "button";
+        d.className = "fig-dot";
+        d.setAttribute("aria-label", "Image " + (i + 1) + " of " + slides.length);
+        d.addEventListener("click", function () { index = i; render(); });
+        dotsEl.appendChild(d);
+        dots.push(d);
+      });
+    }
+
+    function render() {
+      warm(index);
+      track.style.transform = "translateX(" + (-index * 100) + "%)";
+      if (numEl) numEl.textContent = String(index + 1);
+      if (capEl) capEl.textContent = slides[index].getAttribute("data-cap") || "";
+      slides.forEach(function (s, i) {
+        s.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      dots.forEach(function (d, i) {
+        d.classList.toggle("on", i === index);
+        d.setAttribute("aria-selected", i === index ? "true" : "false");
+      });
+    }
+
+    function go(dir) {
+      index = (index + dir + slides.length) % slides.length;
+      render();
+    }
+
+    root.querySelectorAll(".fig-arrow").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        go(parseInt(btn.getAttribute("data-dir"), 10));
+      });
+    });
+
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { go(-1); e.preventDefault(); }
+      else if (e.key === "ArrowRight") { go(1); e.preventDefault(); }
+    });
+
+    render();
+  });
+})();
+</script>

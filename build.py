@@ -9,14 +9,10 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(
-    os.environ["APPDATA"],
-    "Claude", "scratch-workspaces",
-    "7afa947c-15ad-4ce4-87de-f8ddcac31216",
-    "325141be-ad42-4572-9543-3fdce5957c82",
-    "scratch-2026-09-14-228101",
-    "portfolio.html",
-)
+# The source lives beside this script. It used to be read out of a Claude
+# session scratch folder, which moved without warning and would have taken
+# the only copy with it if the session were deleted.
+SRC = os.path.join(HERE, "portfolio.html")
 HEAD = os.path.join(HERE, "_head.html")
 OUT = os.path.join(HERE, "index.html")
 
