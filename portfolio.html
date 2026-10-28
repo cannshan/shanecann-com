@@ -122,6 +122,12 @@ h1{
   font-family:var(--display);font-weight:700;font-size:16.5px;
   letter-spacing:-.015em;margin:0 0 7px;
 }
+.svc-eg{margin:9px 0 0;}
+.svc-eg a{
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;
+  color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;
+}
+.svc-eg a:hover{color:var(--red);}
 .svc p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2);}
 @media (max-width:760px){
   .services{grid-template-columns:1fr;}
@@ -640,14 +646,17 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="svc">
         <h2>Move your data</h2>
         <p>Export, transform, migrate into your target platform. I find the bad data before the import does.</p>
+        <p class="svc-eg"><a href="#work" data-goto="zendesk-data-loader">Zendesk Data Loader &#8599;</a></p>
       </div>
       <div class="svc">
         <h2>Report on it</h2>
         <p>The dashboard that answers the question people keep asking in Slack &mdash; built on numbers that hold up.</p>
+        <p class="svc-eg"><a href="#work" data-goto="migration-hq">Migration HQ &#8599;</a></p>
       </div>
       <div class="svc">
         <h2>Build the tool or app</h2>
         <p>The web app or internal tool that replaces the spreadsheet &mdash; usually standing up in days. The four below are what that looks like.</p>
+        <p class="svc-eg"><a href="#work" data-goto="wanderlust-content-engine">Wanderlust Content Engine &#8599;</a></p>
       </div>
     </div>
   </header>
@@ -664,8 +673,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <h2>About</h2>
         <span class="rule"></span>
       </div>
-        <p class="about-lead">Eight years as a Technical Architect, all of it enterprise data: moving it between systems that were never meant to talk, cleaning up what comes out the other side, and building the reporting people actually trust.</p>
-        <p>I know how data fails &mdash; the export that truncates silently, the two systems that quietly disagree, the number that looks right and isn&rsquo;t. Catching that before go-live is most of the job. The rest is moving the records and proving they landed.</p>
+        <p class="about-lead">Eight years as a Technical Architect, all of it enterprise data. I move data between systems, clean up what comes out, and build the reporting that sits on top.</p>
+        <p>The value is in the part before that &mdash; knowing how an export truncates silently, how two systems quietly disagree, how a number can look right and still be wrong. I find those before go-live, not after.</p>
       </div>
       <div class="profile-col" id="background">
       <div class="about-head">
@@ -681,14 +690,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <div class="bg-item">
           <span class="role">Data Team Lead, up from Project Manager, Consultant and Support</span>
           <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
-        </div>
-        <div class="bg-item">
-          <span class="role">Customer Experience Technical Specialist</span>
-          <span class="when">2014 &mdash; 2017 &middot; Accounting software</span>
-        </div>
-        <div class="bg-item">
-          <span class="role">Student Technician Supervisor</span>
-          <span class="when">2011 &mdash; 2014 &middot; University IT</span>
         </div>
       </div>
       <div class="bg-foot">
@@ -732,7 +733,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
     <p class="ethos-sub">Every feature is decided before it is written &mdash; what it does, what it refuses to do, and how I would know it worked.</p>
-    <p class="work-intro">Two web apps, a desktop data loader and a probability model. Some solve a problem at work, some solve one of mine. <em>None of them are demos.</em></p>
+    <p class="work-intro">Two web apps, a desktop data loader and a probability model. <em>None of them are demos.</em></p>
   </section>
 
   <div class="notice">
@@ -740,7 +741,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <span><b style="color:var(--teal);">Two repositories are public</b> &mdash; Wanderlust Content Engine and NFL Bet Generator. The links below go straight to the files worth reading.</span>
     </div>
   <div class="plates" id="projectList">
-    <article class="plate" data-cat="web">
+    <article class="plate" data-cat="web" id="migration-hq">
       <div class="plate-head">
         <h3>Migration HQ</h3>
         <span class="stamp">Supabase &middot; Vercel</span>
@@ -780,7 +781,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>Security by policy</b><span>Postgres row-level security, magic-link auth, no password to leak.</span></li>
       </ul>
     </article>
-            <article class="plate" data-cat="desktop">
+            <article class="plate" data-cat="desktop" id="zendesk-data-loader">
       <div class="plate-head">
         <h3>Zendesk Data Loader</h3>
         <span class="stamp">Python &middot; pywebview desktop app</span>
@@ -816,7 +817,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>595 KB of Python</b><span>The oldest project here and still the largest.</span></li>
       </ul>
     </article>
-    <article class="plate" data-cat="analytics">
+    <article class="plate" data-cat="analytics" id="nfl-bet-generator">
       <div class="plate-head">
         <h3>NFL Bet Generator</h3>
         <span class="stamp">Python &middot; Live odds</span>
@@ -850,7 +851,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       </ul>
       <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/nfl-bet-generator">Code &#8599;</a></p>
     </article>
-<article class="plate" data-cat="web">
+<article class="plate" data-cat="web" id="wanderlust-content-engine">
       <div class="plate-head">
         <h3>Wanderlust Content Engine</h3>
         <span class="stamp live">Live &middot; Vercel</span>
@@ -939,6 +940,19 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     t.addEventListener("click", function () {
       show(t.dataset.view, true);
       window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  // A service block points at the project that proves it. The projects live
+  // on the other tab, so switch first, then scroll once it is laid out.
+  document.querySelectorAll("[data-goto]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      show("work", true);
+      var target = document.getElementById(a.dataset.goto);
+      if (target) requestAnimationFrame(function () {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     });
   });
 
