@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Shane Cann &mdash; data migration, reporting and dashboards, and the web apps and internal tools that replace a manual process. Six projects, all built solo.">
+<meta name="description" content="Shane Cann &mdash; data migration, reporting and dashboards, and the web apps and internal tools that replace a manual process.">
 <meta name="author" content="Shane Cann">
 <link rel="canonical" href="https://shanecann.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shanecann.com/">
 <meta property="og:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
-<meta property="og:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process. Four projects, all built solo.">
+<meta property="og:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process.">
 <meta property="og:image" content="https://shanecann.com/assets/shane.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
-<meta name="twitter:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process. Four projects, all built solo.">
+<meta name="twitter:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231B2A33'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='58' font-weight='bold' fill='%23E9EBE4' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E">
 <style>
   *{box-sizing:border-box}
@@ -191,11 +191,6 @@ html{scroll-behavior:smooth;}
 [id]{scroll-margin-top:18px;}
 
 /* ---------- tabs & views ---------- */
-.tabs{
-  display:flex;flex-wrap:wrap;gap:0;
-  margin-top:0;border:1.5px solid var(--ink);border-top:0;
-  background:var(--plate);box-shadow:var(--plate-shadow);
-}
 .tab{
   flex:1 1 auto;min-width:112px;cursor:pointer;
   background:transparent;border:0;border-right:1px solid var(--rule);
@@ -204,23 +199,8 @@ html{scroll-behavior:smooth;}
   letter-spacing:.07em;text-transform:uppercase;
   position:relative;transition:color .15s ease,background .15s ease;
 }
-.tab:last-child{border-right:0;}
-.tab:hover{color:var(--ink);background:var(--paper);}
-.tab .n{
-  font-family:var(--mono);font-size:10px;font-weight:500;
-  color:var(--ink-3);margin-left:5px;letter-spacing:0;
-}
-.tab.is-on{color:var(--ink);background:var(--paper);}
-.tab.is-on::after{
-  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--red);
-}
-.tab:focus-visible{outline:2px solid var(--red);outline-offset:-3px;}
 
-.view{display:none;}
-.view.is-on{display:block;}
 .view > .section-head:first-child,
-.view > .proj-group:first-child .section-head{margin-top:30px;}
-.view > section:first-child{margin-top:18px;}
 
 /* project filter chips */
 
@@ -259,10 +239,6 @@ html{scroll-behavior:smooth;}
   margin:9px 0 0;max-width:68ch;
   font-size:16.5px;line-height:1.55;color:var(--ink);
 }
-.ethos .work-intro{
-  margin:14px 0 0;max-width:80ch;font-size:16px;line-height:1.6;color:var(--ink-2);
-}
-.ethos .work-intro em{color:var(--ink);font-style:italic;}
 .ethos-lead{
   font-family:var(--display);font-weight:600;
   font-size:clamp(19px,2.4vw,24px);line-height:1.3;letter-spacing:-.015em;
@@ -512,12 +488,6 @@ html{scroll-behavior:smooth;}
 /* Four screens still fit across the band; the frame scales with them. */
 /* side buttons */
 
-.work-intro{
-  margin:0 0 4px;max-width:78ch;
-  font-size:16px;line-height:1.6;color:var(--ink-2);
-}
-.work-intro em{color:var(--ink);font-style:italic;}
-
 /* ---------- project card: lede, highlights, links ---------- */
 .lede{
   margin:0 0 20px;max-width:74ch;
@@ -673,26 +643,18 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="svc">
         <h2>Move your data</h2>
         <p>Export, transform, migrate into your target platform. I find the bad data before the import does.</p>
-        <p class="svc-eg"><a href="#work" data-goto="zendesk-data-loader">Zendesk Data Loader &#8599;</a></p>
       </div>
       <div class="svc">
         <h2>Report on it</h2>
         <p>The dashboard that answers the question people keep asking in Slack &mdash; built on numbers that hold up.</p>
-        <p class="svc-eg"><a href="#work" data-goto="migration-hq">Migration HQ &#8599;</a></p>
+        <p class="svc-eg"><a href="#migration-hq">Migration HQ &#8599;</a></p>
       </div>
       <div class="svc">
         <h2>Build the tool or app</h2>
-        <p>The web app or internal tool that replaces the spreadsheet &mdash; usually standing up in days. The four below are what that looks like.</p>
-        <p class="svc-eg"><a href="#work" data-goto="wanderlust-content-engine">Wanderlust Content Engine &#8599;</a></p>
+        <p>The web app or internal tool that replaces the spreadsheet &mdash; usually standing up in days. Migration HQ below is what that looks like.</p>
       </div>
     </div>
   </header>
-  <nav class="tabs" aria-label="Sections">
-    <button type="button" class="tab is-on" data-view="overview">Overview</button>
-    <button type="button" class="tab" data-view="work">Work <span class="n">4</span></button>
-  </nav>
-
-  <div class="view is-on" id="v-overview">
   <section class="profile" id="about">
     <div class="profile-grid">
       <div class="profile-col">
@@ -748,25 +710,17 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     </div>
   </section>
 
-  </div>
-
-  <div class="view" id="v-work">
-  <div class="section-head">
-    <h2>Work</h2>
-    <span class="count">Four tools &middot; migrations, reporting and the apps behind them</span>
+  <div class="section-head" id="example">
+    <h2>Example</h2>
+    <span class="count">An internal web app, built solo</span>
     <span class="rule"></span>
   </div>
 
   <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
     <p class="ethos-sub">Every feature is decided before it is written &mdash; what it does, what it refuses to do, and how I would know it worked.</p>
-    <p class="work-intro">Two web apps, a desktop data loader and a probability model. <em>None of them are demos.</em></p>
   </section>
 
-  <div class="notice">
-      <b>Note</b>
-      <span><b style="color:var(--teal);">Two repositories are public</b> &mdash; Wanderlust Content Engine and NFL Bet Generator. The links below go straight to the files worth reading.</span>
-    </div>
   <div class="plates" id="projectList">
     <article class="plate" data-cat="web" id="migration-hq">
       <div class="plate-head">
@@ -808,116 +762,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <li><b>Security by policy</b><span>Postgres row-level security, magic-link auth, no password to leak.</span></li>
       </ul>
     </article>
-            <article class="plate" data-cat="desktop" id="zendesk-data-loader">
-      <div class="plate-head">
-        <h3>Zendesk Data Loader</h3>
-        <span class="stamp">Python &middot; pywebview desktop app</span>
-        <span class="stamp">Private repo</span>
-      </div>
-      <p class="tagline">Import, update, delete and export without writing a line against the API.</p>
-      <p class="lede">A desktop tool that puts an API behind a point-and-click wizard: pick the operation, map the fields, watch it run.</p>
-      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Zendesk Data Loader screenshots">
-        <div class="fig-window">
-          <div class="fig-track">
-            <figure class="fig-slide" data-cap="All four operations as equals &mdash; most teams settle for an import-only script.">
-              <img src="assets/zendesk-select_action.png" alt="Select Action screen offering Import, Update, Delete and Export" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="A run in flight &mdash; live progress, and a Stop that halts it mid-run.">
-              <img src="assets/zendesk-progress.png" alt="Confirm Import screen with a progress bar part-way through, a save location and an active Stop button" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="Sign-in &mdash; the tool stores nothing it does not need.">
-              <img src="assets/zendesk-login.png" alt="Sign-in screen with subdomain, email and API token fields" loading="lazy">
-            </figure>
-          </div>
-          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
-          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
-        </div>
-        <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 3</span>
-          <p class="fig-cap"></p>
-          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
-        </div>
-      </div>
-      <ul class="highlights">
-        <li><b>All four operations</b><span>Import, update, delete and export, not import-only.</span></li>
-        <li><b>Mappings are reusable</b><span>Auto-map guesses the columns; save it for the next job.</span></li>
-        <li><b>595 KB of Python</b><span>The oldest project here and still the largest.</span></li>
-      </ul>
-    </article>
-    <article class="plate" data-cat="analytics" id="nfl-bet-generator">
-      <div class="plate-head">
-        <h3>NFL Bet Generator</h3>
-        <span class="stamp">Python &middot; Live odds</span>
-        <span class="stamp pub">Public repo &mdash; readable</span>
-      </div>
-      <p class="tagline">A probability model that refuses to quote correlated legs as independent math.</p>
-      <p class="lede">Live odds and public stats become an opponent-adjusted power rating, then win, cover and total probabilities.</p>
-      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="NFL Bet Generator screenshots">
-        <div class="fig-window">
-          <div class="fig-track">
-            <figure class="fig-slide" data-cap="Week 1 board &mdash; live props from four books, each leg annotated with the injury line.">
-              <img src="assets/nfl-dashboard.png" alt="NFL Bet Generator dashboard showing a Broncos at Chiefs same-game parlay with eight annotated player-prop legs" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="Track Record &mdash; auto-logged and auto-settled, and plain that the sample is too small.">
-              <img src="assets/nfl-track-record.png" alt="Track Record tab showing 0 settled bets, 44 pending, and a warning that the sample is too small to be meaningful" loading="lazy">
-            </figure>
-          </div>
-          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
-          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
-        </div>
-        <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 2</span>
-          <p class="fig-cap"></p>
-          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
-        </div>
-      </div>
-      <ul class="highlights">
-        <li><b>Backtested on an unselected sample</b><span>Tuning on its own past picks was the easy, wrong answer. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/scripts/backtest_prop_blend.py">backtest_prop_blend.py</a></span></li>
-        <li><b>Honest about correlation</b><span>Same-game legs get flagged, not quoted as clean math. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/parlay_builder.py">parlay_builder.py</a></span></li>
-        <li><b>It grades its own homework</b><span>Every call auto-settles once the game finishes. <a href="https://github.com/cannshan/nfl-bet-generator/blob/main/app/tracking.py">tracking.py</a></span></li>
-      </ul>
-      <p class="plate-foot"><a class="golink" href="https://github.com/cannshan/nfl-bet-generator">Code &#8599;</a></p>
-    </article>
-<article class="plate" data-cat="web" id="wanderlust-content-engine">
-      <div class="plate-head">
-        <h3>Wanderlust Content Engine</h3>
-        <span class="stamp live">Live &middot; Vercel</span>
-        <span class="stamp pub">Public repo &mdash; readable</span>
-      </div>
-      <p class="tagline">One idea in, three genuinely different social packages out &mdash; not one caption with a swapped hashtag.</p>
-      <p class="lede">Enter an idea and a location; it writes for Instagram, TikTok and YouTube in parallel, each to that platform's own ranking signals.</p>
-      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Wanderlust Content Engine screenshots">
-        <div class="fig-window">
-          <div class="fig-track">
-            <figure class="fig-slide" data-cap="Content &mdash; one idea fans out to three platforms in parallel.">
-              <img src="assets/wce-content-live.png" alt="Content tab filled in with a Maine cabin getaway idea, location, story beat, three platform toggles, filming extras and a reel upload field" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="The result &mdash; a finished caption per platform, each on its own tab.">
-              <img src="assets/wce-output-live.png" alt="Generated Instagram caption for a Maine cabin getaway, with separate TikTok and YouTube tabs alongside it" loading="lazy">
-            </figure>
-            <figure class="fig-slide" data-cap="Discovery &mdash; nine categories, an optional date for seasonal timing, saved searches.">
-              <img src="assets/wce-discovery-live.png" alt="Discovery tab with location, date and category pickers beside a sidebar of saved searches showing place counts" loading="lazy">
-            </figure>
-          </div>
-          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
-          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
-        </div>
-        <div class="fig-bar">
-          <span class="fig-count">Fig. <b>1</b> / 3</span>
-          <p class="fig-cap"></p>
-          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
-        </div>
-      </div>
-      <ul class="highlights">
-        <li><b>Evidence or nothing</b><span>No hidden gem without a real source. Empty ships empty.</span></li>
-        <li><b>It knows what it costs</b><span>Every call logs its billed cost against a weekly cap. <a href="https://github.com/cannshan/wanderlust-content-engine/blob/main/lib/claude.js">logUsage</a></span></li>
-        <li><b>131 commits in five days</b><span>The most heavily iterated project here.</span></li>
-      </ul>
-      <p class="plate-foot"><a class="golink" href="https://wanderlust-content-engine.vercel.app">Live &#8599;</a> <a class="golink" href="https://github.com/cannshan/wanderlust-content-engine">Code &#8599;</a></p>
-    </article>
-      </div>
-
-  </div>
+                      </div>
 
 <section class="hire" id="contact">
     <div class="hire-main">
@@ -940,56 +785,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 </div>
 
 <script>
-// Two views, with the choice reflected in the URL so a view can be linked to.
-(function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
-  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
-
-  function show(name, push) {
-    var found = false;
-    views.forEach(function (v) {
-      var on = v.id === "v-" + name;
-      v.classList.toggle("is-on", on);
-      if (on) found = true;
-    });
-    if (!found) return false;
-    tabs.forEach(function (t) {
-      var on = t.dataset.view === name;
-      t.classList.toggle("is-on", on);
-      t.setAttribute("aria-selected", on ? "true" : "false");
-    });
-    if (push && history.replaceState) history.replaceState(null, "", "#" + name);
-    return true;
-  }
-
-  tabs.forEach(function (t) {
-    t.setAttribute("role", "tab");
-    t.addEventListener("click", function () {
-      show(t.dataset.view, true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  });
-
-  // A service block points at the project that proves it. The projects live
-  // on the other tab, so switch first, then scroll once it is laid out.
-  document.querySelectorAll("[data-goto]").forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      e.preventDefault();
-      show("work", true);
-      var target = document.getElementById(a.dataset.goto);
-      if (target) requestAnimationFrame(function () {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  });
-
-  var initial = (location.hash || "").replace("#", "");
-  if (!initial || !show(initial, false)) show("overview", false);
-  window.addEventListener("hashchange", function () {
-    show((location.hash || "").replace("#", "") || "overview", false);
-  });
-})();
-
 (function () {
   document.querySelectorAll("[data-carousel]").forEach(function (root) {
     var track = root.querySelector(".fig-track");
