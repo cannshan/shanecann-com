@@ -26,6 +26,13 @@ with open(SRC, encoding="utf-8") as f:
 
 out = head + "</head>\n<body>\n\n" + body + "\n</body>\n</html>\n"
 
+# "eight years" belongs in the About once. It has drifted into a second
+# paragraph before, and reads as padding when it does.
+import re as _re
+years = len(_re.findall(r"[Ee]ight years", out))
+if years > 1:
+    sys.exit("ABORT: 'eight years' appears %d times, expected at most 1" % years)
+
 # Guard against the duplication bug ever coming back.
 expected = {"<title>": 1, "<style>": 2, '<div class="sheet">': 1, "<html": 1, "<body>": 1}
 for tag, want in expected.items():
