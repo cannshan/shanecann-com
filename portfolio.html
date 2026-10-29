@@ -177,11 +177,6 @@ html{scroll-behavior:smooth;}
 }
 .about-body em{color:var(--ink);font-style:italic;}
 
-.example-intro{
-  margin:0 0 22px;max-width:76ch;
-  font-size:14.5px;line-height:1.7;color:var(--ink-2);
-}
-.example-intro b{color:var(--ink);font-weight:600;}
 
 .notes a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
 .notes a:hover{color:var(--red);}
@@ -646,23 +641,21 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   </section>
 
   <div class="section-head" id="example">
-    <h2>Build the app it lives in</h2>
+    <h2>Example web app</h2>
     <span class="rule"></span>
   </div>
-
-  <p class="example-intro">When the reporting needs somewhere to live, I build the app that captures the data and charts it in place.</p>
 
   <div class="plates" id="projectList">
     <article class="plate" data-cat="web" id="migration-hq">
       <div class="plate-head">
         <h3>Migration HQ</h3>
       </div>
-      <p class="tagline">I built it. My whole data team runs every migration on it.</p>
-      <p class="lede" data-cap-out aria-live="polite">Every migration is a card moving through six phases, each with an owner and the four dates that matter.</p>
+      <p class="tagline">My team had no real way to project manage our data migration work, so I built one. The whole team tracks and runs every project on it now.</p>
+      <p class="lede" data-cap-out aria-live="polite">Every migration project has its own card moving through six phases, each with an owner and the data points that matter.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="Every migration is a card moving through six phases, each with an owner and the four dates that matter.">
+            <figure class="fig-slide" data-cap="Every migration project has its own card moving through six phases, each with an owner and the data points that matter.">
               <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="Open a card to fill in the project &mdash; phase, owners, the four dates, data source and the objects being migrated.">
