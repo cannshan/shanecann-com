@@ -111,6 +111,19 @@ h1{
   font-size:clamp(36px,6.4vw,58px);line-height:1;letter-spacing:-.028em;
   margin:0 0 12px;text-wrap:balance;
 }
+h1 .alias{
+  font-size:.4em;font-weight:600;letter-spacing:-.01em;
+  color:var(--red);white-space:nowrap;
+}
+.talk{
+  margin:0 0 14px;max-width:58ch;
+  font-family:var(--display);font-weight:500;font-size:16px;line-height:1.5;
+  color:var(--ink-2);
+}
+.talk b{display:block;color:var(--ink);font-weight:700;font-size:19px;margin-bottom:3px;}
+@media (max-width:620px){
+  h1 .alias{display:block;white-space:normal;font-size:.5em;}
+}
 .contact{
   display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;
   font-family:var(--mono);font-size:12px;
@@ -619,7 +632,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <figcaption>Shane Cann</figcaption>
       </figure>
       <div class="tb-id">
-        <h1>Shane Cann</h1>
+        <h1>Shane Cann <span class="alias">&mdash; the data guy</span></h1>
+        <p class="talk"><b>Sometimes you just want to talk to someone.</b> Email me and you get me &mdash; no form, no sales team.</p>
         <p class="contact">
           <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
           <span><a href="https://www.linkedin.com/in/shane-cann/">linkedin.com/in/shane-cann</a></span>
@@ -746,8 +760,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
 <section class="hire" id="contact">
     <div class="hire-main">
-      <h2>Sometimes you just want to talk to someone.</h2>
-      <p>I&rsquo;m Shane, the data guy. Email me and you get me &mdash; no form, no sales team. Tell me what you&rsquo;re moving, what&rsquo;s broken, or what you want built, and we&rsquo;ll talk it through in as much detail as you like before any work starts. If I&rsquo;m not the right fit, I&rsquo;ll say so.</p>
+      <h2>Tell me what you&rsquo;re dealing with.</h2>
+      <p>Whatever you&rsquo;re moving, whatever&rsquo;s broken, or whatever you want built &mdash; we&rsquo;ll talk it through in as much detail as you like before any work starts. If I&rsquo;m not the right fit, I&rsquo;ll say so.</p>
     </div>
     <div class="hire-links">
       <a class="hire-primary" href="mailto:cannshan@gmail.com">cannshan@gmail.com</a>
