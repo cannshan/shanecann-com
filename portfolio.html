@@ -84,15 +84,6 @@ h1{
   font-size:clamp(36px,6.4vw,58px);line-height:1;letter-spacing:-.028em;
   margin:0 0 12px;text-wrap:balance;
 }
-.role{
-  font-family:var(--display);font-weight:500;font-size:17px;line-height:1.4;
-  color:var(--red);margin:0 0 10px;max-width:44ch;
-}
-.credential{
-  margin:0 0 14px;font-family:var(--mono);font-size:11.5px;line-height:1.5;
-  color:var(--ink-3);letter-spacing:.02em;
-}
-.credential strong{color:var(--ink-2);font-weight:600;}
 .contact{
   display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;
   font-family:var(--mono);font-size:12px;
@@ -230,6 +221,7 @@ html{scroll-behavior:smooth;}
   letter-spacing:-.01em;display:block;
 }
 .bg-item .role{
+  font-family:var(--display);font-weight:500;
   font-size:13.5px;line-height:1.4;color:var(--ink-2);display:block;margin-top:2px;
 }
 .bg-item .when{
@@ -250,7 +242,6 @@ html{scroll-behavior:smooth;}
 }
 .edu-line strong{color:var(--ink-2);font-weight:500;}
 
-.chip.ai{border-color:var(--teal);color:var(--teal);}
 .chips{display:flex;flex-wrap:wrap;gap:7px 8px;flex:1;min-width:0;}
 
 .notice{
@@ -283,6 +274,29 @@ html{scroll-behavior:smooth;}
   .profile-col:last-child{padding-left:0;border-left:0;border-top:1px solid var(--rule);padding-top:22px;}
 }
 @media (max-width:480px){.profile{padding:18px;}}
+
+/* The profile is context, not the pitch. It is set a size down from the
+   rest of the page so it reads in a glance and gives the work below it
+   the room instead. */
+.profile{padding:17px 18px;}
+.profile .about-head{margin-bottom:7px;}
+.profile .about-head h2{font-size:12.5px;}
+.profile .about-lead{font-size:14.5px !important;line-height:1.5;}
+.profile-col p{margin:0 0 8px;font-size:13.5px;line-height:1.55;max-width:none;}
+.profile-col:first-child{padding-right:22px;}
+.profile-col:last-child{padding-left:22px;}
+.profile .bg-grid{gap:7px;margin-bottom:8px;}
+.profile .bg-item{padding-left:10px;}
+.profile .bg-item .role{font-size:12.5px;line-height:1.35;}
+.profile .bg-item .when{font-size:9px;margin-top:2px;}
+.profile .bg-foot{padding-top:7px;gap:5px 12px;}
+.profile .bg-foot.edu{margin-top:7px;}
+.profile .chips{gap:5px 6px;}
+.profile .chip{font-size:9.5px;padding:2px 6px;}
+.profile .bg-foot .lbl{font-size:9px;}
+.profile .edu-body{gap:2px 8px;}
+.profile .edu-body b{font-size:12px;}
+.profile .edu-body span{font-size:11.5px;}
 
 /* ---------- section headers ---------- */
 .section-head{display:flex;align-items:center;gap:16px;margin:52px 0 20px;}
@@ -615,8 +629,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="rule"></span>
       </div>
         <p class="about-lead">Eight years as a Technical Architect, all of it enterprise data. Millions of records or a single messy Excel file &mdash; I move it between systems, clean up what comes out, and turn it into the reports and dashboards people actually use.</p>
-        <p>The hard part isn&rsquo;t moving the records. It&rsquo;s finding the data integrity issues, mapping fields between two systems that define them differently, and catching the totals that look right and aren&rsquo;t. I find those in testing, not the week after go-live.</p>
-        <p>Then there are the ideas that sit on a list for years waiting for someone to build them &mdash; the tracker everyone asks for, the report that should be a page instead of an email thread. That&rsquo;s usually a small web app, and it takes days.</p>
+        <p>Then there are the ideas that sit on a list for years waiting for someone to build them &mdash; the tracker everyone asks for, the report that should be a page instead of an email thread. That&rsquo;s usually a small web app and I can build it in days.</p>
       </div>
       <div class="profile-col" id="background">
       <div class="about-head">
@@ -645,13 +658,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
           <span class="chip">CRM &amp; helpdesk platforms</span>
         </div>
       </div>
-      <div class="bg-foot">
-        <span class="lbl">Built with</span>
-        <div class="chips">
-          <span class="chip ai">Claude Code</span>
-          <span class="chip ai">Codex</span>
-        </div>
-      </div>
       <div class="bg-foot edu">
         <span class="lbl">Education</span>
         <div class="edu-body">
@@ -665,11 +671,11 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
   <div class="section-head" id="example">
     <h2>Build the app it lives in</h2>
-    <span class="count">An internal web app, built solo</span>
+    <span class="count">A web app I built &mdash; my data team runs on it</span>
     <span class="rule"></span>
   </div>
 
-  <p class="example-intro">Sometimes the reporting needs somewhere to live. If the data sits in a spreadsheet nobody owns, the dashboard is only ever a snapshot &mdash; so I build the app that captures it properly and charts it in place. <b>Migration HQ</b> is that: the board my team runs migrations on, with the reporting built in instead of exported out.</p>
+  <p class="example-intro">Sometimes the reporting needs somewhere to live. If the data sits in a spreadsheet nobody owns, the dashboard is only ever a snapshot &mdash; so I build the app that captures it properly and charts it in place. <b>Migration HQ</b> is one of those. I built it solo, my whole data team works out of it now, and the reporting is built into it instead of exported out of it.</p>
 
   <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
@@ -683,7 +689,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <span class="stamp">Supabase &middot; Vercel</span>
         <span class="stamp local">Internal team tool</span>
       </div>
-      <p class="tagline">The board a migration team runs on.</p>
+      <p class="tagline">I built it. My whole data team runs every migration on it.</p>
       <p class="lede">Every migration is a card moving through six phases, each with an owner and the four dates that matter.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
         <div class="fig-window">
