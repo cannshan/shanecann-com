@@ -149,12 +149,6 @@ h1{
   font-family:var(--display);font-weight:700;font-size:16.5px;
   letter-spacing:-.015em;margin:0 0 7px;
 }
-.svc-eg{margin:9px 0 0;}
-.svc-eg a{
-  font-family:var(--mono);font-size:11px;letter-spacing:.05em;
-  color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;
-}
-.svc-eg a:hover{color:var(--red);}
 .svc p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2);}
 @media (max-width:760px){
   .services{grid-template-columns:1fr;}
@@ -190,26 +184,6 @@ html{scroll-behavior:smooth;}
 .jump a:focus-visible{outline:2px solid var(--red);outline-offset:-3px;}
 [id]{scroll-margin-top:18px;}
 
-/* ---------- tabs & views ---------- */
-.tab{
-  flex:1 1 auto;min-width:112px;cursor:pointer;
-  background:transparent;border:0;border-right:1px solid var(--rule);
-  padding:13px 16px;color:var(--ink-2);
-  font-family:var(--display);font-weight:600;font-size:13px;
-  letter-spacing:.07em;text-transform:uppercase;
-  position:relative;transition:color .15s ease,background .15s ease;
-}
-
-.view > .section-head:first-child,
-
-/* project filter chips */
-
-.demo-note{
-  margin:-8px 0 18px;padding:9px 12px;
-  border-left:2px solid var(--rule-strong);
-  font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--ink-3);
-}
-
 /* ---------- about ---------- */
 .about{
   margin-top:18px;border:1px solid var(--rule-strong);background:var(--plate);
@@ -229,6 +203,12 @@ html{scroll-behavior:smooth;}
   font-weight:600;
 }
 .about-body em{color:var(--ink);font-style:italic;}
+
+.example-intro{
+  margin:0 0 22px;max-width:76ch;
+  font-size:14.5px;line-height:1.7;color:var(--ink-2);
+}
+.example-intro b{color:var(--ink);font-weight:600;}
 
 /* ---------- ethos ---------- */
 .ethos{
@@ -645,13 +625,12 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <p>Export, transform, migrate into your target platform. I find the bad data before the import does.</p>
       </div>
       <div class="svc">
-        <h2>Report on it</h2>
-        <p>The dashboard that answers the question people keep asking in Slack &mdash; built on numbers that hold up.</p>
-        <p class="svc-eg"><a href="#migration-hq">Migration HQ &#8599;</a></p>
+        <h2>Clean up the spreadsheet</h2>
+        <p>Thousands of rows, three spellings of every company, totals that disagree. Matched, de-duplicated and reconciled.</p>
       </div>
       <div class="svc">
-        <h2>Build the tool or app</h2>
-        <p>The web app or internal tool that replaces the spreadsheet &mdash; usually standing up in days. Migration HQ below is what that looks like.</p>
+        <h2>Report on it</h2>
+        <p>The dashboard that answers the question people keep asking in Slack &mdash; built on numbers that hold up.</p>
       </div>
     </div>
   </header>
@@ -711,10 +690,12 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   </section>
 
   <div class="section-head" id="example">
-    <h2>Example</h2>
+    <h2>Build the app it lives in</h2>
     <span class="count">An internal web app, built solo</span>
     <span class="rule"></span>
   </div>
+
+  <p class="example-intro">A dashboard built on a spreadsheet nobody owns is only ever a snapshot. So the work often ends in an app: capture the data properly at the point it is entered, then chart it in place. <b>Migration HQ</b> is that &mdash; the board my team runs migrations on, with the reporting built into it rather than exported out of it.</p>
 
   <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
@@ -755,7 +736,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
           <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
         </div>
       </div>
-      <p class="demo-note">Screens captured against a local demo database &mdash; every company, person and date shown is invented. The production board holds live customer migrations.</p>
       <ul class="highlights">
         <li><b>Institutional memory, as data</b><span>Every closed migration leaves a searchable record.</span></li>
         <li><b>Reporting built in</b><span>Counts, a chart and filters, not an export.</span></li>
@@ -779,7 +759,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   </section>
   <footer>
     <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
-    <span>Built and maintained by Shane Cann &middot; Last updated 8 Oct 2026</span>
+    <span>Built and maintained by Shane Cann &middot; Last updated 28 Oct 2026</span>
   </footer>
 
 </div>

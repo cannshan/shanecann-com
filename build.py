@@ -33,6 +33,24 @@ years = len(_re.findall(r"[Ee]ight years", out))
 if years > 1:
     sys.exit("ABORT: 'eight years' appears %d times, expected at most 1" % years)
 
+# Copy that counts the examples goes stale every time one is added or
+# removed. It has happened three times, so the build refuses any phrasing
+# that hard-codes the number instead of letting the page speak for itself.
+WORDS = r"one|two|three|four|five|six|seven|eight|nine|ten"
+shown = len(_re.findall(r"<h3>", out))
+bad = _re.search(r"(?i)\b(?:%s)\s+(?:below|above|here)\b" % WORDS, out)
+if bad:
+    sys.exit("ABORT: copy hard-codes a count (%r); %d example(s) on the page"
+             % (bad.group(0), shown))
+
+# The footer date was hand-typed and ran three weeks behind reality.
+import datetime as _dt
+_today = _dt.date.today()
+stamp = "%d %s %d" % (_today.day, _today.strftime("%b"), _today.year)
+out, _n = _re.subn(r"Last updated \d{1,2} \w{3} \d{4}", "Last updated " + stamp, out)
+if _n != 1:
+    sys.exit("ABORT: found %d last-updated stamps, expected 1" % _n)
+
 # Guard against the duplication bug ever coming back.
 expected = {"<title>": 1, "<style>": 2, '<div class="sheet">': 1, "<html": 1, "<body>": 1}
 for tag, want in expected.items():
