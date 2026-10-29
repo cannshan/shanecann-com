@@ -183,21 +183,6 @@ html{scroll-behavior:smooth;}
 }
 .example-intro b{color:var(--ink);font-weight:600;}
 
-/* ---------- ethos ---------- */
-.ethos{
-  margin-top:18px;border:1.5px solid var(--ink);background:var(--plate);
-  box-shadow:var(--plate-shadow);padding:24px;
-}
-.ethos-sub{
-  margin:9px 0 0;max-width:68ch;
-  font-size:16.5px;line-height:1.55;color:var(--ink);
-}
-.ethos-lead{
-  font-family:var(--display);font-weight:600;
-  font-size:clamp(19px,2.4vw,24px);line-height:1.3;letter-spacing:-.015em;
-  margin:0 0 6px;max-width:34ch;text-wrap:balance;
-}
-.ethos-lead em{color:var(--red);font-style:normal;}
 .notes a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
 .notes a:hover{color:var(--red);}
 
@@ -581,7 +566,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   .sheet{padding-block:24px 48px;}
   .tb-top{padding:20px;gap:18px;}
   .portrait{width:96px;}
-  .about,.ethos,.background{padding:18px;}
   .bg-grid{grid-template-columns:1fr;gap:14px;}
   .plate{padding:18px 18px 0;}
   .figures{margin-inline:-18px;}
@@ -677,11 +661,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   </div>
 
   <p class="example-intro">When the reporting needs somewhere to live, I build the app that captures the data and charts it in place.</p>
-
-  <section class="ethos">
-    <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
-    <p class="ethos-sub">Every feature is decided before it&rsquo;s written &mdash; what it does, what it refuses to do, and how I&rsquo;d know it worked.</p>
-  </section>
 
   <div class="plates" id="projectList">
     <article class="plate" data-cat="web" id="migration-hq">
