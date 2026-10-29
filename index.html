@@ -147,17 +147,27 @@ h1 .alias{
 .cell dd span{font-size:12px;font-weight:400;color:var(--ink-3);letter-spacing:0;}
 
 /* ---------- what you can hire me for ---------- */
-.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
 .svc{padding:17px 20px 19px;border-right:1px solid var(--rule);}
-.svc:last-child{border-right:none;}
+/* 2x2: the right-hand box of each row has no divider, and the bottom
+   row has no rule under it. */
+.svc:nth-child(2n){border-right:none;}
+.svc:nth-child(-n+2){border-bottom:1px solid var(--rule);}
 .svc h2{
   font-family:var(--display);font-weight:700;font-size:16.5px;
   letter-spacing:-.015em;margin:0 0 7px;
 }
 .svc p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2);}
-@media (max-width:760px){
+@media (min-width:1060px){
+  .services{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .svc:nth-child(2n){border-right:1px solid var(--rule);}
+  .svc:last-child{border-right:none;}
+  .svc:nth-child(-n+2){border-bottom:none;}
+}
+@media (max-width:620px){
   .services{grid-template-columns:1fr;}
   .svc{border-right:none;border-bottom:1px solid var(--rule);}
+  .svc:nth-child(2n){border-right:none;}
   .svc:last-child{border-bottom:none;}
 }
 
@@ -618,6 +628,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="svc">
         <h2>Report on it</h2>
         <p>The dashboard that answers the question everyone keeps asking &mdash; built on numbers that hold up.</p>
+      </div>
+      <div class="svc">
+        <h2>Build the app for it</h2>
+        <p>When the spreadsheet should have been a tool, I build the small web app that captures the data and reports on it. Days, not quarters.</p>
       </div>
     </div>
   </header>
