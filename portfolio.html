@@ -103,6 +103,7 @@ h1 .alias{
 }
 .contact a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
 .contact a:hover{color:var(--red);}
+.contact .loc{color:var(--ink-3);}
 
 .tb-grid{display:grid;grid-template-columns:repeat(4,1fr);margin:0;}
 .cell{padding:12px 14px 13px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
@@ -436,7 +437,7 @@ html{scroll-behavior:smooth;}
 }
 
 /* Dots make the number of images visible at a glance. */
-.fig-dots{display:flex;gap:7px;flex:none;align-items:center;}
+.fig-dots{display:flex;gap:7px;flex:none;align-items:center;margin-left:auto;}
 .fig-dot{
   width:9px;height:9px;padding:0;cursor:pointer;border-radius:50%;
   background:transparent;border:1px solid var(--ink-3);
@@ -456,10 +457,6 @@ html{scroll-behavior:smooth;}
   text-transform:uppercase;color:var(--ink-3);font-variant-numeric:tabular-nums;
 }
 .fig-count b{color:var(--ink);font-weight:600;}
-.fig-cap{
-  flex:1;margin:0;min-width:0;
-  font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--ink-2);
-}
 /* Four screens still fit across the band; the frame scales with them. */
 /* side buttons */
 
@@ -579,7 +576,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   .cell:nth-last-child(-n+4){border-bottom:1px solid var(--rule);}
   .cell:nth-last-child(-n+2){border-bottom:none;}
   .plate-body{grid-template-columns:1fr;gap:18px;}
-  .fig-cap{display:none;}
 }
 @media (max-width:480px){
   .sheet{padding-block:24px 48px;}
@@ -609,6 +605,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <p class="talk"><b>Sometimes you just want to talk to someone.</b> Email me and you get me &mdash; no form, no sales team.</p>
         <p class="contact">
           <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
+          <span class="loc">US East Coast</span>
           <span><a href="https://www.linkedin.com/in/shane-cann/">linkedin.com/in/shane-cann</a></span>
         </p>
       </div>
@@ -646,11 +643,11 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
       <div class="bg-grid">
 
         <div class="bg-item now">
-          <span class="role">Senior Technical Architect, and Technical Architect before that</span>
+          <span class="role">Senior Technical Architect</span>
           <span class="when">2021 &mdash; present &middot; Enterprise SaaS</span>
         </div>
         <div class="bg-item">
-          <span class="role">Data Team Lead, up from Project Manager, Consultant and Support</span>
+          <span class="role">Data Team Lead</span>
           <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
         </div>
       </div>
@@ -659,10 +656,8 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         <div class="chips">
           <span class="chip">SQL</span>
           <span class="chip">Python / pandas</span>
-          <span class="chip">Postgres / Supabase</span>
-          <span class="chip">Excel at scale</span>
-          <span class="chip">CSV &amp; API pipelines</span>
-          <span class="chip">CRM &amp; helpdesk platforms</span>
+          <span class="chip">Excel</span>
+          <span class="chip">API Pipelines</span>
         </div>
       </div>
       <div class="bg-foot edu">
@@ -678,11 +673,10 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
   <div class="section-head" id="example">
     <h2>Build the app it lives in</h2>
-    <span class="count">A web app I built &mdash; my data team runs on it</span>
     <span class="rule"></span>
   </div>
 
-  <p class="example-intro">Sometimes the reporting needs somewhere to live. If the data sits in a spreadsheet nobody owns, the dashboard is only ever a snapshot &mdash; so I build the app that captures it properly and charts it in place. <b>Migration HQ</b> is one of those. I built it solo, my whole data team works out of it now, and the reporting is built into it instead of exported out of it.</p>
+  <p class="example-intro">When the reporting needs somewhere to live, I build the app that captures the data and charts it in place.</p>
 
   <section class="ethos">
     <p class="ethos-lead">Built fast is not the same as <em>built carelessly</em>.</p>
@@ -693,24 +687,22 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
     <article class="plate" data-cat="web" id="migration-hq">
       <div class="plate-head">
         <h3>Migration HQ</h3>
-        <span class="stamp">Supabase &middot; Vercel</span>
-        <span class="stamp local">Internal team tool</span>
       </div>
       <p class="tagline">I built it. My whole data team runs every migration on it.</p>
-      <p class="lede">Every migration is a card moving through six phases, each with an owner and the four dates that matter.</p>
+      <p class="lede" data-cap-out aria-live="polite">Every migration is a card moving through six phases, each with an owner and the four dates that matter.</p>
       <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
         <div class="fig-window">
           <div class="fig-track">
-            <figure class="fig-slide" data-cap="The board &mdash; six phases, each card carrying its owners, sources and go-live date.">
+            <figure class="fig-slide" data-cap="Every migration is a card moving through six phases, each with an owner and the four dates that matter.">
               <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Behind a card &mdash; phase, owners, the four dates that matter, data source and the objects being migrated.">
+            <figure class="fig-slide" data-cap="Open a card to fill in the project &mdash; phase, owners, the four dates, data source and the objects being migrated.">
               <img src="assets/mhq-edit.png" alt="Edit migration project form with fields for project name, status, engagement manager, developer, owner, phase, mapping signoff, test migration, closed migration and go-live dates, data source, and checkboxes for the objects migrated" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="Reporting &mdash; counts, a projects-by-source chart, filters to object and date range.">
+            <figure class="fig-slide" data-cap="Reporting is built in: counts, projects by data source, filtered to object and date range.">
               <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
             </figure>
-            <figure class="fig-slide" data-cap="The gate &mdash; no project leaves the board without this.">
+            <figure class="fig-slide" data-cap="No project leaves the board until someone records what went wrong and what they learned.">
               <img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
             </figure>
           </div>
@@ -719,7 +711,6 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
         </div>
         <div class="fig-bar">
           <span class="fig-count">Fig. <b>1</b> / 4</span>
-          <p class="fig-cap"></p>
           <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
         </div>
       </div>
@@ -755,7 +746,9 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   document.querySelectorAll("[data-carousel]").forEach(function (root) {
     var track = root.querySelector(".fig-track");
     var slides = Array.prototype.slice.call(root.querySelectorAll(".fig-slide"));
-    var capEl = root.querySelector(".fig-cap");
+    // The description sits above the figure, outside the carousel element,
+    // so it is looked up on the card rather than inside the carousel.
+    var capEl = (root.closest(".plate") || document).querySelector("[data-cap-out]");
     var numEl = root.querySelector(".fig-count b");
     var index = 0;
 
