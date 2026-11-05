@@ -28,48 +28,64 @@
 <title>Shane Cann</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
 <style>
 /* ============================================================
-   The old design framed everything: a bordered sheet holding
-   bordered sections holding bordered boxes, all on graph paper.
-   NN/g's credibility work is blunt about what that costs - white
-   space is what makes content read as organized, and clutter
-   reads as a low-quality operation. When two providers look
-   similar on paper, the design decides it.
+   Structure taken from the paid consultant templates, not their
+   styling. Every one of them runs the same spine: a sticky bar
+   with a single call to action, a hero that states the offer, a
+   proof strip, services as discrete cards, one worked example,
+   how it works, then a dark block at the end that asks.
 
-   So: no boxes, no background pattern, no rules. Separation
-   comes from space. The only framed thing on the page is a
-   screenshot, because a picture of a UI needs an edge or it
-   bleeds into the page.
+   What makes those templates read as expensive is that the page
+   has a sequence - you are moved down it - rather than being a
+   stack of equal-weight blocks. Space alone (the last pass) made
+   the page calm; it did not give it a direction. This does.
+
+   Still no borrowed logos, no invented metrics, no stock photos.
    ============================================================ */
 :root{
   --paper:#FCFBF7;
   --surface:#F4F2EC;
+  --raise:#FFFFFF;
   --ink:#1A2228;
   --ink-2:#4C5A62;
   --ink-3:#8B969C;
   --hair:#E2DFD6;
+  --hair-2:#EDEAE2;
+  --deep:#161D23;
+  --deep-ink:#F2F0EA;
+  --deep-ink-2:#A6B0B6;
   --red:#AE3526;
   --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono","Consolas",monospace;
   --shadow:0 1px 2px rgba(26,34,40,.04),0 8px 24px rgba(26,34,40,.06);
+  --shadow-lg:0 2px 4px rgba(26,34,40,.04),0 18px 48px rgba(26,34,40,.10);
+  --bar:rgba(252,251,247,.82);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#14191D; --surface:#1B2228; --ink:#E7EAE5; --ink-2:#A3AEB3;
-    --ink-3:#6E7A80; --hair:#2A333A; --red:#E0705D;
+    --paper:#14191D; --surface:#1B2228; --raise:#1E262C; --ink:#E7EAE5;
+    --ink-2:#A3AEB3; --ink-3:#6E7A80; --hair:#2A333A; --hair-2:#232B31;
+    --deep:#0E1316; --deep-ink:#E7EAE5; --deep-ink-2:#8E999F; --red:#E0705D;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 18px 48px rgba(0,0,0,.45);
+    --bar:rgba(20,25,29,.82);
   }
 }
 :root[data-theme="dark"]{
-  --paper:#14191D; --surface:#1B2228; --ink:#E7EAE5; --ink-2:#A3AEB3;
-  --ink-3:#6E7A80; --hair:#2A333A; --red:#E0705D;
+  --paper:#14191D; --surface:#1B2228; --raise:#1E262C; --ink:#E7EAE5;
+  --ink-2:#A3AEB3; --ink-3:#6E7A80; --hair:#2A333A; --hair-2:#232B31;
+  --deep:#0E1316; --deep-ink:#E7EAE5; --deep-ink-2:#8E999F; --red:#E0705D;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 18px 48px rgba(0,0,0,.45);
+  --bar:rgba(20,25,29,.82);
 }
 
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 body{
   margin:0;
   background:var(--paper);
@@ -82,74 +98,166 @@ body{
 }
 a{color:inherit;}
 
-/* One measure for the whole page. Text blocks are held narrower
-   than the container so nothing runs past a comfortable line
-   length, but the screenshots get the full width. */
-.sheet{max-width:860px;margin:0 auto;padding:88px 32px 72px;}
+/* ---------- sticky bar ----------
+   Every paid template has one, and it does one job: the way to
+   contact you is on screen at every scroll position. */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--bar);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--hair-2);
+}
+.topbar-in{
+  max-width:1060px;margin:0 auto;padding:0 32px;height:62px;
+  display:flex;align-items:center;gap:28px;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;text-decoration:none;
+  font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.02em;
+  margin-right:auto;
+}
+.brand .mark{
+  width:26px;height:26px;border-radius:5px;background:var(--deep);
+  color:var(--deep-ink);display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.02em;
+  flex:none;
+}
+.navlinks{display:flex;gap:26px;}
+.navlinks a{
+  text-decoration:none;font-family:var(--display);font-weight:500;font-size:14px;
+  color:var(--ink-2);transition:color .15s ease;
+}
+.navlinks a:hover{color:var(--ink);}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:-.005em;
+  text-decoration:none;border-radius:999px;padding:10px 20px;
+  transition:opacity .15s ease,transform .15s ease,border-color .15s ease;
+}
+.btn:active{transform:translateY(1px);}
+.btn-dark{background:var(--deep);color:var(--deep-ink);}
+.btn-dark:hover{opacity:.88;}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
+.btn-ghost:hover{border-color:var(--ink-3);}
+.btn-light{background:var(--deep-ink);color:var(--deep);}
+.btn-light:hover{opacity:.9;}
+.btn-sm{font-size:13px;padding:9px 17px;}
+.btn:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
-/* ---------- section labels ----------
-   A small mono label does the work the old horizontal rules did,
-   without drawing a line across the page. */
+/* ---------- page ---------- */
+.sheet{max-width:1060px;margin:0 auto;padding:0 32px 80px;}
+
 .label{
   font-family:var(--mono);font-size:10.5px;font-weight:500;
   letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
   margin:0 0 20px;
 }
 
-/* ---------- header ---------- */
-.titleblock{display:flex;gap:36px;align-items:flex-start;margin-bottom:64px;}
-.portrait{margin:0;flex:none;width:112px;}
+/* ---------- hero ----------
+   Name, the one sentence, the button. The portrait earns a real
+   place here rather than sitting as a thumbnail in a corner. */
+.hero{
+  display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:center;
+  padding:84px 0 66px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;margin:0 0 24px;
+  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-2);
+  background:var(--surface);border-radius:999px;padding:7px 14px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none;}
+h1{
+  font-family:var(--display);font-weight:800;font-size:60px;line-height:1.0;
+  letter-spacing:-.04em;margin:0 0 22px;
+}
+h1 .alias{
+  display:block;font-size:.62em;font-weight:700;letter-spacing:-.03em;
+  color:var(--red);margin-top:6px;
+}
+.hero-lead{
+  margin:0 0 14px;max-width:30ch;
+  font-family:var(--display);font-weight:600;font-size:25px;line-height:1.28;
+  letter-spacing:-.022em;color:var(--ink);
+}
+.hero-sub{margin:0 0 30px;max-width:44ch;font-size:17.5px;line-height:1.6;color:var(--ink-2);}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px;}
+.hero-meta{
+  margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.02em;
+  color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px;
+}
+.hero-meta a{color:var(--red);text-decoration:none;border-bottom:1px solid transparent;}
+.hero-meta a:hover{border-bottom-color:currentColor;}
+
+.portrait{margin:0;}
 .portrait .frame{
-  border-radius:4px;overflow:hidden;background:var(--surface);
-  box-shadow:var(--shadow);line-height:0;
+  border-radius:14px;overflow:hidden;background:var(--surface);
+  box-shadow:var(--shadow-lg);line-height:0;
 }
 .portrait img{width:100%;height:auto;display:block;}
-.portrait figcaption{
-  margin-top:10px;font-family:var(--mono);font-size:9.5px;font-weight:500;
-  letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);text-align:center;
-}
-.tb-id{flex:1 1 auto;min-width:0;}
-h1{
-  font-family:var(--display);font-weight:700;font-size:48px;line-height:1.02;
-  letter-spacing:-.035em;margin:0 0 20px;
-}
-h1 .alias{font-size:.5em;font-weight:600;letter-spacing:-.02em;color:var(--red);}
-.talk{margin:0 0 22px;max-width:54ch;}
-.talk b{
-  display:block;font-family:var(--display);font-weight:600;font-size:21px;
-  line-height:1.35;letter-spacing:-.015em;color:var(--ink);margin-bottom:6px;
-}
-.talk{font-size:17.5px;line-height:1.55;color:var(--ink-2);}
-.contact{
-  margin:0;font-family:var(--mono);font-size:12.5px;letter-spacing:.01em;
-  display:flex;flex-wrap:wrap;gap:6px 20px;
-}
-.contact a{color:var(--red);text-decoration:none;border-bottom:1px solid transparent;}
-.contact a:hover{border-bottom-color:currentColor;}
-.contact .loc{color:var(--ink-3);}
 
-/* ---------- what I do ----------
-   Four items on a 2x2 grid with a lot of air between them. The
-   row used to be four boxes with dividers; the dividers were the
-   thing making it feel cramped, not the number of items. */
-.services{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:34px 48px;margin-bottom:76px;
+/* ---------- proof strip ----------
+   Where those templates put client logos. There are none to show,
+   so it carries three facts the page already states. */
+.proof{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  margin-bottom:96px;
 }
-.svc h2{
-  font-family:var(--display);font-weight:600;font-size:17px;
-  letter-spacing:-.015em;margin:0 0 7px;
+.proof-item{padding:26px 28px 26px 0;}
+.proof-item:not(:last-child){border-right:1px solid var(--hair);}
+.proof-item:not(:first-child){padding-left:28px;}
+.proof-item b{
+  display:block;font-family:var(--display);font-weight:700;font-size:28px;
+  letter-spacing:-.03em;line-height:1.1;color:var(--ink);
+}
+.proof-item span{display:block;margin-top:5px;font-size:14.5px;line-height:1.5;color:var(--ink-2);}
+
+/* ---------- section heads ---------- */
+.sec{margin-bottom:96px;}
+.sec-head{margin-bottom:38px;max-width:60ch;}
+.sec-head h2{
+  font-family:var(--display);font-weight:700;font-size:38px;line-height:1.1;
+  letter-spacing:-.032em;margin:0;
+}
+.sec-head p{margin:14px 0 0;font-size:17px;line-height:1.6;color:var(--ink-2);}
+
+/* ---------- services as cards ----------
+   Discrete objects, numbered, hairline border, lift on hover.
+   This is the one move all five templates agree on. */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+.svc{
+  background:var(--raise);border:1px solid var(--hair);border-radius:12px;
+  padding:28px 28px 30px;
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.svc:hover{border-color:var(--ink-3);box-shadow:var(--shadow);transform:translateY(-2px);}
+.svc .num{
+  display:block;font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.12em;color:var(--red);margin-bottom:14px;
+}
+.svc h3{
+  font-family:var(--display);font-weight:700;font-size:19px;
+  letter-spacing:-.02em;margin:0 0 9px;
 }
 .svc p{margin:0;font-size:15.5px;line-height:1.6;color:var(--ink-2);}
 
 /* ---------- about + background ---------- */
-.profile{margin-bottom:76px;}
-.profile-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;}
-.about-lead{margin:0 0 16px;font-size:18.5px;line-height:1.6;}
+.profile-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:64px;}
+.about-lead{margin:0 0 18px;font-size:19.5px;line-height:1.58;}
 .profile-col p{margin:0 0 16px;color:var(--ink-2);font-size:16.5px;}
 .profile-col p:last-child{margin-bottom:0;}
 
-.bg-item{margin-bottom:16px;}
+/* A left rule turns two roles into a timeline instead of a list. */
+.timeline{border-left:1px solid var(--hair);padding-left:20px;}
+.bg-item{margin-bottom:18px;position:relative;}
+.bg-item::before{
+  content:"";position:absolute;left:-24.5px;top:8px;
+  width:8px;height:8px;border-radius:50%;background:var(--hair);
+  border:2px solid var(--paper);
+}
+.bg-item.now::before{background:var(--red);}
 .bg-item .role{
   display:block;font-family:var(--display);font-weight:600;font-size:15.5px;
   letter-spacing:-.01em;color:var(--ink);
@@ -158,17 +266,15 @@ h1 .alias{font-size:.5em;font-weight:600;letter-spacing:-.02em;color:var(--red);
   display:block;margin-top:2px;font-family:var(--mono);font-size:11px;
   letter-spacing:.04em;color:var(--ink-3);
 }
-.bg-foot{margin-top:26px;}
+.bg-foot{margin-top:28px;}
 .bg-foot .lbl{
-  display:block;margin-bottom:9px;font-family:var(--mono);font-size:10px;
+  display:block;margin-bottom:10px;font-family:var(--mono);font-size:10px;
   font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
 }
 .chips{display:flex;flex-wrap:wrap;gap:7px;}
-/* A chip with no border is just a word, so these keep a soft fill
-   rather than an outline - it groups them without drawing boxes. */
 .chip{
   font-family:var(--mono);font-size:11px;letter-spacing:.02em;
-  background:var(--surface);color:var(--ink-2);padding:4px 9px;border-radius:3px;
+  background:var(--surface);color:var(--ink-2);padding:5px 10px;border-radius:999px;
 }
 .edu-body b{
   display:block;font-family:var(--display);font-weight:600;font-size:15px;
@@ -176,46 +282,69 @@ h1 .alias{font-size:.5em;font-weight:600;letter-spacing:-.02em;color:var(--red);
 }
 .edu-body span{display:block;margin-top:2px;font-size:14.5px;color:var(--ink-2);line-height:1.5;}
 
-/* ---------- the example ---------- */
-.plate{margin-bottom:76px;}
-.plate h3{
-  font-family:var(--display);font-weight:700;font-size:27px;
-  letter-spacing:-.025em;margin:0 0 14px;
+/* ---------- the worked example ----------
+   Given a browser chrome bar, because that is what the shots are
+   of, and it stops the carousel reading as a slideshow widget. */
+.work-head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 28px;margin-bottom:18px;}
+.work-head h3{
+  font-family:var(--display);font-weight:700;font-size:32px;
+  letter-spacing:-.03em;margin:0;
 }
-.tagline{margin:0 0 22px;max-width:66ch;font-size:17px;line-height:1.6;color:var(--ink-2);}
-/* The live caption changes with the screenshot, so it is given a
-   fixed look rather than a size that jumps between slides. */
+.work-tags{display:flex;flex-wrap:wrap;gap:7px;margin-left:auto;}
+.tagline{margin:0 0 28px;max-width:70ch;font-size:17px;line-height:1.6;color:var(--ink-2);}
+
+.browser{
+  border:1px solid var(--hair);border-radius:12px;overflow:hidden;
+  background:var(--raise);box-shadow:var(--shadow-lg);
+}
+.browser-bar{
+  display:flex;align-items:center;gap:7px;padding:11px 14px;
+  background:var(--surface);border-bottom:1px solid var(--hair);
+}
+.browser-bar i{width:9px;height:9px;border-radius:50%;background:var(--hair);display:block;}
+.browser-bar .addr{
+  margin-left:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;
+  color:var(--ink-3);
+}
 .lede{
-  margin:0 0 18px;max-width:66ch;font-family:var(--display);font-weight:500;
-  font-size:15.5px;line-height:1.55;letter-spacing:-.005em;color:var(--ink);
+  margin:0;padding:20px 22px 0;max-width:72ch;
+  font-family:var(--display);font-weight:500;font-size:15.5px;line-height:1.55;
+  letter-spacing:-.005em;color:var(--ink);
 }
 
 .figures{margin:0;}
-.fig-window{position:relative;overflow:hidden;border-radius:6px;}
-.fig-track{display:flex;transition:transform .32s cubic-bezier(.4,0,.2,1);}
+/* The slides sit side by side in one row, so without this the window
+   is always as tall as the tallest screenshot and the landscape ones
+   float in a block of empty paper. The height follows the slide on
+   show instead, measured in script. */
+.fig-window{position:relative;overflow:hidden;transition:height .3s cubic-bezier(.4,0,.2,1);}
+.fig-track{display:flex;align-items:flex-start;transition:transform .32s cubic-bezier(.4,0,.2,1);}
 .fig-slide{
   margin:0;flex:0 0 100%;display:flex;align-items:center;justify-content:center;
-  background:var(--surface);padding:22px;
+  padding:22px;
 }
 .fig-slide img{
-  display:block;max-width:100%;height:auto;border-radius:3px;
+  display:block;max-width:100%;height:auto;border-radius:4px;
   box-shadow:var(--shadow);
 }
 .fig-slide.tall img{max-height:560px;width:auto;}
 
 .fig-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--hair);cursor:pointer;
   background:var(--paper);color:var(--ink);box-shadow:var(--shadow);
   font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;
-  opacity:.9;transition:opacity .15s ease;
+  opacity:.94;transition:opacity .15s ease,border-color .15s ease;
 }
-.fig-arrow:hover{opacity:1;}
+.fig-arrow:hover{opacity:1;border-color:var(--ink-3);}
 .fig-arrow.prev{left:14px;}
 .fig-arrow.next{right:14px;}
 .fig-arrow:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
 
-.fig-bar{display:flex;align-items:center;gap:14px;margin-top:14px;}
+.fig-bar{
+  display:flex;align-items:center;gap:14px;padding:13px 22px;
+  border-top:1px solid var(--hair);background:var(--surface);
+}
 .fig-count{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;
   text-transform:uppercase;color:var(--ink-3);font-variant-numeric:tabular-nums;
@@ -229,32 +358,47 @@ h1 .alias{font-size:.5em;font-weight:600;letter-spacing:-.02em;color:var(--red);
 .fig-dot.on{background:var(--red);}
 .fig-dot:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
 
+/* ---------- how it works ----------
+   Three steps, drawn from the sentence that already closed the
+   page: we talk it through before any work starts. */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;}
+.step .n{
+  display:flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--hair);background:var(--raise);
+  font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink);
+  margin-bottom:16px;
+}
+.step h3{
+  font-family:var(--display);font-weight:600;font-size:17px;
+  letter-spacing:-.015em;margin:0 0 8px;
+}
+.step p{margin:0;font-size:15.5px;line-height:1.6;color:var(--ink-2);}
+
 /* ---------- the close ----------
-   The one place on the page that gets a filled surface, because
-   it is the one place asking the reader to do something. */
-.hire{
-  background:var(--surface);border-radius:8px;padding:40px 44px;
-  display:flex;flex-wrap:wrap;align-items:center;gap:28px 40px;
-  margin-bottom:64px;
+   A dark band, which is what every one of those templates does
+   with its last screen. It reads as the end of the page. */
+.cta{
+  background:var(--deep);color:var(--deep-ink);border-radius:18px;
+  padding:64px 56px;text-align:center;margin-bottom:56px;
 }
-.hire-main{flex:1 1 320px;}
-.hire h2{
-  font-family:var(--display);font-weight:700;font-size:28px;
-  letter-spacing:-.025em;margin:0 0 12px;line-height:1.15;
+.cta h2{
+  font-family:var(--display);font-weight:800;font-size:42px;line-height:1.08;
+  letter-spacing:-.035em;margin:0 auto 18px;max-width:18ch;
 }
-.hire p{margin:0;max-width:58ch;font-size:16.5px;line-height:1.6;color:var(--ink-2);}
-.hire-links{flex:0 0 auto;}
-.hire-primary{
-  display:inline-block;background:var(--red);color:#FCFBF7;text-decoration:none;
-  font-family:var(--mono);font-size:13.5px;letter-spacing:.02em;
-  padding:13px 22px;border-radius:5px;transition:opacity .15s ease;
+.cta p{
+  margin:0 auto 32px;max-width:56ch;font-size:17.5px;line-height:1.6;
+  color:var(--deep-ink-2);
 }
-.hire-primary:hover{opacity:.88;}
-.hire-primary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+.cta .btn-light{font-size:15px;padding:14px 28px;}
+.cta-note{
+  margin:22px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--deep-ink-2);
+}
 
 /* ---------- footer ---------- */
 footer{
-  border-top:1px solid var(--hair);padding-top:22px;
+  border-top:1px solid var(--hair);padding-top:24px;
   display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3);
@@ -263,69 +407,127 @@ footer a{color:var(--ink-3);text-decoration:none;}
 footer a:hover{color:var(--red);}
 
 /* ---------- narrower screens ---------- */
-@media (max-width:820px){
-  .sheet{padding:56px 24px 56px;}
-  h1{font-size:42px;}
-  .profile-grid{grid-template-columns:1fr;gap:40px;}
+@media (max-width:900px){
+  .topbar-in{padding:0 24px;gap:18px;}
+  .navlinks{display:none;}
+  .sheet{padding:0 24px 64px;}
+  .hero{grid-template-columns:1fr;gap:40px;padding:56px 0 48px;}
+  .portrait{max-width:260px;}
+  h1{font-size:50px;}
+  .hero-lead{max-width:30ch;}
+  .profile-grid{grid-template-columns:1fr;gap:44px;}
+  .sec{margin-bottom:76px;}
+  .proof{margin-bottom:76px;}
+  .steps{grid-template-columns:1fr;gap:28px;}
 }
 @media (max-width:620px){
-  .sheet{padding:40px 20px 48px;}
-  .titleblock{flex-direction:column;gap:24px;margin-bottom:48px;}
-  .portrait{width:92px;}
-  .portrait figcaption{text-align:left;}
-  h1{font-size:36px;}
-  h1 .alias{display:block;font-size:.58em;margin-top:4px;}
-  .talk b{font-size:19px;}
-  .services{grid-template-columns:1fr;gap:28px;margin-bottom:56px;}
-  .profile,.plate{margin-bottom:56px;}
-  .plate h3{font-size:23px;}
+  .sheet{padding:0 20px 52px;}
+  .hero{padding:40px 0 40px;}
+  h1{font-size:38px;}
+  .hero-lead{font-size:21px;}
+  .hero-btns .btn{width:100%;}
+  .proof{grid-template-columns:1fr;}
+  .proof-item{padding:20px 0;}
+  .proof-item:not(:last-child){border-right:none;border-bottom:1px solid var(--hair);}
+  .proof-item:not(:first-child){padding-left:0;}
+  .sec-head h2{font-size:29px;}
+  .services{grid-template-columns:1fr;gap:16px;}
+  .svc{padding:22px 22px 24px;}
+  .work-head h3{font-size:25px;}
+  .work-tags{margin-left:0;}
+  .lede{padding:16px 16px 0;}
   .fig-slide{padding:12px;}
   .fig-slide.tall img{max-height:420px;}
   .fig-arrow{width:34px;height:34px;font-size:18px;}
   .fig-arrow.prev{left:8px;}
   .fig-arrow.next{right:8px;}
-  .hire{padding:30px 24px;}
-  .hire h2{font-size:24px;}
+  .fig-bar{padding:11px 16px;}
+  .cta{padding:44px 26px;border-radius:14px;}
+  .cta h2{font-size:30px;}
+  .cta p{font-size:16.5px;}
 }
 </style>
 
+<nav class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top"><span class="mark">SC</span>Shane Cann</a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#how">How it works</a>
+    </div>
+    <a class="btn btn-dark btn-sm" href="mailto:cannshan@gmail.com">Email me</a>
+  </div>
+</nav>
+
 <div class="sheet">
 
-  <header class="titleblock">
-    <figure class="portrait">
-      <div class="frame"><img src="assets/shane.png" alt="Shane Cann"></div>
-      <figcaption>Shane Cann</figcaption>
-    </figure>
-    <div class="tb-id">
+  <header class="hero" id="top">
+    <div>
+      <p class="eyebrow"><span class="dot"></span>Available for freelance work</p>
       <h1>Shane <span class="alias">the Data Guy</span></h1>
-      <p class="talk"><b>Sometimes you just need to talk to someone.</b> Email me for a free consultation.</p>
-      <p class="contact">
+      <p class="hero-lead">Sometimes you just need to talk to someone.</p>
+      <p class="hero-sub">Email me for a free consultation.</p>
+      <div class="hero-btns">
+        <a class="btn btn-dark" href="mailto:cannshan@gmail.com">Email me for a free consultation</a>
+        <a class="btn btn-ghost" href="#work">See what I build</a>
+      </div>
+      <p class="hero-meta">
         <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
-        <span class="loc">US East Coast</span>
+        <span>US East Coast</span>
       </p>
     </div>
+    <figure class="portrait">
+      <div class="frame"><img src="assets/shane.png" alt="Shane Cann"></div>
+    </figure>
   </header>
 
-  <div class="services">
-    <div class="svc">
-      <h2>Move your data</h2>
-      <p>Export, transform, migrate into your target platform. I find the bad data before the import does.</p>
+  <div class="proof">
+    <div class="proof-item">
+      <b>8 yrs</b>
+      <span>Technical Architect, all of it enterprise data</span>
     </div>
-    <div class="svc">
-      <h2>Clean up the spreadsheet</h2>
-      <p>Thousands of rows, duplicates. Cleaned up, matched, and the totals made to agree.</p>
+    <div class="proof-item">
+      <b>Millions</b>
+      <span>Of records moved &mdash; or one messy Excel file</span>
     </div>
-    <div class="svc">
-      <h2>Report on it</h2>
-      <p>The dashboard that answers the question everyone keeps asking &mdash; built on numbers that hold up.</p>
-    </div>
-    <div class="svc">
-      <h2>Build the app for it</h2>
-      <p>When the spreadsheet should have been a tool, I build the small web app that captures the data and reports on it.</p>
+    <div class="proof-item">
+      <b>Days</b>
+      <span>To stand up the small internal app you need</span>
     </div>
   </div>
 
-  <section class="profile" id="about">
+  <section class="sec" id="services">
+    <div class="sec-head">
+      <p class="label">Services</p>
+      <h2>Four things I get asked for.</h2>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <span class="num">01</span>
+        <h3>Move your data</h3>
+        <p>Export, transform, migrate into your target platform. I find the bad data before the import does.</p>
+      </div>
+      <div class="svc">
+        <span class="num">02</span>
+        <h3>Clean up the spreadsheet</h3>
+        <p>Thousands of rows, duplicates. Cleaned up, matched, and the totals made to agree.</p>
+      </div>
+      <div class="svc">
+        <span class="num">03</span>
+        <h3>Report on it</h3>
+        <p>The dashboard that answers the question everyone keeps asking &mdash; built on numbers that hold up.</p>
+      </div>
+      <div class="svc">
+        <span class="num">04</span>
+        <h3>Build the app for it</h3>
+        <p>When the spreadsheet should have been a tool, I build the small web app that captures the data and reports on it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="about">
     <div class="profile-grid">
       <div class="profile-col">
         <p class="label">About</p>
@@ -334,13 +536,15 @@ footer a:hover{color:var(--red);}
       </div>
       <div class="profile-col" id="background">
         <p class="label">Background</p>
-        <div class="bg-item now">
-          <span class="role">Senior Technical Architect</span>
-          <span class="when">2021 &mdash; present &middot; Enterprise SaaS</span>
-        </div>
-        <div class="bg-item">
-          <span class="role">Data Team Lead</span>
-          <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
+        <div class="timeline">
+          <div class="bg-item now">
+            <span class="role">Senior Technical Architect</span>
+            <span class="when">2021 &mdash; present &middot; Enterprise SaaS</span>
+          </div>
+          <div class="bg-item">
+            <span class="role">Data Team Lead</span>
+            <span class="when">2017 &mdash; 2021 &middot; CRM software</span>
+          </div>
         </div>
         <div class="bg-foot">
           <span class="lbl">Tooling</span>
@@ -362,45 +566,79 @@ footer a:hover{color:var(--red);}
     </div>
   </section>
 
-  <article class="plate" data-cat="web" id="migration-hq">
-    <p class="label" id="example">Example web app</p>
-    <h3>Migration HQ</h3>
+  <section class="sec" id="work">
+    <p class="label">Example web app</p>
+    <div class="work-head">
+      <h3>Migration HQ</h3>
+      <div class="work-tags">
+        <span class="chip">Built solo</span>
+        <span class="chip">In daily use</span>
+      </div>
+    </div>
     <p class="tagline">My team tried several project management tools, but none of them fit how a data migration actually runs. So I built one for the team and everyone tracks and runs their projects on it now.</p>
-    <p class="lede" data-cap-out aria-live="polite">Every migration project has its own card moving through six phases, each with an owner and the data points that matter.</p>
-    <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
-      <div class="fig-window">
-        <div class="fig-track">
-          <figure class="fig-slide" data-cap="Every migration project has its own card moving through six phases, each with an owner and the data points that matter.">
-            <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
-          </figure>
-          <figure class="fig-slide" data-cap="Open a card to fill in the project &mdash; phase, owners, the four dates, data source and the objects being migrated.">
-            <img src="assets/mhq-edit.png" alt="Edit migration project form with fields for project name, status, engagement manager, developer, owner, phase, mapping signoff, test migration, closed migration and go-live dates, data source, and checkboxes for the objects migrated" loading="lazy">
-          </figure>
-          <figure class="fig-slide" data-cap="Reporting is built in: counts, projects by data source, filtered to object and date range.">
-            <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
-          </figure>
-          <figure class="fig-slide" data-cap="No project leaves the board until someone records what went wrong and what they learned.">
-            <img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
-          </figure>
-        </div>
-        <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
-        <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
-      </div>
-      <div class="fig-bar">
-        <span class="fig-count">Fig. <b>1</b> / 4</span>
-        <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
-      </div>
-    </div>
-  </article>
 
-  <section class="hire" id="contact">
-    <div class="hire-main">
-      <h2>Email me and let&rsquo;s talk.</h2>
-      <p>Whatever you&rsquo;re moving, whatever&rsquo;s broken, whatever you want built &mdash; we&rsquo;ll talk it through before any work starts.</p>
+    <article class="browser" data-cat="web" id="migration-hq">
+      <div class="browser-bar">
+        <i></i><i></i><i></i>
+        <span class="addr">migration-hq / board</span>
+      </div>
+      <p class="lede" data-cap-out aria-live="polite">Every migration project has its own card moving through six phases, each with an owner and the data points that matter.</p>
+      <div class="figures" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Migration HQ screenshots">
+        <div class="fig-window">
+          <div class="fig-track">
+            <figure class="fig-slide" data-cap="Every migration project has its own card moving through six phases, each with an owner and the data points that matter.">
+              <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Open a card to fill in the project &mdash; phase, owners, the four dates, data source and the objects being migrated.">
+              <img src="assets/mhq-edit.png" alt="Edit migration project form with fields for project name, status, engagement manager, developer, owner, phase, mapping signoff, test migration, closed migration and go-live dates, data source, and checkboxes for the objects migrated" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="Reporting is built in: counts, projects by data source, filtered to object and date range.">
+              <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
+            </figure>
+            <figure class="fig-slide" data-cap="No project leaves the board until someone records what went wrong and what they learned.">
+              <img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
+            </figure>
+          </div>
+          <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
+          <button class="fig-arrow next" type="button" data-dir="1" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="fig-bar">
+          <span class="fig-count">Fig. <b>1</b> / 4</span>
+          <div class="fig-dots" role="tablist" aria-label="Choose image"></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="sec-head">
+      <p class="label">How it works</p>
+      <h2>We talk first. Always.</h2>
     </div>
-    <div class="hire-links">
-      <a class="hire-primary" href="mailto:cannshan@gmail.com">cannshan@gmail.com</a>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>You email me</h3>
+        <p>No form, no sales team, no call booked three weeks out. The address goes straight to me.</p>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3>We talk it through</h3>
+        <p>Free, and in as much detail as you like. Whatever you&rsquo;re moving, whatever&rsquo;s broken, whatever you want built.</p>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3>Then work starts</h3>
+        <p>Once we both know what the job actually is, and not before.</p>
+      </div>
     </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>Email me and let&rsquo;s talk.</h2>
+    <p>Whatever you&rsquo;re moving, whatever&rsquo;s broken, whatever you want built &mdash; we&rsquo;ll talk it through before any work starts.</p>
+    <a class="btn btn-light" href="mailto:cannshan@gmail.com">cannshan@gmail.com</a>
+    <p class="cta-note">Free consultation &middot; US East Coast</p>
   </section>
 
   <footer>
@@ -417,9 +655,19 @@ footer a:hover{color:var(--red);}
     var slides = Array.prototype.slice.call(root.querySelectorAll(".fig-slide"));
     // The description sits above the figure, outside the carousel element,
     // so it is looked up on the card rather than inside the carousel.
-    var capEl = (root.closest(".plate") || document).querySelector("[data-cap-out]");
+    var capEl = (root.closest(".browser") || document).querySelector("[data-cap-out]");
     var numEl = root.querySelector(".fig-count b");
+    var win = root.querySelector(".fig-window");
     var index = 0;
+
+    // Height follows the slide on show. Without it the window stays as
+    // tall as the tallest screenshot and the landscape ones sit in a
+    // block of empty paper.
+    function size() {
+      if (!win || !slides[index]) return;
+      var h = slides[index].offsetHeight;
+      if (h) win.style.height = h + "px";
+    }
 
     // The total is written from the slide count, so adding a screenshot
     // cannot leave the caption bar claiming the old number.
@@ -435,9 +683,18 @@ footer a:hover{color:var(--red);}
       if (!img) return;
       var mark = function () {
         if (img.naturalHeight > img.naturalWidth) slide.classList.add("tall");
+        size();
       };
       if (img.complete && img.naturalWidth) mark();
       else img.addEventListener("load", mark, { once: true });
+    });
+
+    // Column widths change with the viewport, so the measured height
+    // goes stale on resize.
+    var rt;
+    window.addEventListener("resize", function () {
+      clearTimeout(rt);
+      rt = setTimeout(size, 120);
     });
 
     // Slides past the first are lazy and sit offscreen, so they would not
@@ -476,6 +733,7 @@ footer a:hover{color:var(--red);}
         d.classList.toggle("on", i === index);
         d.setAttribute("aria-selected", i === index ? "true" : "false");
       });
+      size();
     }
 
     function go(dir) {
