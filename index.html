@@ -57,6 +57,11 @@
   --deep-ink:#F2F0EA;
   --deep-ink-2:#A6B0B6;
   --red:#AE3526;
+  /* Text on a red button, and the glow under it. White clears 6:1 on
+     the dark red; on the lighter red dark mode uses, it does not, so
+     that one flips to dark text. */
+  --on-red:#FCFBF7;
+  --red-glow:rgba(174,53,38,.30);
   --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono","Consolas",monospace;
@@ -69,6 +74,7 @@
     --paper:#14191D; --surface:#1B2228; --raise:#1E262C; --ink:#E7EAE5;
     --ink-2:#A3AEB3; --ink-3:#6E7A80; --hair:#2A333A; --hair-2:#232B31;
     --deep:#0E1316; --deep-ink:#E7EAE5; --deep-ink-2:#8E999F; --red:#E0705D;
+    --on-red:#14191D; --red-glow:rgba(224,112,93,.26);
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
     --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 18px 48px rgba(0,0,0,.45);
     --bar:rgba(20,25,29,.82);
@@ -78,6 +84,7 @@
   --paper:#14191D; --surface:#1B2228; --raise:#1E262C; --ink:#E7EAE5;
   --ink-2:#A3AEB3; --ink-3:#6E7A80; --hair:#2A333A; --hair-2:#232B31;
   --deep:#0E1316; --deep-ink:#E7EAE5; --deep-ink-2:#8E999F; --red:#E0705D;
+  --on-red:#14191D; --red-glow:rgba(224,112,93,.26);
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
   --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 18px 48px rgba(0,0,0,.45);
   --bar:rgba(20,25,29,.82);
@@ -140,8 +147,16 @@ a{color:inherit;}
 .btn-dark:hover{opacity:.88;}
 .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
 .btn-ghost:hover{border-color:var(--ink-3);}
-.btn-light{background:var(--deep-ink);color:var(--deep);}
-.btn-light:hover{opacity:.9;}
+/* The one red button on the page, and the only one that is asking
+   for anything. Red is already the accent on "the Data Guy", so it
+   reads as the same voice rather than a stray colour. */
+.btn-cta{
+  background:var(--red);color:var(--on-red);
+  font-size:15.5px;padding:16px 32px;
+  box-shadow:0 1px 2px rgba(0,0,0,.14),0 10px 26px var(--red-glow);
+}
+.btn-cta:hover{transform:translateY(-1px);box-shadow:0 2px 4px rgba(0,0,0,.16),0 16px 36px var(--red-glow);}
+.btn-cta:active{transform:translateY(0);}
 .btn-sm{font-size:13px;padding:9px 17px;}
 .btn:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
@@ -390,11 +405,20 @@ h1 .alias{
   margin:0 auto 32px;max-width:56ch;font-size:17.5px;line-height:1.6;
   color:var(--deep-ink-2);
 }
-.cta .btn-light{font-size:15px;padding:14px 28px;}
+/* The address stays visible under the button. It is the proof that
+   there is no form and no sales team - but as a line of text, not
+   as the label on the button. */
 .cta-note{
-  margin:22px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--deep-ink-2);
+  margin:22px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.05em;
+  color:var(--deep-ink-2);
 }
+.cta-note a{
+  color:var(--deep-ink);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.22);
+  transition:border-color .15s ease;
+}
+.cta-note a:hover{border-bottom-color:currentColor;}
+.cta-note .sep{margin:0 10px;opacity:.5;}
 
 /* ---------- footer ---------- */
 footer{
@@ -637,8 +661,8 @@ footer a:hover{color:var(--red);}
   <section class="cta" id="contact">
     <h2>Email me and let&rsquo;s talk.</h2>
     <p>Whatever you&rsquo;re moving, whatever&rsquo;s broken, whatever you want built &mdash; we&rsquo;ll talk it through before any work starts.</p>
-    <a class="btn btn-light" href="mailto:cannshan@gmail.com">cannshan@gmail.com</a>
-    <p class="cta-note">Free consultation &middot; US East Coast</p>
+    <a class="btn btn-cta" href="mailto:cannshan@gmail.com">Email me for a free consultation</a>
+    <p class="cta-note"><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a><span class="sep">&middot;</span>US East Coast</p>
   </section>
 
   <footer>
