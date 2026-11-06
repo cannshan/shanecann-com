@@ -212,22 +212,36 @@ h1 .alias{
 }
 .portrait img{width:100%;height:auto;display:block;}
 
-/* ---------- proof strip ----------
-   Where those templates put client logos. There are none to show,
-   so it carries three facts the page already states. */
+/* ---------- full-bleed bands ----------
+   The move every Wix consulting template makes and this page did
+   not: the background changes from one section to the next, so the
+   eye gets handed down the page instead of reading one long sheet.
+   The colour runs to the window edge while the text stays on the
+   same measure as everything else. The spread shadow does that
+   without a 100vw rule, which would add a horizontal scrollbar. */
+.band{
+  background:var(--surface);
+  padding:78px 0;
+  box-shadow:0 0 0 100vmax var(--surface);
+  clip-path:inset(0 -100vmax);
+}
+
+/* ---------- the numbers ----------
+   Where those templates put client logos, and where they set the
+   one block of oversized numerals on the page. There are no logos
+   to show, so it carries three facts the page already states - at
+   the size those templates give them, which is the whole point. */
 .proof{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
   margin-bottom:96px;
 }
-.proof-item{padding:26px 28px 26px 0;}
-.proof-item:not(:last-child){border-right:1px solid var(--hair);}
-.proof-item:not(:first-child){padding-left:28px;}
+.proof-item{padding-right:36px;}
+.proof-item:not(:first-child){border-left:1px solid var(--hair);padding-left:36px;}
 .proof-item b{
-  display:block;font-family:var(--display);font-weight:700;font-size:28px;
-  letter-spacing:-.03em;line-height:1.1;color:var(--ink);
+  display:block;font-family:var(--display);font-weight:700;font-size:46px;
+  letter-spacing:-.04em;line-height:1;color:var(--ink);
 }
-.proof-item span{display:block;margin-top:5px;font-size:14.5px;line-height:1.5;color:var(--ink-2);}
+.proof-item span{display:block;margin-top:11px;font-size:15px;line-height:1.5;color:var(--ink-2);}
 
 /* ---------- section heads ---------- */
 .sec{margin-bottom:96px;}
@@ -373,6 +387,23 @@ h1 .alias{
 .fig-dot.on{background:var(--red);}
 .fig-dot:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
 
+/* ---------- why me ----------
+   Short title left, the argument right, a hairline between rows.
+   Two of the Wix templates use exactly this for the block that
+   argues for them, and it reads differently from both the service
+   cards and the numbered steps - so the page gets a third block
+   without repeating a texture it already has. */
+.reasons{border-top:1px solid var(--hair);}
+.reason{
+  display:grid;grid-template-columns:1fr 1.55fr;gap:48px;
+  padding:30px 0;border-bottom:1px solid var(--hair);
+}
+.reason h3{
+  font-family:var(--display);font-weight:600;font-size:21px;
+  letter-spacing:-.025em;margin:0;
+}
+.reason p{margin:0;font-size:16px;line-height:1.65;color:var(--ink-2);}
+
 /* ---------- how it works ----------
    Three steps, drawn from the sentence that already closed the
    page: we talk it through before any work starts. */
@@ -443,6 +474,9 @@ footer a:hover{color:var(--red);}
   .sec{margin-bottom:76px;}
   .proof{margin-bottom:76px;}
   .steps{grid-template-columns:1fr;gap:28px;}
+  .band{padding:64px 0;}
+  .reason{grid-template-columns:1fr;gap:10px;}
+  .proof-item b{font-size:40px;}
 }
 @media (max-width:620px){
   .sheet{padding:0 20px 52px;}
@@ -450,10 +484,15 @@ footer a:hover{color:var(--red);}
   h1{font-size:38px;}
   .hero-lead{font-size:21px;}
   .hero-btns .btn{width:100%;}
+  .band{padding:52px 0;}
   .proof{grid-template-columns:1fr;}
-  .proof-item{padding:20px 0;}
-  .proof-item:not(:last-child){border-right:none;border-bottom:1px solid var(--hair);}
-  .proof-item:not(:first-child){padding-left:0;}
+  .proof-item{padding:0 0 22px;}
+  .proof-item:not(:last-child){border-bottom:1px solid var(--hair);}
+  .proof-item:not(:first-child){border-left:none;padding:22px 0 0;}
+  .proof-item:not(:first-child):not(:last-child){padding:22px 0;}
+  .proof-item b{font-size:38px;}
+  .reason{padding:24px 0;}
+  .reason h3{font-size:19px;}
   .sec-head h2{font-size:29px;}
   .services{grid-template-columns:1fr;gap:16px;}
   .svc{padding:22px 22px 24px;}
@@ -479,6 +518,7 @@ footer a:hover{color:var(--red);}
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#why">Why me</a>
       <a href="#how">How it works</a>
     </div>
     <a class="btn btn-dark btn-sm" href="mailto:cannshan@gmail.com">Email me</a>
@@ -507,7 +547,7 @@ footer a:hover{color:var(--red);}
     </figure>
   </header>
 
-  <div class="proof">
+  <div class="proof band">
     <div class="proof-item">
       <b>8 yrs</b>
       <span>Technical Architect, all of it enterprise data</span>
@@ -551,7 +591,7 @@ footer a:hover{color:var(--red);}
     </div>
   </section>
 
-  <section class="sec" id="about">
+  <section class="sec band" id="about">
     <div class="profile-grid">
       <div class="profile-col">
         <p class="label">About</p>
@@ -634,6 +674,27 @@ footer a:hover{color:var(--red);}
     </article>
   </section>
 
+  <section class="sec band" id="why">
+    <div class="sec-head">
+      <p class="label">The difference</p>
+      <h2>Why me and not someone else.</h2>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <h3>You talk to the person doing the work</h3>
+        <p>No account manager, no handoff, no agency markup on top. The person you email is the person writing the SQL and building the thing.</p>
+      </div>
+      <div class="reason">
+        <h3>Not my first migration</h3>
+        <p>Technical Architect on enterprise data since 2017. I know where a migration breaks, because I have been the one who had to fix it.</p>
+      </div>
+      <div class="reason">
+        <h3>I can build it, not just move it</h3>
+        <p>Most people who move data cannot build the tool that uses it afterwards, and most people who build apps have never cleaned a real export. You do not need to hire twice.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="how">
     <div class="sec-head">
       <p class="label">How it works</p>
@@ -667,7 +728,7 @@ footer a:hover{color:var(--red);}
 
   <footer>
     <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
-    <span>Built and maintained by Shane Cann &middot; Last updated 5 Nov 2026</span>
+    <span>Built and maintained by Shane Cann &middot; Last updated 6 Nov 2026</span>
   </footer>
 
 </div>
