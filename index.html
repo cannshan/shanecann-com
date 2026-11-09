@@ -31,63 +31,73 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
 <style>
 /* ============================================================
-   Structure taken from the paid consultant templates, not their
-   styling. Every one of them runs the same spine: a sticky bar
-   with a single call to action, a hero that states the offer, a
-   proof strip, services as discrete cards, one worked example,
-   how it works, then a dark block at the end that asks.
+   Second pass on the look. Every word on the page is unchanged -
+   only the palette and the layout moved.
 
-   What makes those templates read as expensive is that the page
-   has a sequence - you are moved down it - rather than being a
-   stack of equal-weight blocks. Space alone (the last pass) made
-   the page calm; it did not give it a direction. This does.
+   PALETTE. The warm beige and brick red went cool: a white page,
+   near-black cool ink, one hot red. The research worth acting on
+   for a page that has to be believed is unglamorous - a
+   monochrome base with a single accent reads as more credible
+   than a bold palette, and the live shift this year is away from
+   the warm neutrals this page was built on. The accent stays red
+   because red is already this person's name on the page; it just
+   stopped being earthenware.
 
-   Still no borrowed logos, no invented metrics, no stock photos.
+   LAYOUT. A sticky rail. Each section puts its label in a narrow
+   left column that holds its position while the section scrolls
+   past, so there is always a word on screen saying which part of
+   the page you are in. The boxes are gone - rules and space do
+   that job now. The numbers and the close both run the full width
+   of the window in near-black, which gives the page two hard
+   stops instead of one.
    ============================================================ */
 :root{
-  --paper:#FCFBF7;
-  --surface:#F4F2EC;
+  --paper:#FFFFFF;
+  --surface:#F1F3F6;
   --raise:#FFFFFF;
-  --ink:#1A2228;
-  --ink-2:#4C5A62;
-  --ink-3:#8B969C;
-  --hair:#E2DFD6;
-  --hair-2:#EDEAE2;
-  --deep:#161D23;
-  --deep-ink:#F2F0EA;
-  --deep-ink-2:#A6B0B6;
-  --red:#AE3526;
-  /* Text on a red button, and the glow under it. White clears 6:1 on
-     the dark red; on the lighter red dark mode uses, it does not, so
-     that one flips to dark text. */
-  --on-red:#FCFBF7;
-  --red-glow:rgba(174,53,38,.30);
+  --ink:#0B1014;
+  --ink-2:#51606C;
+  --ink-3:#626D79;
+  --hair:#DFE4E9;
+  --hair-2:#ECEFF2;
+  --deep:#0B1014;
+  --deep-ink:#F4F6F8;
+  --deep-ink-2:#9BA8B4;
+  --deep-hair:rgba(255,255,255,.14);
+  --red:#CE2A14;
+  /* Text on a red button. The hot red clears 5.3:1 against white
+     here, so white text sits on it; the lighter red dark mode
+     needs cannot carry white, so that one flips to dark text. */
+  --on-red:#FFFFFF;
+  --red-glow:rgba(206,42,20,.26);
   --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono","Consolas",monospace;
-  --shadow:0 1px 2px rgba(26,34,40,.04),0 8px 24px rgba(26,34,40,.06);
-  --shadow-lg:0 2px 4px rgba(26,34,40,.04),0 18px 48px rgba(26,34,40,.10);
-  --bar:rgba(252,251,247,.82);
+  --shadow:0 1px 2px rgba(11,16,20,.05),0 6px 20px rgba(11,16,20,.06);
+  --shadow-lg:0 1px 2px rgba(11,16,20,.05),0 16px 44px rgba(11,16,20,.10);
+  --bar:rgba(255,255,255,.84);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#14191D; --surface:#1B2228; --raise:#1E262C; --ink:#E7EAE5;
-    --ink-2:#A3AEB3; --ink-3:#6E7A80; --hair:#2A333A; --hair-2:#232B31;
-    --deep:#0E1316; --deep-ink:#E7EAE5; --deep-ink-2:#8E999F; --red:#E0705D;
-    --on-red:#14191D; --red-glow:rgba(224,112,93,.26);
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
-    --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 18px 48px rgba(0,0,0,.45);
-    --bar:rgba(20,25,29,.82);
+    --paper:#0C1116; --surface:#141B21; --raise:#172026; --ink:#EDF1F4;
+    --ink-2:#A2AFBA; --ink-3:#97A4B0; --hair:#253039; --hair-2:#1D262D;
+    --deep:#05080B; --deep-ink:#EDF1F4; --deep-ink-2:#8E9BA7;
+    --deep-hair:rgba(255,255,255,.12);
+    --red:#FF6A52; --on-red:#0B1014; --red-glow:rgba(255,106,82,.24);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.4);
+    --shadow-lg:0 1px 2px rgba(0,0,0,.4),0 16px 44px rgba(0,0,0,.5);
+    --bar:rgba(12,17,22,.84);
   }
 }
 :root[data-theme="dark"]{
-  --paper:#14191D; --surface:#1B2228; --raise:#1E262C; --ink:#E7EAE5;
-  --ink-2:#A3AEB3; --ink-3:#6E7A80; --hair:#2A333A; --hair-2:#232B31;
-  --deep:#0E1316; --deep-ink:#E7EAE5; --deep-ink-2:#8E999F; --red:#E0705D;
-  --on-red:#14191D; --red-glow:rgba(224,112,93,.26);
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
-  --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 18px 48px rgba(0,0,0,.45);
-  --bar:rgba(20,25,29,.82);
+  --paper:#0C1116; --surface:#141B21; --raise:#172026; --ink:#EDF1F4;
+  --ink-2:#A2AFBA; --ink-3:#97A4B0; --hair:#253039; --hair-2:#1D262D;
+  --deep:#05080B; --deep-ink:#EDF1F4; --deep-ink-2:#8E9BA7;
+  --deep-hair:rgba(255,255,255,.12);
+  --red:#FF6A52; --on-red:#0B1014; --red-glow:rgba(255,106,82,.24);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.4);
+  --shadow-lg:0 1px 2px rgba(0,0,0,.4),0 16px 44px rgba(0,0,0,.5);
+  --bar:rgba(12,17,22,.84);
 }
 
 *{box-sizing:border-box;}
@@ -105,9 +115,7 @@ body{
 }
 a{color:inherit;}
 
-/* ---------- sticky bar ----------
-   Every paid template has one, and it does one job: the way to
-   contact you is on screen at every scroll position. */
+/* ---------- sticky bar ---------- */
 .topbar{
   position:sticky;top:0;z-index:50;
   background:var(--bar);
@@ -116,7 +124,7 @@ a{color:inherit;}
   border-bottom:1px solid var(--hair-2);
 }
 .topbar-in{
-  max-width:1060px;margin:0 auto;padding:0 32px;height:62px;
+  max-width:1200px;margin:0 auto;padding:0 40px;height:68px;
   display:flex;align-items:center;gap:28px;
 }
 .brand{
@@ -125,8 +133,8 @@ a{color:inherit;}
   margin-right:auto;
 }
 .brand .mark{
-  width:26px;height:26px;border-radius:5px;background:var(--deep);
-  color:var(--deep-ink);display:flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:3px;background:var(--ink);
+  color:var(--paper);display:flex;align-items:center;justify-content:center;
   font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.02em;
   flex:none;
 }
@@ -136,32 +144,34 @@ a{color:inherit;}
   color:var(--ink-2);transition:color .15s ease;
 }
 .navlinks a:hover{color:var(--ink);}
+
+/* Squared off. The pill read friendly; this reads precise, which
+   is the register the rest of the page just moved into. */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:-.005em;
-  text-decoration:none;border-radius:999px;padding:10px 20px;
-  transition:opacity .15s ease,transform .15s ease,border-color .15s ease;
+  text-decoration:none;border-radius:6px;padding:11px 22px;
+  transition:opacity .15s ease,transform .15s ease,border-color .15s ease,background .15s ease;
 }
 .btn:active{transform:translateY(1px);}
-.btn-dark{background:var(--deep);color:var(--deep-ink);}
-.btn-dark:hover{opacity:.88;}
+.btn-dark{background:var(--ink);color:var(--paper);}
+.btn-dark:hover{opacity:.86;}
 .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
-.btn-ghost:hover{border-color:var(--ink-3);}
-/* The one red button on the page, and the only one that is asking
-   for anything. Red is already the accent on "the Data Guy", so it
-   reads as the same voice rather than a stray colour. */
+.btn-ghost:hover{border-color:var(--ink-3);background:var(--surface);}
+/* The one red button on the page, and the only one asking for
+   anything. Red is already the accent on "the Data Guy". */
 .btn-cta{
   background:var(--red);color:var(--on-red);
-  font-size:15.5px;padding:16px 32px;
+  font-size:15.5px;padding:17px 34px;
   box-shadow:0 1px 2px rgba(0,0,0,.14),0 10px 26px var(--red-glow);
 }
 .btn-cta:hover{transform:translateY(-1px);box-shadow:0 2px 4px rgba(0,0,0,.16),0 16px 36px var(--red-glow);}
 .btn-cta:active{transform:translateY(0);}
-.btn-sm{font-size:13px;padding:9px 17px;}
+.btn-sm{font-size:13px;padding:9px 18px;}
 .btn:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
 
 /* ---------- page ---------- */
-.sheet{max-width:1060px;margin:0 auto;padding:0 32px 80px;}
+.sheet{max-width:1200px;margin:0 auto;padding:0 40px 0;}
 
 .label{
   font-family:var(--mono);font-size:10.5px;font-weight:500;
@@ -169,34 +179,32 @@ a{color:inherit;}
   margin:0 0 20px;
 }
 
-/* ---------- hero ----------
-   Name, the one sentence, the button. The portrait earns a real
-   place here rather than sitting as a thumbnail in a corner. */
+/* ---------- hero ---------- */
 .hero{
-  display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:center;
-  padding:84px 0 66px;
+  display:grid;grid-template-columns:1.45fr 1fr;gap:72px;align-items:center;
+  padding:96px 0 76px;
 }
 .eyebrow{
-  display:inline-flex;align-items:center;gap:9px;margin:0 0 24px;
+  display:inline-flex;align-items:center;gap:9px;margin:0 0 26px;
   font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-2);
-  background:var(--surface);border-radius:999px;padding:7px 14px;
+  background:var(--surface);border:1px solid var(--hair);border-radius:4px;padding:7px 13px;
 }
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none;}
 h1{
-  font-family:var(--display);font-weight:800;font-size:60px;line-height:1.0;
-  letter-spacing:-.04em;margin:0 0 22px;
+  font-family:var(--display);font-weight:800;font-size:68px;line-height:.98;
+  letter-spacing:-.045em;margin:0 0 26px;
 }
 h1 .alias{
-  display:block;font-size:.62em;font-weight:700;letter-spacing:-.03em;
-  color:var(--red);margin-top:6px;
+  display:block;font-size:.6em;font-weight:700;letter-spacing:-.035em;
+  color:var(--red);margin-top:8px;
 }
 .hero-lead{
-  margin:0 0 30px;max-width:30ch;
-  font-family:var(--display);font-weight:600;font-size:25px;line-height:1.28;
-  letter-spacing:-.022em;color:var(--ink);
+  margin:0 0 32px;max-width:30ch;
+  font-family:var(--display);font-weight:600;font-size:26px;line-height:1.26;
+  letter-spacing:-.024em;color:var(--ink);
 }
-.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px;}
 .hero-meta{
   margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.02em;
   color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px;
@@ -206,84 +214,91 @@ h1 .alias{
 
 .portrait{margin:0;}
 .portrait .frame{
-  border-radius:14px;overflow:hidden;background:var(--surface);
-  box-shadow:var(--shadow-lg);line-height:0;
+  border-radius:4px;overflow:hidden;background:var(--surface);
+  border:1px solid var(--hair);box-shadow:var(--shadow-lg);line-height:0;
 }
 .portrait img{width:100%;height:auto;display:block;}
 
 /* ---------- full-bleed bands ----------
-   The move every Wix consulting template makes and this page did
-   not: the background changes from one section to the next, so the
-   eye gets handed down the page instead of reading one long sheet.
    The colour runs to the window edge while the text stays on the
    same measure as everything else. The spread shadow does that
    without a 100vw rule, which would add a horizontal scrollbar. */
 .band{
   background:var(--surface);
-  padding:78px 0;
+  padding:92px 0;
   box-shadow:0 0 0 100vmax var(--surface);
   clip-path:inset(0 -100vmax);
 }
+.band-deep{
+  background:var(--deep);color:var(--deep-ink);
+  box-shadow:0 0 0 100vmax var(--deep);
+}
+.band-deep .label{color:var(--deep-ink-2);}
 
 /* ---------- the numbers ----------
-   Where those templates put client logos, and where they set the
-   one block of oversized numerals on the page. There are no logos
-   to show, so it carries three facts the page already states - at
-   the size those templates give them, which is the whole point. */
+   Near-black and full width: the first of the page's two hard
+   stops. Same three facts, set at the size they deserve. */
 .proof{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  margin-bottom:96px;
+  margin-bottom:104px;
 }
-.proof-item{padding-right:36px;}
-.proof-item:not(:first-child){border-left:1px solid var(--hair);padding-left:36px;}
+.proof-item{padding-right:40px;}
+.proof-item:not(:first-child){border-left:1px solid var(--deep-hair);padding-left:40px;}
 .proof-item b{
-  display:block;font-family:var(--display);font-weight:700;font-size:46px;
-  letter-spacing:-.04em;line-height:1;color:var(--ink);
+  display:block;font-family:var(--display);font-weight:700;font-size:56px;
+  letter-spacing:-.045em;line-height:1;color:var(--deep-ink);
 }
-.proof-item span{display:block;margin-top:11px;font-size:15px;line-height:1.5;color:var(--ink-2);}
+.proof-item span{display:block;margin-top:14px;font-size:15.5px;line-height:1.5;color:var(--deep-ink-2);}
 
-/* ---------- section heads ---------- */
-.sec{margin-bottom:96px;}
-.sec-head{margin-bottom:38px;max-width:60ch;}
+/* ---------- sections, on a rail ----------
+   The label sits in a narrow left column and stays put while the
+   section scrolls past it. This is the structural change: the
+   page stops being a stack of full-width blocks and gets a spine. */
+.sec{
+  display:grid;grid-template-columns:170px minmax(0,1fr);gap:0 60px;
+  margin-bottom:104px;
+}
+.rail{position:relative;}
+.rail .label{position:sticky;top:96px;margin:0;}
+.sec-body{min-width:0;}
+.sec-head{margin-bottom:44px;}
 .sec-head h2{
-  font-family:var(--display);font-weight:700;font-size:38px;line-height:1.1;
-  letter-spacing:-.032em;margin:0;
+  font-family:var(--display);font-weight:700;font-size:42px;line-height:1.06;
+  letter-spacing:-.038em;margin:0;
 }
-.sec-head p{margin:14px 0 0;font-size:17px;line-height:1.6;color:var(--ink-2);}
+.sec-head p{margin:14px 0 0;max-width:60ch;font-size:17px;line-height:1.6;color:var(--ink-2);}
 
-/* ---------- services as cards ----------
-   Discrete objects, numbered, hairline border, lift on hover.
-   This is the one move all five templates agree on. */
-.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
-.svc{
-  background:var(--raise);border:1px solid var(--hair);border-radius:12px;
-  padding:28px 28px 30px;
-  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+/* ---------- services ----------
+   Four quadrants divided by rules instead of four boxes. Nothing
+   is raised off the page any more; the grid holds them together. */
+.services{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  border-top:1px solid var(--hair);
 }
-.svc:hover{border-color:var(--ink-3);box-shadow:var(--shadow);transform:translateY(-2px);}
+.svc{padding:30px 40px 34px 0;border-bottom:1px solid var(--hair);}
+.svc:nth-child(odd){border-right:1px solid var(--hair);}
+.svc:nth-child(even){padding-left:40px;padding-right:0;}
 .svc .num{
   display:block;font-family:var(--mono);font-size:11px;font-weight:600;
   letter-spacing:.12em;color:var(--red);margin-bottom:14px;
 }
 .svc h3{
-  font-family:var(--display);font-weight:700;font-size:19px;
-  letter-spacing:-.02em;margin:0 0 9px;
+  font-family:var(--display);font-weight:700;font-size:20px;
+  letter-spacing:-.022em;margin:0 0 10px;
 }
-.svc p{margin:0;font-size:15.5px;line-height:1.6;color:var(--ink-2);}
+.svc p{margin:0;font-size:15.5px;line-height:1.62;color:var(--ink-2);}
 
 /* ---------- about + background ---------- */
-.profile-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:64px;}
-.about-lead{margin:0 0 18px;font-size:19.5px;line-height:1.58;}
+.profile-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;}
+.about-lead{margin:0 0 18px;font-size:20px;line-height:1.56;}
 .profile-col p{margin:0 0 16px;color:var(--ink-2);font-size:16.5px;}
 .profile-col p:last-child{margin-bottom:0;}
 
-/* A left rule turns two roles into a timeline instead of a list. */
 .timeline{border-left:1px solid var(--hair);padding-left:20px;}
 .bg-item{margin-bottom:18px;position:relative;}
 .bg-item::before{
-  content:"";position:absolute;left:-24.5px;top:8px;
-  width:8px;height:8px;border-radius:50%;background:var(--hair);
-  border:2px solid var(--paper);
+  content:"";position:absolute;left:-24px;top:9px;
+  width:7px;height:7px;border-radius:50%;background:var(--ink-3);
 }
 .bg-item.now::before{background:var(--red);}
 .bg-item .role{
@@ -302,7 +317,8 @@ h1 .alias{
 .chips{display:flex;flex-wrap:wrap;gap:7px;}
 .chip{
   font-family:var(--mono);font-size:11px;letter-spacing:.02em;
-  background:var(--surface);color:var(--ink-2);padding:5px 10px;border-radius:999px;
+  background:var(--paper);border:1px solid var(--hair);
+  color:var(--ink-2);padding:5px 10px;border-radius:4px;
 }
 .edu-body b{
   display:block;font-family:var(--display);font-weight:600;font-size:15px;
@@ -310,19 +326,17 @@ h1 .alias{
 }
 .edu-body span{display:block;margin-top:2px;font-size:14.5px;color:var(--ink-2);line-height:1.5;}
 
-/* ---------- the worked example ----------
-   Given a browser chrome bar, because that is what the shots are
-   of, and it stops the carousel reading as a slideshow widget. */
+/* ---------- the worked example ---------- */
 .work-head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 28px;margin-bottom:18px;}
 .work-head h3{
-  font-family:var(--display);font-weight:700;font-size:32px;
-  letter-spacing:-.03em;margin:0;
+  font-family:var(--display);font-weight:700;font-size:36px;
+  letter-spacing:-.038em;margin:0;
 }
 .work-tags{display:flex;flex-wrap:wrap;gap:7px;margin-left:auto;}
-.tagline{margin:0 0 28px;max-width:70ch;font-size:17px;line-height:1.6;color:var(--ink-2);}
+.tagline{margin:0 0 30px;max-width:70ch;font-size:17px;line-height:1.6;color:var(--ink-2);}
 
 .browser{
-  border:1px solid var(--hair);border-radius:12px;overflow:hidden;
+  border:1px solid var(--hair);border-radius:8px;overflow:hidden;
   background:var(--raise);box-shadow:var(--shadow-lg);
 }
 .browser-bar{
@@ -341,10 +355,10 @@ h1 .alias{
 }
 
 .figures{margin:0;}
-/* The slides sit side by side in one row, so without this the window
-   is always as tall as the tallest screenshot and the landscape ones
-   float in a block of empty paper. The height follows the slide on
-   show instead, measured in script. */
+/* The slides sit side by side in one row, so without this the
+   window is always as tall as the tallest screenshot and the
+   landscape ones float in a block of empty paper. The height
+   follows the slide on show instead, measured in script. */
 .fig-window{position:relative;overflow:hidden;transition:height .3s cubic-bezier(.4,0,.2,1);}
 .fig-track{display:flex;align-items:flex-start;transition:transform .32s cubic-bezier(.4,0,.2,1);}
 .fig-slide{
@@ -352,17 +366,17 @@ h1 .alias{
   padding:22px;
 }
 .fig-slide img{
-  display:block;max-width:100%;height:auto;border-radius:4px;
+  display:block;max-width:100%;height:auto;border-radius:3px;
   box-shadow:var(--shadow);
 }
 .fig-slide.tall img{max-height:560px;width:auto;}
 
 .fig-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:40px;height:40px;border-radius:50%;border:1px solid var(--hair);cursor:pointer;
+  width:38px;height:38px;border-radius:6px;border:1px solid var(--hair);cursor:pointer;
   background:var(--paper);color:var(--ink);box-shadow:var(--shadow);
   font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;
-  opacity:.94;transition:opacity .15s ease,border-color .15s ease;
+  opacity:.95;transition:opacity .15s ease,border-color .15s ease;
 }
 .fig-arrow:hover{opacity:1;border-color:var(--ink-3);}
 .fig-arrow.prev{left:14px;}
@@ -388,14 +402,11 @@ h1 .alias{
 
 /* ---------- why me ----------
    Short title left, the argument right, a hairline between rows.
-   Two of the Wix templates use exactly this for the block that
-   argues for them, and it reads differently from both the service
-   cards and the numbered steps - so the page gets a third block
-   without repeating a texture it already has. */
+   A texture the page does not use anywhere else. */
 .reasons{border-top:1px solid var(--hair);}
 .reason{
   display:grid;grid-template-columns:1fr 1.55fr;gap:48px;
-  padding:30px 0;border-bottom:1px solid var(--hair);
+  padding:32px 0;border-bottom:1px solid var(--hair);
 }
 .reason h3{
   font-family:var(--display);font-weight:600;font-size:21px;
@@ -403,14 +414,12 @@ h1 .alias{
 }
 .reason p{margin:0;font-size:16px;line-height:1.65;color:var(--ink-2);}
 
-/* ---------- how it works ----------
-   Three steps, drawn from the sentence that already closed the
-   page: we talk it through before any work starts. */
+/* ---------- how it works ---------- */
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;}
 .step .n{
   display:flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:50%;
-  border:1px solid var(--hair);background:var(--raise);
+  width:32px;height:32px;border-radius:5px;
+  border:1px solid var(--hair);background:var(--surface);
   font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink);
   margin-bottom:16px;
 }
@@ -421,30 +430,32 @@ h1 .alias{
 .step p{margin:0;font-size:15.5px;line-height:1.6;color:var(--ink-2);}
 
 /* ---------- the close ----------
-   A dark band, which is what every one of those templates does
-   with its last screen. It reads as the end of the page. */
+   The page's second hard stop, and the last thing on it. Full
+   width now rather than a dark card floating on paper. */
 .cta{
-  background:var(--deep);color:var(--deep-ink);border-radius:18px;
-  padding:64px 56px;text-align:center;margin-bottom:56px;
+  background:var(--deep);color:var(--deep-ink);
+  box-shadow:0 0 0 100vmax var(--deep);
+  clip-path:inset(0 -100vmax);
+  padding:112px 0 120px;text-align:center;margin-bottom:0;
 }
 .cta h2{
-  font-family:var(--display);font-weight:800;font-size:42px;line-height:1.08;
-  letter-spacing:-.035em;margin:0 auto 18px;max-width:18ch;
+  font-family:var(--display);font-weight:800;font-size:50px;line-height:1.04;
+  letter-spacing:-.042em;margin:0 auto 20px;max-width:18ch;
 }
 .cta p{
-  margin:0 auto 32px;max-width:56ch;font-size:17.5px;line-height:1.6;
+  margin:0 auto 36px;max-width:56ch;font-size:17.5px;line-height:1.6;
   color:var(--deep-ink-2);
 }
-/* The address stays visible under the button. It is the proof that
-   there is no form and no sales team - but as a line of text, not
-   as the label on the button. */
+/* The address stays visible under the button. It is the proof
+   that there is no form and no sales team - but as a line of
+   text, not as the label on the button. */
 .cta-note{
-  margin:22px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.05em;
+  margin:24px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.05em;
   color:var(--deep-ink-2);
 }
 .cta-note a{
   color:var(--deep-ink);text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.22);
+  border-bottom:1px solid rgba(255,255,255,.26);
   transition:border-color .15s ease;
 }
 .cta-note a:hover{border-bottom-color:currentColor;}
@@ -452,7 +463,7 @@ h1 .alias{
 
 /* ---------- footer ---------- */
 footer{
-  border-top:1px solid var(--hair);padding-top:24px;
+  margin-top:72px;padding:24px 0 72px;
   display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3);
@@ -461,41 +472,53 @@ footer a{color:var(--ink-3);text-decoration:none;}
 footer a:hover{color:var(--red);}
 
 /* ---------- narrower screens ---------- */
+@media (max-width:1060px){
+  /* The rail needs room to be worth having. Below this the label
+     goes back above its section and stops sticking. */
+  .sec{grid-template-columns:1fr;gap:0;}
+  .rail .label{position:static;margin:0 0 18px;}
+  .sheet{padding:0 32px 0;}
+  .topbar-in{padding:0 32px;}
+  h1{font-size:58px;}
+}
 @media (max-width:900px){
   .topbar-in{padding:0 24px;gap:18px;}
   .navlinks{display:none;}
-  .sheet{padding:0 24px 64px;}
-  .hero{grid-template-columns:1fr;gap:40px;padding:56px 0 48px;}
+  .sheet{padding:0 24px 0;}
+  .hero{grid-template-columns:1fr;gap:40px;padding:60px 0 52px;}
   .portrait{max-width:260px;}
   h1{font-size:50px;}
-  .hero-lead{max-width:30ch;}
   .profile-grid{grid-template-columns:1fr;gap:44px;}
-  .sec{margin-bottom:76px;}
-  .proof{margin-bottom:76px;}
+  .sec{margin-bottom:84px;}
+  .proof{margin-bottom:84px;}
   .steps{grid-template-columns:1fr;gap:28px;}
-  .band{padding:64px 0;}
+  .band{padding:72px 0;}
   .reason{grid-template-columns:1fr;gap:10px;}
-  .proof-item b{font-size:40px;}
+  .proof-item b{font-size:46px;}
+  .cta{padding:84px 0 92px;}
+  .cta h2{font-size:40px;}
 }
 @media (max-width:620px){
-  .sheet{padding:0 20px 52px;}
+  .sheet{padding:0 20px 0;}
+  .topbar-in{padding:0 20px;height:62px;}
   .hero{padding:40px 0 40px;}
-  h1{font-size:38px;}
-  .hero-lead{font-size:21px;}
+  h1{font-size:40px;}
+  .hero-lead{font-size:22px;}
   .hero-btns .btn{width:100%;}
-  .band{padding:52px 0;}
+  .band{padding:56px 0;}
   .proof{grid-template-columns:1fr;}
-  .proof-item{padding:0 0 22px;}
-  .proof-item:not(:last-child){border-bottom:1px solid var(--hair);}
-  .proof-item:not(:first-child){border-left:none;padding:22px 0 0;}
-  .proof-item:not(:first-child):not(:last-child){padding:22px 0;}
-  .proof-item b{font-size:38px;}
-  .reason{padding:24px 0;}
-  .reason h3{font-size:19px;}
-  .sec-head h2{font-size:29px;}
-  .services{grid-template-columns:1fr;gap:16px;}
-  .svc{padding:22px 22px 24px;}
-  .work-head h3{font-size:25px;}
+  .proof-item{padding:0 0 24px;}
+  .proof-item:not(:last-child){border-bottom:1px solid var(--deep-hair);}
+  .proof-item:not(:first-child){border-left:none;padding:24px 0 0;}
+  .proof-item:not(:first-child):not(:last-child){padding:24px 0;}
+  .proof-item b{font-size:40px;}
+  .sec-head{margin-bottom:32px;}
+  .sec-head h2{font-size:31px;}
+  .services{grid-template-columns:1fr;}
+  .svc{padding:24px 0 26px;}
+  .svc:nth-child(odd){border-right:none;}
+  .svc:nth-child(even){padding-left:0;}
+  .work-head h3{font-size:27px;}
   .work-tags{margin-left:0;}
   .lede{padding:16px 16px 0;}
   .fig-slide{padding:12px;}
@@ -504,9 +527,12 @@ footer a:hover{color:var(--red);}
   .fig-arrow.prev{left:8px;}
   .fig-arrow.next{right:8px;}
   .fig-bar{padding:11px 16px;}
-  .cta{padding:44px 26px;border-radius:14px;}
-  .cta h2{font-size:30px;}
+  .reason{padding:24px 0;}
+  .reason h3{font-size:19px;}
+  .cta{padding:64px 0 72px;}
+  .cta h2{font-size:32px;}
   .cta p{font-size:16.5px;}
+  footer{margin-top:52px;padding:24px 0 52px;}
 }
 </style>
 
@@ -545,7 +571,7 @@ footer a:hover{color:var(--red);}
     </figure>
   </header>
 
-  <div class="proof band">
+  <div class="proof band band-deep">
     <div class="proof-item">
       <b>8 yrs</b>
       <span>Technical Architect, all of it enterprise data</span>
@@ -561,8 +587,9 @@ footer a:hover{color:var(--red);}
   </div>
 
   <section class="sec" id="services">
+    <div class="rail"><p class="label">Services</p></div>
+    <div class="sec-body">
     <div class="sec-head">
-      <p class="label">Services</p>
       <h2>Four things I get asked for.</h2>
     </div>
     <div class="services">
@@ -587,12 +614,14 @@ footer a:hover{color:var(--red);}
         <p>When the spreadsheet should have been a tool, I build the tool &mdash; the Trello-style board my team runs every migration on, a dashboard that reports on your data, or something with no data in it at all.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <section class="sec band" id="about">
+    <div class="rail"><p class="label">About</p></div>
+    <div class="sec-body">
     <div class="profile-grid">
       <div class="profile-col">
-        <p class="label">About</p>
         <p class="about-lead">Eight years as a Technical Architect, all of it enterprise data. Millions of records or a single messy Excel file &mdash; I move the data between systems, clean it before it gets migrated, and turn it into reports and dashboards people actually use.</p>
         <p>Then there are the ideas that sit on a list for years waiting for someone to build them &mdash; the tracker everyone asks for, the report that should be a page instead of an email thread. That&rsquo;s usually a small web app and I can build it in days.</p>
       </div>
@@ -626,10 +655,12 @@ footer a:hover{color:var(--red);}
         </div>
       </div>
     </div>
+    </div>
   </section>
 
   <section class="sec" id="work">
-    <p class="label">Example web app</p>
+    <div class="rail"><p class="label">Example web app</p></div>
+    <div class="sec-body">
     <div class="work-head">
       <h3>Migration HQ</h3>
       <div class="work-tags">
@@ -670,11 +701,13 @@ footer a:hover{color:var(--red);}
         </div>
       </div>
     </article>
+    </div>
   </section>
 
   <section class="sec band" id="why">
+    <div class="rail"><p class="label">The difference</p></div>
+    <div class="sec-body">
     <div class="sec-head">
-      <p class="label">The difference</p>
       <h2>Why me and not someone else.</h2>
     </div>
     <div class="reasons">
@@ -691,11 +724,13 @@ footer a:hover{color:var(--red);}
         <p>Most people who move data cannot build the tool that uses it afterwards, and most people who build apps have never cleaned a real export. You do not need to hire twice.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <section class="sec" id="how">
+    <div class="rail"><p class="label">How it works</p></div>
+    <div class="sec-body">
     <div class="sec-head">
-      <p class="label">How it works</p>
       <h2>We talk first. Always.</h2>
     </div>
     <div class="steps">
@@ -715,6 +750,7 @@ footer a:hover{color:var(--red);}
         <p>Once we both know what the job actually is, and not before.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <section class="cta" id="contact">
@@ -726,7 +762,7 @@ footer a:hover{color:var(--red);}
 
   <footer>
     <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
-    <span>Built and maintained by Shane Cann &middot; Last updated 6 Nov 2026</span>
+    <span>Built and maintained by Shane Cann &middot; Last updated 9 Nov 2026</span>
   </footer>
 
 </div>
