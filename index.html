@@ -810,6 +810,18 @@ footer a:hover{color:var(--red);}
 </div>
 
 <script>
+// Reloading always starts at the top of the page, not where you left off.
+(function () {
+  try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
+  var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+  if (!nav || nav.type !== "reload") return;
+  var top = function () {
+    if (location.hash) { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {} }
+    window.scrollTo(0, 0);
+  };
+  top();
+  window.addEventListener("pageshow", top);
+})();
 (function () {
   document.querySelectorAll("[data-carousel]").forEach(function (root) {
     var track = root.querySelector(".fig-track");
