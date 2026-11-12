@@ -343,7 +343,33 @@ h1 .alias{color:var(--red);}
   display:block;max-width:100%;height:auto;border-radius:3px;
   box-shadow:var(--shadow);
 }
-.fig-slide.tall img{max-height:560px;width:auto;}
+.fig-slide.tall img{max-height:745px;width:auto;}
+.fig-slide img{cursor:zoom-in;}
+
+/* Wide screens: the screenshots take the full page width instead of
+   the text column, so the app's own type is big enough to read. */
+@media (min-width:1061px){
+  #work .rail .label{position:static;}
+  #work .browser{margin-left:-230px;}
+  #work .fig-slide{padding:14px;}
+}
+
+/* Click a screenshot to see it at full size. */
+.zoom{
+  position:fixed;inset:0;z-index:200;display:none;overflow:auto;
+  background:rgba(8,11,14,.9);padding:2vh 2vw;cursor:zoom-out;
+}
+.zoom.on{display:grid;place-items:center;}
+.zoom img{display:block;max-width:96vw;max-height:96vh;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.zoom-close{
+  position:fixed;top:14px;right:16px;width:40px;height:40px;border-radius:6px;border:none;cursor:pointer;
+  background:#fff;color:#0B1014;font-size:22px;line-height:1;
+}
+.zoom-close:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+@media (max-width:900px){
+  .zoom.on{place-items:start;}
+  .zoom img{max-width:none;max-height:none;}
+}
 
 .fig-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -875,6 +901,47 @@ footer a:hover{color:var(--red);}
         navigator.clipboard.writeText(text).then(done, fallback);
       } else { fallback(); }
     });
+  });
+})();
+// Click a screenshot to open it at full size; click, Esc or the
+// close button to dismiss.
+(function () {
+  var imgs = document.querySelectorAll(".fig-slide img");
+  if (!imgs.length) return;
+  var box = document.createElement("div");
+  box.className = "zoom";
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-modal", "true");
+  box.setAttribute("aria-label", "Screenshot at full size");
+  var big = document.createElement("img");
+  var x = document.createElement("button");
+  x.className = "zoom-close"; x.type = "button";
+  x.setAttribute("aria-label", "Close"); x.innerHTML = "&times;";
+  box.appendChild(big); box.appendChild(x);
+  document.body.appendChild(box);
+  var last = null;
+  function open(img) {
+    last = img;
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt;
+    // On a phone the picture is wider than the screen and scrolls.
+    big.style.width = window.innerWidth <= 900
+      ? Math.min(img.naturalWidth / 2, 1000) + "px" : "";
+    box.classList.add("on");
+    document.documentElement.style.overflow = "hidden";
+    x.focus();
+  }
+  function close() {
+    box.classList.remove("on");
+    document.documentElement.style.overflow = "";
+    if (last) last.closest("[data-carousel]").focus();
+  }
+  imgs.forEach(function (img) {
+    img.addEventListener("click", function () { open(img); });
+  });
+  box.addEventListener("click", close);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && box.classList.contains("on")) close();
   });
 })();
 </script>
