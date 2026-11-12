@@ -244,6 +244,12 @@ h1 .alias{color:var(--red);}
   letter-spacing:-.045em;line-height:1;color:var(--deep-ink);
 }
 .proof-item span{display:block;margin-top:14px;font-size:15.5px;line-height:1.5;color:var(--deep-ink-2);}
+/* Wide screens: each caption stays on one line. */
+@media (min-width:1061px){
+  .proof-item{padding-right:26px;}
+  .proof-item:not(:first-child){padding-left:26px;}
+  .proof-item span{white-space:nowrap;font-size:clamp(13px,1.22vw,15.5px);}
+}
 
 /* ---------- sections, on a rail ----------
    The label sits in a narrow left column and stays put while the
