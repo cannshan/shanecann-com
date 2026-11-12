@@ -394,7 +394,25 @@ h1 .keep{white-space:nowrap;}
   position:fixed;top:14px;right:16px;width:40px;height:40px;border-radius:6px;border:none;cursor:pointer;
   background:#fff;color:#0B1014;font-size:22px;line-height:1;
 }
-.zoom-close:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+.zoom-arrow{
+  position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:6px;border:none;cursor:pointer;
+  background:#fff;color:#0B1014;font-size:24px;line-height:1;box-shadow:0 4px 16px rgba(0,0,0,.4);
+}
+.zoom-arrow.prev{left:12px;}
+.zoom-arrow.next{right:12px;}
+.zoom-count{
+  position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:#fff;
+  background:rgba(8,11,14,.7);padding:6px 12px;border-radius:4px;
+}
+/* Phones: the arrows drop below the picture so they do not cover it. */
+@media (max-width:900px){
+  .zoom-arrow{top:auto;bottom:10px;transform:none;}
+  .zoom-arrow.prev{left:calc(50% - 110px);}
+  .zoom-arrow.next{right:calc(50% - 110px);}
+  .zoom-count{bottom:20px;}
+}
+.zoom-close:focus-visible,.zoom-arrow:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
 
 .fig-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -926,10 +944,11 @@ footer a:hover{color:var(--red);}
     });
   });
 })();
-// Click a screenshot to open it at full size; click, Esc or the
-// close button to dismiss.
+// Click a screenshot to open it at full size. Arrows, the arrow keys
+// or a swipe move between screenshots; click, Esc or the close button
+// dismisses. The carousel underneath follows along.
 (function () {
-  var imgs = document.querySelectorAll(".fig-slide img");
+  var imgs = Array.prototype.slice.call(document.querySelectorAll(".fig-slide img"));
   if (!imgs.length) return;
   var box = document.createElement("div");
   box.className = "zoom";
@@ -937,16 +956,39 @@ footer a:hover{color:var(--red);}
   box.setAttribute("aria-modal", "true");
   box.setAttribute("aria-label", "Screenshot at full size");
   var big = document.createElement("img");
-  var x = document.createElement("button");
-  x.className = "zoom-close"; x.type = "button";
-  x.setAttribute("aria-label", "Close"); x.innerHTML = "&times;";
-  box.appendChild(big); box.appendChild(x);
+  function button(cls, label, html) {
+    var b = document.createElement("button");
+    b.className = cls; b.type = "button";
+    b.setAttribute("aria-label", label); b.innerHTML = html;
+    box.appendChild(b);
+    return b;
+  }
+  box.appendChild(big);
+  var x = button("zoom-close", "Close", "&times;");
+  var prev = button("zoom-arrow prev", "Previous image", "&#8249;");
+  var next = button("zoom-arrow next", "Next image", "&#8250;");
+  var count = document.createElement("span");
+  count.className = "zoom-count";
+  box.appendChild(count);
   document.body.appendChild(box);
-  var last = null;
-  function open(img) {
-    last = img;
-    big.src = img.getAttribute("src");   // always the full-size file
-    big.alt = img.alt;
+  if (imgs.length < 2) { prev.hidden = next.hidden = count.hidden = true; }
+
+  var at = 0;
+  function show(i) {
+    at = (i + imgs.length) % imgs.length;
+    big.src = imgs[at].getAttribute("src");   // always the full-size file
+    big.alt = imgs[at].alt;
+    count.textContent = (at + 1) + " / " + imgs.length;
+  }
+  function step(dir) {
+    show(at + dir);
+    // Keep the carousel on the page on the same picture.
+    var root = imgs[at].closest("[data-carousel]");
+    var arrow = root && root.querySelector(dir > 0 ? ".fig-arrow.next" : ".fig-arrow.prev");
+    if (arrow) arrow.click();
+  }
+  function open(i) {
+    show(i);
     box.classList.add("on");
     document.documentElement.style.overflow = "hidden";
     x.focus();
@@ -954,15 +996,33 @@ footer a:hover{color:var(--red);}
   function close() {
     box.classList.remove("on");
     document.documentElement.style.overflow = "";
-    if (last) last.closest("[data-carousel]").focus();
+    var root = imgs[at].closest("[data-carousel]");
+    if (root) root.focus();
   }
-  imgs.forEach(function (img) {
-    img.addEventListener("click", function () { open(img); });
+  imgs.forEach(function (img, i) {
+    img.addEventListener("click", function () { open(i); });
   });
+  prev.addEventListener("click", function (e) { e.stopPropagation(); step(-1); });
+  next.addEventListener("click", function (e) { e.stopPropagation(); step(1); });
   box.addEventListener("click", close);
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && box.classList.contains("on")) close();
+    if (!box.classList.contains("on")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") { step(-1); e.preventDefault(); }
+    else if (e.key === "ArrowRight") { step(1); e.preventDefault(); }
   });
+  // Swipe left or right on a touch screen.
+  var sx = null, sy = null;
+  box.addEventListener("touchstart", function (e) {
+    if (e.touches.length === 1) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }
+    else sx = null;
+  }, { passive: true });
+  box.addEventListener("touchend", function (e) {
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    sx = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
 })();
 </script>
 
