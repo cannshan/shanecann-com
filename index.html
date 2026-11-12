@@ -542,7 +542,7 @@ footer a:hover{color:var(--red);}
       <a href="#why">Why me</a>
       <a href="#how">How it works</a>
     </div>
-    <a class="btn btn-dark btn-sm" href="mailto:cannshan@gmail.com">Email me</a>
+    <a class="btn btn-dark btn-sm" href="mailto:cannshan@gmail.com" data-copy="cannshan@gmail.com">Email me</a>
   </div>
 </nav>
 
@@ -554,7 +554,7 @@ footer a:hover{color:var(--red);}
       <figure class="portrait">
         <div class="frame"><img src="assets/shane.jpg" alt="Shane Cann" width="880" height="1100"></div>
       </figure>
-      <a class="btn btn-dark hero-email" href="mailto:cannshan@gmail.com">Email Me: cannshan@gmail.com</a>
+      <a class="btn btn-dark hero-email" href="mailto:cannshan@gmail.com" data-copy="cannshan@gmail.com">Email Me: cannshan@gmail.com</a>
     </div>
     <div class="hero-copy">
       <p class="hero-lead">Sometimes you just need to talk to someone.</p>
@@ -867,6 +867,34 @@ footer a:hover{color:var(--red);}
     });
 
     render();
+  });
+})();
+// Email buttons copy the address instead of opening a mail app.
+(function () {
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    var label = btn.textContent, timer;
+    btn.setAttribute("role", "button");
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var text = btn.getAttribute("data-copy");
+      var done = function () {
+        btn.textContent = "Copied!";
+        clearTimeout(timer);
+        timer = setTimeout(function () { btn.textContent = label; }, 2000);
+      };
+      var fallback = function () {
+        var t = document.createElement("textarea");
+        t.value = text; t.setAttribute("readonly", "");
+        t.style.position = "fixed"; t.style.opacity = "0";
+        document.body.appendChild(t); t.select();
+        try { document.execCommand("copy"); done(); }
+        catch (err) { window.location.href = btn.href; }
+        document.body.removeChild(t);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
   });
 })();
 </script>
