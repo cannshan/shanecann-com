@@ -708,16 +708,16 @@ footer a:hover{color:var(--red);}
         <div class="fig-window">
           <div class="fig-track">
             <figure class="fig-slide" data-cap="Every migration project has its own card moving through six phases, each with an owner and the data points that matter.">
-              <img src="assets/mhq-board.png" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
+              <img src="assets/mhq-board.png" srcset="assets/mhq-board-1090.png 1090w, assets/mhq-board-1635.png 1635w, assets/mhq-board.png 2640w" sizes="(min-width:1200px) 1090px, calc(100vw - 100px)" width="2640" height="1505" alt="Migration HQ kanban board with eight projects spread across Kickoff, Mapping, Test Migration, Closed Migration, Go Live and Post Go Live" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="Open a card to fill in the project &mdash; phase, owners, the four dates, data source and the objects being migrated.">
-              <img src="assets/mhq-edit.png" alt="Edit migration project form with fields for project name, status, engagement manager, developer, owner, phase, mapping signoff, test migration, closed migration and go-live dates, data source, and checkboxes for the objects migrated" loading="lazy">
+              <img src="assets/mhq-edit.png" srcset="assets/mhq-edit-671.png 671w, assets/mhq-edit-1007.png 1007w, assets/mhq-edit.png 1342w" sizes="(min-width:900px) 671px, calc(100vw - 100px)" width="1342" height="1490" alt="Edit migration project form with fields for project name, status, engagement manager, developer, owner, phase, mapping signoff, test migration, closed migration and go-live dates, data source, and checkboxes for the objects migrated" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="Reporting is built in: counts, projects by data source, filtered to object and date range.">
-              <img src="assets/mhq-reporting.png" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
+              <img src="assets/mhq-reporting.png" srcset="assets/mhq-reporting-1090.png 1090w, assets/mhq-reporting-1635.png 1635w, assets/mhq-reporting.png 2640w" sizes="(min-width:1200px) 1090px, calc(100vw - 100px)" width="2640" height="1728" alt="Reporting view with total, active and completed project counts above a bar chart of projects by data source" loading="lazy">
             </figure>
             <figure class="fig-slide" data-cap="No project leaves the board until someone records what went wrong and what they learned.">
-              <img src="assets/mhq-retro.png" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
+              <img src="assets/mhq-retro.png" srcset="assets/mhq-retro-1090.png 1090w, assets/mhq-retro-1635.png 1635w, assets/mhq-retro.png 2640w" sizes="(min-width:1200px) 1090px, calc(100vw - 100px)" width="2640" height="1524" alt="Project Retrospective Required modal with required data-source issues field, root cause analysis and takeaways, and a Complete Retrospective and Archive button" loading="lazy">
             </figure>
           </div>
           <button class="fig-arrow prev" type="button" data-dir="-1" aria-label="Previous image">&#8249;</button>
@@ -949,11 +949,11 @@ footer a:hover{color:var(--red);}
   var last = null;
   function open(img) {
     last = img;
-    big.src = img.currentSrc || img.src;
+    big.src = img.getAttribute("src");   // always the full-size file
     big.alt = img.alt;
     // On a phone the picture is wider than the screen and scrolls.
     big.style.width = window.innerWidth <= 900
-      ? Math.min(img.naturalWidth / 2, 1000) + "px" : "";
+      ? (img.closest(".tall") ? 671 : 1000) + "px" : "";
     box.classList.add("on");
     document.documentElement.style.overflow = "hidden";
     x.focus();
