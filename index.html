@@ -190,6 +190,8 @@ h1{
   letter-spacing:-.045em;margin:0;
 }
 h1 .alias{color:var(--red);}
+/* When the name has to wrap, it breaks as "Shane the / Data Guy". */
+h1 .keep{white-space:nowrap;}
 .hero-side{display:flex;flex-direction:column;gap:16px;}
 .hero-email{width:100%;justify-content:center;text-align:center;}
 .hero-lead{
@@ -581,7 +583,7 @@ footer a:hover{color:var(--red);}
 <div class="sheet">
 
   <header class="hero" id="top">
-    <h1>Shane <span class="alias">the Data Guy</span></h1>
+    <h1>Shane <span class="alias">the <span class="keep">Data Guy</span></span></h1>
     <div class="hero-side">
       <figure class="portrait">
         <div class="frame"><img src="assets/shane.jpg" alt="Shane Cann" width="880" height="1100"></div>
