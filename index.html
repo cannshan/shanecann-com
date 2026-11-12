@@ -467,17 +467,15 @@ h1 .alias{color:var(--red);}
 }
 .cta h2{
   font-family:var(--display);font-weight:800;font-size:50px;line-height:1.04;
-  letter-spacing:-.042em;margin:0 auto 20px;max-width:18ch;
+  letter-spacing:-.042em;margin:0 auto 34px;max-width:18ch;
 }
 .cta p{
   margin:0 auto 36px;max-width:56ch;font-size:17.5px;line-height:1.6;
   color:var(--deep-ink-2);
 }
-/* The address stays visible under the button. It is the proof
-   that there is no form and no sales team - but as a line of
-   text, not as the label on the button. */
-.cta-note{
-  margin:24px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.05em;
+/* The address under the button copies on click, same as the button. */
+.cta .cta-note{
+  margin:24px 0 0;max-width:none;font-family:var(--mono);font-size:13px;letter-spacing:.05em;
   color:var(--deep-ink-2);
 }
 .cta-note a{
@@ -783,13 +781,12 @@ footer a:hover{color:var(--red);}
 
   <section class="cta" id="contact">
     <h2>Email me and let&rsquo;s talk.</h2>
-    <p>Whatever you&rsquo;re moving, whatever&rsquo;s broken, whatever you want built &mdash; we&rsquo;ll talk it through before any work starts.</p>
-    <a class="btn btn-cta" href="mailto:cannshan@gmail.com">Email me for a free consultation</a>
-    <p class="cta-note"><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a><span class="sep">&middot;</span>US East Coast</p>
+    <a class="btn btn-cta" href="mailto:cannshan@gmail.com" data-copy="cannshan@gmail.com">Email Me: cannshan@gmail.com</a>
+    <p class="cta-note"><a href="mailto:cannshan@gmail.com" data-copy="cannshan@gmail.com" title="Click to copy">cannshan@gmail.com</a><span class="sep">&middot;</span>US East Coast</p>
   </section>
 
   <footer>
-    <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
+    <span><a href="mailto:cannshan@gmail.com" data-copy="cannshan@gmail.com" title="Click to copy">cannshan@gmail.com</a></span>
     <span>Built and maintained by Shane Cann &middot; Last updated 11 Nov 2026</span>
   </footer>
 
