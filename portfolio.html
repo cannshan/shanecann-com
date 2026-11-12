@@ -362,16 +362,12 @@ h1 .keep{white-space:nowrap;}
   background:rgba(8,11,14,.9);padding:2vh 2vw;cursor:zoom-out;
 }
 .zoom.on{display:grid;place-items:center;}
-.zoom img{display:block;max-width:96vw;max-height:96vh;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.zoom img{display:block;width:auto;height:auto;max-width:96vw;max-height:92vh;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
 .zoom-close{
   position:fixed;top:14px;right:16px;width:40px;height:40px;border-radius:6px;border:none;cursor:pointer;
   background:#fff;color:#0B1014;font-size:22px;line-height:1;
 }
 .zoom-close:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
-@media (max-width:900px){
-  .zoom.on{place-items:start;}
-  .zoom img{max-width:none;max-height:none;}
-}
 
 .fig-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -924,9 +920,6 @@ footer a:hover{color:var(--red);}
     last = img;
     big.src = img.getAttribute("src");   // always the full-size file
     big.alt = img.alt;
-    // On a phone the picture is wider than the screen and scrolls.
-    big.style.width = window.innerWidth <= 900
-      ? (img.closest(".tall") ? 671 : 1000) + "px" : "";
     box.classList.add("on");
     document.documentElement.style.overflow = "hidden";
     x.focus();
