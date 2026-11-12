@@ -791,13 +791,17 @@ footer a:hover{color:var(--red);}
 (function () {
   try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
   var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
-  if (!nav || nav.type !== "reload") return;
+  var reload = !!nav && nav.type === "reload";
   var top = function () {
     if (location.hash) { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {} }
     window.scrollTo(0, 0);
   };
-  top();
-  window.addEventListener("pageshow", top);
+  if (reload) top();
+  // persisted: coming back to the page from the browser's cache, where it
+  // would otherwise reopen wherever it was left.
+  window.addEventListener("pageshow", function (e) {
+    if (reload || e.persisted) top();
+  });
 })();
 
 // The name in the top bar goes to the very top of the page, whichever
