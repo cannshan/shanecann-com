@@ -799,6 +799,21 @@ footer a:hover{color:var(--red);}
   top();
   window.addEventListener("pageshow", top);
 })();
+
+// The name in the top bar goes to the very top of the page, whichever
+// half of it you click, and leaves no #top behind in the address.
+(function () {
+  var brand = document.querySelector(".brand");
+  if (!brand) return;
+  brand.addEventListener("click", function (e) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;  // let a new tab open
+    e.preventDefault();
+    window.scrollTo({ top: 0, left: 0 });
+    if (location.hash) {
+      try { history.replaceState(null, "", location.pathname + location.search); } catch (err) {}
+    }
+  });
+})();
 (function () {
   document.querySelectorAll("[data-carousel]").forEach(function (root) {
     var track = root.querySelector(".fig-track");
