@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://shanecann.com/">
 <meta property="og:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
 <meta property="og:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process.">
-<meta property="og:image" content="https://shanecann.com/assets/shane.png">
+<meta property="og:image" content="https://shanecann.com/assets/shane.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
 <meta name="twitter:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process.">
@@ -181,36 +181,30 @@ a{color:inherit;}
 
 /* ---------- hero ---------- */
 .hero{
-  display:grid;grid-template-columns:1.45fr 1fr;gap:72px;align-items:center;
-  padding:96px 0 76px;
+  display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px 76px;align-items:center;
+  padding:76px 0 76px;
 }
-.eyebrow{
-  display:inline-flex;align-items:center;gap:9px;margin:0 0 26px;
-  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-2);
-  background:var(--surface);border:1px solid var(--hair);border-radius:4px;padding:7px 13px;
-}
-.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none;}
 h1{
-  font-family:var(--display);font-weight:800;font-size:68px;line-height:.98;
-  letter-spacing:-.045em;margin:0 0 26px;
+  grid-column:1 / -1;
+  font-family:var(--display);font-weight:800;font-size:68px;line-height:1;
+  letter-spacing:-.045em;margin:0;
 }
-h1 .alias{
-  display:block;font-size:.6em;font-weight:700;letter-spacing:-.035em;
-  color:var(--red);margin-top:8px;
-}
+h1 .alias{color:var(--red);}
+.hero-side{display:flex;flex-direction:column;gap:16px;}
+.hero-email{width:100%;justify-content:center;text-align:center;}
 .hero-lead{
-  margin:0 0 32px;max-width:30ch;
-  font-family:var(--display);font-weight:600;font-size:26px;line-height:1.26;
-  letter-spacing:-.024em;color:var(--ink);
+  margin:0 0 22px;max-width:22ch;
+  font-family:var(--display);font-weight:700;font-size:40px;line-height:1.1;
+  letter-spacing:-.035em;color:var(--ink);
 }
-.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px;}
+.hero-intro{
+  margin:0 0 26px;max-width:44ch;font-size:19px;line-height:1.6;color:var(--ink-2);
+}
 .hero-meta{
   margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.02em;
-  color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px;
+  color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
 }
-.hero-meta a{color:var(--red);text-decoration:none;border-bottom:1px solid transparent;}
-.hero-meta a:hover{border-bottom-color:currentColor;}
+.hero-meta .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);margin-right:8px;vertical-align:middle;}
 
 .portrait{margin:0;}
 .portrait .frame{
@@ -485,8 +479,9 @@ footer a:hover{color:var(--red);}
   .topbar-in{padding:0 24px;gap:18px;}
   .navlinks{display:none;}
   .sheet{padding:0 24px 0;}
-  .hero{grid-template-columns:1fr;gap:40px;padding:60px 0 52px;}
-  .portrait{max-width:260px;}
+  .hero{grid-template-columns:1fr;gap:30px;padding:52px 0 52px;}
+  .hero-side{max-width:340px;}
+  .hero-lead{font-size:32px;}
   h1{font-size:50px;}
   .profile-grid{grid-template-columns:1fr;gap:44px;}
   .sec{margin-bottom:84px;}
@@ -503,8 +498,9 @@ footer a:hover{color:var(--red);}
   .topbar-in{padding:0 20px;height:62px;}
   .hero{padding:40px 0 40px;}
   h1{font-size:40px;}
-  .hero-lead{font-size:22px;}
-  .hero-btns .btn{width:100%;}
+  .hero-lead{font-size:27px;}
+  .hero-intro{font-size:17.5px;}
+  .hero-email{font-size:14px;padding-left:12px;padding-right:12px;}
   .band{padding:56px 0;}
   .proof{grid-template-columns:1fr;}
   .proof-item{padding:0 0 24px;}
@@ -553,22 +549,21 @@ footer a:hover{color:var(--red);}
 <div class="sheet">
 
   <header class="hero" id="top">
-    <div>
-      <p class="eyebrow"><span class="dot"></span>Available for freelance work</p>
-      <h1>Shane <span class="alias">the Data Guy</span></h1>
+    <h1>Shane <span class="alias">the Data Guy</span></h1>
+    <div class="hero-side">
+      <figure class="portrait">
+        <div class="frame"><img src="assets/shane.jpg" alt="Shane Cann" width="880" height="1100"></div>
+      </figure>
+      <a class="btn btn-dark hero-email" href="mailto:cannshan@gmail.com">Email Me: cannshan@gmail.com</a>
+    </div>
+    <div class="hero-copy">
       <p class="hero-lead">Sometimes you just need to talk to someone.</p>
-      <div class="hero-btns">
-        <a class="btn btn-dark" href="mailto:cannshan@gmail.com">Email me for a free consultation</a>
-        <a class="btn btn-ghost" href="#services">See what I do</a>
-      </div>
+      <p class="hero-intro">Hi, I&rsquo;m Shane the Data Guy! I can help you Import, Export, Clean Up, and Report on your data. Email me for a free consultation.</p>
       <p class="hero-meta">
-        <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
+        <span><span class="dot"></span>Available for freelance work</span>
         <span>US East Coast</span>
       </p>
     </div>
-    <figure class="portrait">
-      <div class="frame"><img src="assets/shane.png" alt="Shane Cann"></div>
-    </figure>
   </header>
 
   <div class="proof band band-deep">
@@ -762,7 +757,7 @@ footer a:hover{color:var(--red);}
 
   <footer>
     <span><a href="mailto:cannshan@gmail.com">cannshan@gmail.com</a></span>
-    <span>Built and maintained by Shane Cann &middot; Last updated 9 Nov 2026</span>
+    <span>Built and maintained by Shane Cann &middot; Last updated 11 Nov 2026</span>
   </footer>
 
 </div>
