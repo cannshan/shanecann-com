@@ -10,7 +10,9 @@
 <meta property="og:url" content="https://shanecann.com/">
 <meta property="og:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
 <meta property="og:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process.">
-<meta property="og:image" content="https://shanecann.com/assets/shane.jpg">
+<meta property="og:image" content="https://shanecann.com/assets/shane-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shane Cann &mdash; Data migration, reporting &amp; dashboards">
 <meta name="twitter:description" content="Migrations, spreadsheet cleanup, reporting, and the web apps that replace a manual process.">
@@ -53,23 +55,23 @@
    ============================================================ */
 :root{
   --paper:#FFFFFF;
-  --surface:#F1F3F6;
+  --surface:#EFF4F7;
   --raise:#FFFFFF;
-  --ink:#0B1014;
-  --ink-2:#51606C;
-  --ink-3:#626D79;
-  --hair:#DFE4E9;
-  --hair-2:#ECEFF2;
-  --deep:#0B1014;
-  --deep-ink:#F4F6F8;
-  --deep-ink-2:#9BA8B4;
+  --ink:#09181F;
+  --ink-2:#4A5D6B;
+  --ink-3:#5B6E7C;
+  --hair:#DAE3E9;
+  --hair-2:#E9EFF3;
+  --deep:#062033;
+  --deep-ink:#EAF3F8;
+  --deep-ink-2:#93AEBE;
   --deep-hair:rgba(255,255,255,.14);
-  --red:#CE2A14;
-  /* Text on a red button. The hot red clears 5.3:1 against white
-     here, so white text sits on it; the lighter red dark mode
+  --red:#0B7285;
+  /* Text on an accent button. The deep teal clears 5.6:1 against
+     white here, so white text sits on it; the bright cyan dark mode
      needs cannot carry white, so that one flips to dark text. */
   --on-red:#FFFFFF;
-  --red-glow:rgba(206,42,20,.26);
+  --red-glow:rgba(11,114,133,.26);
   --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono","Consolas",monospace;
@@ -79,25 +81,25 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#0C1116; --surface:#141B21; --raise:#172026; --ink:#EDF1F4;
-    --ink-2:#A2AFBA; --ink-3:#97A4B0; --hair:#253039; --hair-2:#1D262D;
-    --deep:#05080B; --deep-ink:#EDF1F4; --deep-ink-2:#8E9BA7;
+    --paper:#09131A; --surface:#121E27; --raise:#16242E; --ink:#EAF2F6;
+    --ink-2:#9DB0BC; --ink-3:#92A6B2; --hair:#223038; --hair-2:#1A262E;
+    --deep:#04121C; --deep-ink:#EAF2F6; --deep-ink-2:#8BA3B1;
     --deep-hair:rgba(255,255,255,.12);
-    --red:#FF6A52; --on-red:#0B1014; --red-glow:rgba(255,106,82,.24);
+    --red:#3CCFE0; --on-red:#042029; --red-glow:rgba(60,207,224,.24);
     --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.4);
     --shadow-lg:0 1px 2px rgba(0,0,0,.4),0 16px 44px rgba(0,0,0,.5);
-    --bar:rgba(12,17,22,.84);
+    --bar:rgba(9,19,26,.84);
   }
 }
 :root[data-theme="dark"]{
-  --paper:#0C1116; --surface:#141B21; --raise:#172026; --ink:#EDF1F4;
-  --ink-2:#A2AFBA; --ink-3:#97A4B0; --hair:#253039; --hair-2:#1D262D;
-  --deep:#05080B; --deep-ink:#EDF1F4; --deep-ink-2:#8E9BA7;
+  --paper:#09131A; --surface:#121E27; --raise:#16242E; --ink:#EAF2F6;
+  --ink-2:#9DB0BC; --ink-3:#92A6B2; --hair:#223038; --hair-2:#1A262E;
+  --deep:#04121C; --deep-ink:#EAF2F6; --deep-ink-2:#8BA3B1;
   --deep-hair:rgba(255,255,255,.12);
-  --red:#FF6A52; --on-red:#0B1014; --red-glow:rgba(255,106,82,.24);
+  --red:#3CCFE0; --on-red:#042029; --red-glow:rgba(60,207,224,.24);
   --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.4);
   --shadow-lg:0 1px 2px rgba(0,0,0,.4),0 16px 44px rgba(0,0,0,.5);
-  --bar:rgba(12,17,22,.84);
+  --bar:rgba(9,19,26,.84);
 }
 
 *{box-sizing:border-box;}
@@ -411,11 +413,11 @@ h1 .keep{white-space:nowrap;}
 .zoom img{display:block;width:auto;height:auto;max-width:96vw;max-height:92vh;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
 .zoom-close{
   position:fixed;top:14px;right:16px;width:40px;height:40px;border-radius:6px;border:none;cursor:pointer;
-  background:#fff;color:#0B1014;font-size:22px;line-height:1;
+  background:#fff;color:#09181F;font-size:22px;line-height:1;
 }
 .zoom-arrow{
   position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:6px;border:none;cursor:pointer;
-  background:#fff;color:#0B1014;font-size:24px;line-height:1;box-shadow:0 4px 16px rgba(0,0,0,.4);
+  background:#fff;color:#09181F;font-size:24px;line-height:1;box-shadow:0 4px 16px rgba(0,0,0,.4);
 }
 .zoom-arrow.prev{left:12px;}
 .zoom-arrow.next{right:12px;}
@@ -635,7 +637,7 @@ footer a:hover{color:var(--red);}
     <h1>Shane <span class="alias">the <span class="keep">Data Guy</span></span></h1>
     <div class="hero-side">
       <figure class="portrait">
-        <div class="frame"><img src="assets/shane.jpg" alt="Shane Cann" width="880" height="1100"></div>
+        <div class="frame"><img src="assets/shane-card.jpg" alt="Shane the Data Guy" width="1200" height="1200"></div>
       </figure>
     </div>
     <div class="hero-copy">
