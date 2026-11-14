@@ -206,6 +206,9 @@ h1 .keep{white-space:nowrap;}
 /* Hand-drawn underline under the closing words, the way the
    mock-up has it. Tied to the words, so it rides any wrap. */
 .swoosh{position:relative;white-space:nowrap;}
+/* The underlined phrase copies the address, like the buttons do. */
+.swoosh.copy{cursor:pointer;}
+.swoosh.copy:focus-visible{outline:2px solid var(--red);outline-offset:4px;border-radius:3px;}
 .swoosh svg{
   position:absolute;left:0;right:0;bottom:-.17em;width:100%;height:.2em;
   stroke:var(--red);stroke-width:2.4;fill:none;stroke-linecap:round;
@@ -642,7 +645,7 @@ footer a:hover{color:var(--red);}
       </figure>
     </div>
     <div class="hero-copy">
-      <p class="hero-lead">Sometimes you just need to <span class="swoosh">talk to someone.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8.6C48 2.4 152 2.4 197 6.6"/></svg></span></p>
+      <p class="hero-lead">Sometimes you just need to <span class="swoosh copy" data-copy="cannshan@gmail.com" tabindex="0" title="Click to copy cannshan@gmail.com">talk to someone.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8.6C48 2.4 152 2.4 197 6.6"/></svg></span></p>
       <p class="hero-intro">Hi, I&rsquo;m Shane the Data Guy! I can help you Import, Export, Clean, and Report on your data. And when a spreadsheet isn&rsquo;t cutting it anymore, I can build you a custom web app. Email me for a free consultation.</p>
       <div class="hero-actions">
         <a class="btn btn-dark hero-email" href="mailto:cannshan@gmail.com" data-copy="cannshan@gmail.com">Email me <span class="arr" aria-hidden="true">&rarr;</span></a>
@@ -992,15 +995,21 @@ footer a:hover{color:var(--red);}
 // Email buttons copy the address instead of opening a mail app.
 (function () {
   document.querySelectorAll("[data-copy]").forEach(function (btn) {
-    var label = btn.textContent, timer;
+    // innerHTML, not textContent: one of these carries a drawn underline.
+    var label = btn.innerHTML, timer;
     btn.setAttribute("role", "button");
+    btn.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault(); btn.click();
+      }
+    });
     btn.addEventListener("click", function (e) {
       e.preventDefault();
       var text = btn.getAttribute("data-copy");
       var done = function () {
         btn.textContent = "Copied!";
         clearTimeout(timer);
-        timer = setTimeout(function () { btn.textContent = label; }, 2000);
+        timer = setTimeout(function () { btn.innerHTML = label; }, 2000);
       };
       var fallback = function () {
         var t = document.createElement("textarea");
@@ -1008,7 +1017,7 @@ footer a:hover{color:var(--red);}
         t.style.position = "fixed"; t.style.opacity = "0";
         document.body.appendChild(t); t.select();
         try { document.execCommand("copy"); done(); }
-        catch (err) { window.location.href = btn.href; }
+        catch (err) { if (btn.href) window.location.href = btn.href; }
         document.body.removeChild(t);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
